@@ -53,6 +53,8 @@ HOLD = {
     "s1": ["/guides/company-car-lease-policy/"],
     # Batch S2 (22 Nov): Stay safe section with the digital arrest guide (news-led, timed with the first YouTube video).
     "s2": ["/guides/digital-arrest-scam/"],
+    # Batch S3 (drafted 22 Nov): GTA 6 trend guides (scams; what it costs and how to pay).
+    "s3": ["/guides/gta-6-scams-fake-downloads/", "/guides/gta-6-ps5-cost-emi-or-save/", "/guides/day-off-for-gta-6-leave-rules/"],
     # Batch T9 (20 Nov): back to office cost calculator (N7, hero) with its guides, released together.
     "t9": ["/return-to-office-cost-calculator/", "/guides/return-to-office-cost/", "/guides/cheapest-way-to-commute-to-office/", "/guides/move-closer-to-office-or-commute/", "/guides/what-is-your-commute-time-worth/", "/guides/pay-rise-to-cover-return-to-office/", "/guides/meal-card-tax-free-200-per-meal/"],
     # Batch T8 (20 Nov): health insurance cover calculator (N6, quick) with its guides, released together.
@@ -66,7 +68,7 @@ HOLD = {
     "t3": ["/fire-calculator/", "/guides/fire-number-india/", "/guides/retire-at-45-bridge-epf-nps/", "/guides/is-25x-enough-early-retirement/", "/guides/lean-fat-coast-fire/", "/guides/savings-rate-early-retirement/", "/guides/epf-nps-if-you-retire-early/"],
     "t2": ["/best-day-to-resign/", "/guides/when-to-resign-best-last-day/", "/guides/resign-before-or-after-rsu-vesting/", "/guides/joining-bonus-clawback/", "/guides/when-to-hand-in-notice/", "/guides/use-or-encash-leave-before-resigning/", "/guides/wait-for-bonus-or-join-now/"],
 }
-RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2 22 Nov
+RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2", "s3"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2, s3 22 Nov
 # Review builds only: SALARIST_PREVIEW=t1 python3 build.py builds a held batch too (never push such a build).
 RELEASED |= {b for b in os.environ.get("SALARIST_PREVIEW", "").split(",") if b}
 HELD = {p for b, ps in HOLD.items() if b not in RELEASED for p in ps}
@@ -102,7 +104,7 @@ JO_LIVE = "t5" in RELEASED   # job offer comparator: goes live with batch T5
 if JO_LIVE: LIVE_TOOLS.append(("/job-offer-comparator/", "Job Offer Comparator"))
 S2_LIVE = "s2" in RELEASED   # Stay safe section (scam guides + /stay-safe/ hub): goes live with batch S2
 # Scam and safety guides: not tied to a tool; listed on /stay-safe/ and in their own section on /guides/ (exempt from the "guide under a tool" check).
-SAFETY_GUIDES = ["/guides/digital-arrest-scam/"]
+SAFETY_GUIDES = ["/guides/digital-arrest-scam/", "/guides/gta-6-scams-fake-downloads/"]
 SAFETY_RELATED = ["/budget-planner/", "/fd-ppf-rd-calculator/", "/retirement-planner/", "/health-insurance-cover-calculator/"]
 SO_LIVE = "t7" in RELEASED   # ESOP and RSU tax calculator: goes live with batch T7
 if SO_LIVE: LIVE_TOOLS.append(("/esop-rsu-tax-calculator/", "ESOP and RSU Tax Calculator"))
@@ -171,6 +173,9 @@ SEO = {
     "/guides/hra-vs-home-loan-tax-benefits/": ("HRA vs Home Loan Tax Benefits: Which Saves More?", None),
     "/guides/restricted-holidays-2027/": ("Restricted Holidays 2027: Which Two to Pick", None),
     "/guides/budget-on-50000-1-lakh-2-lakh-salary/": ("Budget on ₹50,000, ₹1 Lakh or ₹2 Lakh Salary: 3 Examples", None),
+    "/guides/gta-6-scams-fake-downloads/": ("GTA 6 Scams: Fake PC Downloads, Beta Keys and Codes", "There's no GTA 6 for PC or phones, no demo and no beta. How the fake downloads and cheap-code scams work, and what to do if you clicked one."),
+    "/guides/gta-6-ps5-cost-emi-or-save/": ("GTA 6 and PS5 Cost in India: EMI, Card or Save First?", "A PS5 and GTA 6 cost about ₹71,000. What that means on a ₹60,000 salary, and what no-cost EMI, card EMI and saving first really cost."),
+    "/guides/day-off-for-gta-6-leave-rules/": ("Day Off for GTA 6? Which Leave to Use and What It Costs", "Some Indian firms gave a GTA 6 holiday. If yours didn't: casual, earned or sick leave, what a day of earned leave is worth, and the OSH Code rules."),
     "/guides/digital-arrest-scam/": ("Digital Arrest Scam: How It Works and What to Do", "No police or CBI officer arrests you on a video call. How the digital arrest scam works, red flags, and what to do: 1930, cybercrime.gov.in."),
     "/guides/company-car-lease-policy/": ("Company Car Lease Policy for Employees: What to Check", "What a company car lease policy covers: eligibility, rental, tax on the car, mileage, buy-back and leaving early, with one employee's numbers."),
     "/guides/company-car-lease-vs-car-loan/": ("Company Car Lease vs Car Loan in India: How to Decide", None),
@@ -834,7 +839,7 @@ def leave_planner():
 <div class="wrap aff-slot" aria-label="Sponsored"></div>
 
 <section style="padding-top:0"><div class="wrap prose">
-  <p class="g-callout"><b>Want the full picture?</b> Read our guide, <a href="/guides/long-weekends-2027/">Long weekends 2027 in India</a>: every holiday, every long weekend and two ready-made leave plans. Also read: <a href="/guides/restricted-holidays-2027/">Restricted holidays 2027: which two to pick</a>, <a href="/guides/best-months-for-a-week-long-break-2027/">the best months for a week-long break</a> and <a href="/guides/long-weekends-2027-six-day-week/">long weekends for six-day weeks</a>. Heard about 12-hour days? Read <a href="/guides/working-hours-new-labour-codes/">Did India change your working hours?</a></p>
+  <p class="g-callout"><b>Want the full picture?</b> Read our guide, <a href="/guides/long-weekends-2027/">Long weekends 2027 in India</a>: every holiday, every long weekend and two ready-made leave plans. Also read: <a href="/guides/restricted-holidays-2027/">Restricted holidays 2027: which two to pick</a>, <a href="/guides/best-months-for-a-week-long-break-2027/">the best months for a week-long break</a> and <a href="/guides/long-weekends-2027-six-day-week/">long weekends for six-day weeks</a>. Heard about 12-hour days? Read <a href="/guides/working-hours-new-labour-codes/">Did India change your working hours?</a> Taking a day off for a launch or an event? Read <a href="/guides/day-off-for-gta-6-leave-rules/">Which leave to use, and what it costs you</a>.</p>
   <h2>How the leave planner works</h2>
   <p>The planner marks every day of {data["year"]} as a weekly off, a holiday or a working day, using your weekly off and your company's holidays.</p>
   <ul><li><strong>Plan a break:</strong> choose how many days off in a row you want, and optionally a month. The planner checks every possible start date and shows the dates that need the fewest leave days.</li>
@@ -1596,7 +1601,7 @@ def budget_page():
 <div class="wrap aff-slot" aria-label="Sponsored"></div>
 
 <section style="padding-top:0"><div class="wrap prose">
-  <p class="g-callout"><b>New to budgeting?</b> Read our guide, <a href="/guides/monthly-budget/">How to make a monthly budget on a salary in India</a>, worked through one family's numbers. Also read: <a href="/guides/budget-on-50000-1-lakh-2-lakh-salary/">Budgeting on ₹50,000, ₹1 lakh or ₹2 lakh a month</a> and <a href="/guides/plan-for-school-fees-and-yearly-costs/">How to plan for school fees and other yearly costs</a>. Just started working? Read <a href="/guides/first-salary-budget/">Your first salary budget</a>. Two incomes? Read <a href="/guides/double-income-family-budget/">A double-income family budget</a>. Paid a big bonus? Read <a href="/guides/budgeting-with-a-bonus/">Budgeting with a big bonus</a>.</p>
+  <p class="g-callout"><b>New to budgeting?</b> Read our guide, <a href="/guides/monthly-budget/">How to make a monthly budget on a salary in India</a>, worked through one family's numbers. Also read: <a href="/guides/budget-on-50000-1-lakh-2-lakh-salary/">Budgeting on ₹50,000, ₹1 lakh or ₹2 lakh a month</a> and <a href="/guides/plan-for-school-fees-and-yearly-costs/">How to plan for school fees and other yearly costs</a>. Just started working? Read <a href="/guides/first-salary-budget/">Your first salary budget</a>. Two incomes? Read <a href="/guides/double-income-family-budget/">A double-income family budget</a>. Paid a big bonus? Read <a href="/guides/budgeting-with-a-bonus/">Budgeting with a big bonus</a>. Eyeing a console? Read <a href="/guides/gta-6-ps5-cost-emi-or-save/">GTA 6 and a PS5: what it really costs</a>.</p>
   <h2>How the planner works</h2>
   <ul>
     <li><strong>Everything becomes monthly.</strong> Monthly amounts stay as they are, yearly amounts are divided by 12, and daily amounts are multiplied by 365 and divided by 12.</li>
@@ -4940,6 +4945,15 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
     ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "Budgeting on ₹50,000, ₹1 lakh or ₹2 lakh a month: three example budgets",
      "Three example monthly budgets for in-hand pay of ₹50,000, ₹1 lakh and ₹2 lakh: where the money goes, how much each saves, and what to fix first.",
      "2026-11-13", "guide-budget-by-income", "Your money"),
+    ("/guides/gta-6-scams-fake-downloads/", "GTA 6 scams: fake PC downloads, beta keys and cheap codes",
+     "There's no GTA 6 for PC or phones yet, and no demo or beta. How the fakes work, the red flags, and what to do if you downloaded one.",
+     "2026-11-22", "guide-gta6-scams", "Stay safe"),
+    ("/guides/gta-6-ps5-cost-emi-or-save/", "GTA 6 and a PS5: what it really costs, and how to pay for it",
+     "About ₹71,000 for a console and the game. One salaried example: paying cash, no-cost EMI, card EMI, or saving for six months.",
+     "2026-11-22", "guide-gta6-cost", "Your money"),
+    ("/guides/day-off-for-gta-6-leave-rules/", "Taking a day off for GTA 6? Which leave to use, and what it costs you",
+     "A few Indian companies gave staff the launch day off. If yours didn't, here's which leave to spend, what a day of earned leave is worth, and the rules.",
+     "2026-11-22", "guide-gta6-leave", "Your time off"),
     ("/guides/digital-arrest-scam/", "Digital arrest scam: how it works and what to do if you get the call",
      "There's no such thing as a digital arrest. How the video-call scam works, the red flags, and the exact steps if you're called or have already paid.",
      "2026-11-22", "guide-digital-arrest", "Stay safe"),
@@ -6492,7 +6506,7 @@ def _catalog():
     L = lambda p: any(u == p for u, _ in LIVE_TOOLS)
     return [
         ("Your time off", [("/leave-planner-2027/", "Leave Planner 2027", "Turn your leave into the longest breaks of 2027, around central, state or your company's holidays.", True, "",
-                            ["/guides/long-weekends-2027/", "/guides/restricted-holidays-2027/", "/guides/best-months-for-a-week-long-break-2027/", "/guides/long-weekends-2027-six-day-week/", "/guides/working-hours-new-labour-codes/"])]),
+                            ["/guides/long-weekends-2027/", "/guides/restricted-holidays-2027/", "/guides/best-months-for-a-week-long-break-2027/", "/guides/long-weekends-2027-six-day-week/", "/guides/working-hours-new-labour-codes/", "/guides/day-off-for-gta-6-leave-rules/"])]),
         ("Your pay", [("/labour-codes-salary-calculator/", "Labour Codes and Your Salary", "Does your basic pass the 50% wage rule? Your take-home, PF, tax and gratuity before and after restructuring.", L("/labour-codes-salary-calculator/"), "Coming soon", ["/guides/salary-under-new-labour-codes/", "/guides/take-home-fell-ctc-same/", "/guides/basic-pay-50-percent-rule/", "/guides/higher-basic-more-tax/", "/guides/pf-full-basic-or-capped/", "/guides/bonus-variable-pay-wages-labour-codes/"]),
                       ("/ctc-to-in-hand/", "CTC to In-hand", "What actually reaches your account each month, under the old and new regimes.", False, "After the 1 Feb 2027 Budget", []),
                       ("/salary-hike-vs-inflation/", "Did Your Hike Beat Inflation?", "Your raise against official CPI, in today's money and after tax, or against your own rent, fees and EMIs.", L("/salary-hike-vs-inflation/"), "Coming soon", ["/guides/did-your-hike-beat-inflation/", "/guides/real-salary-hike-after-inflation/", "/guides/personal-inflation-rate/", "/guides/hike-take-home-after-tax/", "/guides/what-hike-to-ask-for/", "/guides/real-pay-growth-since-you-started/"]),
@@ -6518,7 +6532,7 @@ def _catalog():
         ("Your home", [("/rent-vs-buy/", "Rent or Buy", "Owning against renting and investing the difference, after stamp duty and tax.", True, "",
                         ["/guides/rent-vs-buy/", "/guides/is-rent-really-dead-money/", "/guides/under-construction-vs-ready-to-move/", "/guides/hra-vs-home-loan-tax-benefits/", "/guides/home-loan-down-payment/", "/guides/rent-or-buy-by-age-and-moving-cities/", "/guides/keep-or-sell-your-home/"])]),
         ("Your money", [("/budget-planner/", "Budget Planner", "See what's really left each month, with yearly costs turned into monthly set-asides.", True, "",
-                         ["/guides/monthly-budget/", "/guides/budget-on-50000-1-lakh-2-lakh-salary/", "/guides/plan-for-school-fees-and-yearly-costs/", "/guides/first-salary-budget/", "/guides/double-income-family-budget/", "/guides/budgeting-with-a-bonus/"]),
+                         ["/guides/monthly-budget/", "/guides/budget-on-50000-1-lakh-2-lakh-salary/", "/guides/plan-for-school-fees-and-yearly-costs/", "/guides/first-salary-budget/", "/guides/double-income-family-budget/", "/guides/budgeting-with-a-bonus/", "/guides/gta-6-ps5-cost-emi-or-save/"]),
                         ("/term-insurance-calculator/", "Term Insurance Calculator", "How much cover your family would need, and until what age: support, loans and goals, less what you have.", L("/term-insurance-calculator/"), "Coming soon", ["/guides/how-much-term-insurance-do-you-need/", "/guides/is-employer-group-cover-enough/", "/guides/term-insurance-until-60-or-70/", "/guides/term-insurance-tax-new-regime/", "/guides/home-loan-insurance-vs-term-plan/", "/guides/laddering-term-insurance/"]),
                         ("/health-insurance-cover-calculator/", "Health Insurance Cover Calculator", "How much health cover your family and parents need, with medical inflation: base policy plus super top-up.", L("/health-insurance-cover-calculator/"), "Coming soon", ["/guides/how-much-health-insurance-do-you-need/", "/guides/super-top-up-health-insurance/", "/guides/is-employer-health-insurance-enough/", "/guides/health-insurance-for-parents/", "/guides/medical-inflation-health-cover/", "/guides/health-insurance-checklist-before-you-buy/", "/guides/health-insurance-opd-maternity-cataract/"])]),
         ("Your car", [("/company-car-lease-vs-loan/", "Car Lease vs Car Loan", "Lease a car through your company or buy it on a loan? After tax, running costs and resale.", L("/company-car-lease-vs-loan/"), "Coming soon",
@@ -12519,9 +12533,192 @@ def guide_digital_arrest():
 """
     return article(path, "x", "Digital arrest scam", body, "Digital arrest")
 
+def guide_gta6_scams():
+    path = "/guides/gta-6-scams-fake-downloads/"
+    toc = [("short-answer", "The short answer"), ("what-exists", "What's real right now"), ("scams", "The scams going around"), ("flags", "Red flags"),
+           ("clicked", "If you downloaded or paid"), ("method", "Sources")]
+    body = guide_head(path, "GTA 6 came out on 19 November, and scammers moved faster than Rockstar. Fake PC downloads, “beta keys”, phone apps and cheap codes are everywhere. They don't give you the game. They take your passwords, your bank logins or your money.",
+                      "A laptop showing a fake game download button with a warning sign").replace("TYPE_LINE", "<span>Stay safe from scams</span>")
+    body += f"""
+<div class="wrap g-body prose">
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>GTA 6 is only on PS5 and Xbox Series X|S.</strong> There is no PC version, no phone version, no demo and no beta. Any site, app, Telegram channel or video offering one is fake, however real it looks. Buy the game only from the PlayStation Store, the Microsoft Store or an authorised seller. If you've already run a “GTA 6 installer” on a computer you also use for banking or work, treat that computer as unsafe and change your passwords from another device today.</p>
+<div class="g-callout"><b>Lost money?</b> Call <a href="tel:1930">1930</a> at once and file at <a href="https://cybercrime.gov.in" rel="noopener">cybercrime.gov.in</a>. More on reporting: <a href="/stay-safe/">Stay safe from scams</a>.</div>
+
+<h2 id="what-exists">What's real right now</h2>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">Version</th><th scope="col">Real?</th></tr></thead><tbody>
+<tr><th scope="row">PS5 and Xbox Series X|S</th><td>Yes, from 19 November 2026. ₹5,999 (Standard) or ₹7,499 (Ultimate) in India</td></tr>
+<tr><th scope="row">PC</th><td>No. Rockstar hasn't announced a date</td></tr>
+<tr><th scope="row">Android or iPhone</th><td>No</td></tr>
+<tr><th scope="row">Demo, beta or early access</th><td>No. There never was a public one</td></tr>
+<tr><th scope="row">PS4 or Xbox One</th><td>No</td></tr>
+</tbody></table></div>
+<p>Even boxed copies in shops reportedly hold only a download code, not a disc. So a “file” of GTA 6 from anywhere except the official stores is not the game.</p>
+
+<h2 id="scams">The scams going around</h2>
+<ul>
+  <li><strong>Fake PC downloads and “demos”:</strong> look-alike Rockstar sites with a “Play now” button that downloads a file such as gta6_installer.exe. Security firms Malwarebytes and Huntress found these install password stealers, remote-control tools and even software that wipes your files.</li>
+  <li><strong>“Leaked” builds:</strong> huge files shared on Telegram, Discord and file-sharing sites, sold as the PC version. They're junk data with malware inside.</li>
+  <li><strong>Fake beta keys:</strong> sites promising early access for PS5 or Xbox that push you through forms, “bot checks” and paid subscriptions, or ask for card details.</li>
+  <li><strong>Fake phone apps:</strong> Android apps called things like “GTA 6 Beta” or “GTA Mobile 6” that serve ads, steal data or ask for payment.</li>
+  <li><strong>Cheap codes and pre-orders:</strong> codes or “account shares” sold on Instagram, Telegram or unknown websites for much less than the store price, paid by UPI. You pay, and the code never comes or doesn't work.</li>
+</ul>
+<p>Why salaried people should care even if they don't play: most of these attacks steal what's saved in your browser. If the same computer or browser is used for email, office apps, net banking or shopping, those accounts are exposed too. Teenagers in the family are a common target.</p>
+
+<h2 id="flags">Red flags</h2>
+<ul>
+  <li>Anything that says <strong>PC, mobile, demo, beta or early access</strong>.</li>
+  <li>A download that ends in <strong>.exe, .apk, .zip or .iso</strong> from anywhere except an official store.</li>
+  <li>A code <strong>far below ₹5,999</strong>, or a seller who wants payment by UPI to a personal number.</li>
+  <li>Being asked to <strong>turn off your antivirus</strong> or “allow apps from unknown sources”.</li>
+  <li>“Human verification” steps, surveys or a small fee before the “download”.</li>
+</ul>
+
+<h2 id="clicked">If you downloaded or paid</h2>
+<ol class="g-check">
+  <li><strong>Disconnect</strong> that computer or phone from the internet, and don't log in to anything on it.</li>
+  <li><strong>Change passwords from another device</strong>: email first, then net banking, UPI apps, shopping and work accounts. Turn on two-step login everywhere.</li>
+  <li><strong>Call your bank</strong> to block cards used on that device, and watch your statements.</li>
+  <li><strong>Clean the device:</strong> run a full antivirus scan, or reset it. If it's a work laptop, tell your IT team straight away.</li>
+  <li><strong>Lost money?</strong> Call <a href="tel:1930">1930</a> and file at cybercrime.gov.in, with screenshots, the site or seller's details and transaction IDs.</li>
+</ol>
+<p>Want the game? The real cost on a console is about ₹71,000 with a PS5. See <a href="/guides/gta-6-ps5-cost-emi-or-save/">GTA 6 and a PS5: what it really costs</a>.</p>
+
+<h2 id="method">Sources</h2>
+<p>Launch date, platforms and India prices from PlayStation India store listings as reported by YourStory, Analytics Insight and Digit (November 2026). Fake demo and installer campaigns from Malwarebytes (via TechRepublic) and Huntress (via Esquire India); fake beta keys and Android apps from NordVPN (via Notebookcheck and Digital Trends); fake “leaked” ISO from Cybernews. Reporting: cybercrime.gov.in and the 1930 helpline. Read <a href="/methodology/">how we check our facts</a>.</p>
+<p class="g-note">Salarist isn't linked to Rockstar Games, Sony or Microsoft. Prices are as reported at launch and can change.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "GTA 6 scams", body, "GTA 6 scams")
+
+def guide_gta6_cost():
+    path = "/guides/gta-6-ps5-cost-emi-or-save/"
+    toc = [("short-answer", "The short answer"), ("cost", "What it costs"), ("rohit", "On a ₹60,000 salary"), ("salary", "What salary makes it comfortable?"), ("pay", "Four ways to pay"),
+           ("extras", "Costs people miss"), ("method", "How we worked it out")]
+    body = guide_head(path, "GTA 6 is the biggest game launch in years, and in India it comes with a catch: you need a PS5 or an Xbox Series X|S, and a PS5 now costs more than most people's monthly take-home. Here's the full bill, and what each way of paying for it really costs.",
+                      "A game console and controller next to a stack of rupee coins and an EMI calendar").replace("TYPE_LINE", "<span>Budget Planner</span>")
+    body += f"""
+<div class="wrap g-body prose">
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p>A PS5 Slim Digital and the Standard Edition of GTA 6 come to about <strong>₹70,989</strong>. If you can save ₹11,832 a month, you can buy it in <strong>six months with no interest</strong>. A genuine no-cost EMI over six months costs about the same each month, plus a small fee. Paying by card EMI at 16% a year over 12 months adds about <strong>₹6,300</strong>, and leaving it on your credit card bill can add over <strong>₹14,500</strong>. Don't touch your emergency fund for it.</p>
+
+<h2 id="cost">What it costs</h2>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">Item</th><th scope="col">Price</th></tr></thead><tbody>
+<tr><th scope="row">GTA 6 Standard Edition</th><td>₹5,999</td></tr>
+<tr><th scope="row">GTA 6 Ultimate Edition</th><td>₹7,499</td></tr>
+<tr><th scope="row">PS5 Slim Digital</th><td>₹64,990</td></tr>
+<tr><th scope="row">PS5 with disc drive</th><td>₹69,985</td></tr>
+<tr><th scope="row"><strong>PS5 Digital + Standard Edition</strong></th><td><strong>₹70,989</strong></td></tr>
+</tbody></table></div>
+<p>Console prices are Amazon India listings in late October 2026, after Sony raised the PS5's price from ₹54,990 in July. Prices change and stock is tight, so check the final checkout price. The disc drive adds ₹4,995 but nothing for GTA 6: even boxed copies reportedly hold only a download code. Xbox prices also rose in 2026; compare at checkout.</p>
+
+<h2 id="rohit">On a ₹60,000 salary</h2>
+<p>Take Rohit, 25, in Pune, with a take-home of ₹60,000 a month. The console and game cost him <strong>1.2 months of take-home</strong>. With the <a href="/budget-planner/">budget planner</a>'s 50/30/20 split, his “wants” share is ₹18,000 a month, so ₹11,832 a month for six months uses two-thirds of it. That's doable, but only if he cuts other wants for those months: fewer meals out, one streaming plan instead of three.</p>
+
+<h2 id="salary">What salary makes it comfortable?</h2>
+<p>A simple test: a big want like this shouldn't take more than <strong>half your “wants” share</strong> (15% of take-home) while you save for it or pay it off. That leaves room for everything else you enjoy. Here's the take-home, and roughly the CTC, that passes that test for ₹70,989:</p>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col">Pay for it over</th><th scope="col">A month</th><th scope="col">Take-home you need</th><th scope="col">Rough CTC</th></tr></thead><tbody>
+<tr><th scope="row">6 months</th><td data-l="A month">₹11,832</td><td data-l="Take-home you need">₹79,000 a month</td><td data-l="Rough CTC">About ₹10.5 lakh</td></tr>
+<tr><th scope="row">12 months</th><td data-l="A month">₹5,916</td><td data-l="Take-home you need">₹39,500 a month</td><td data-l="Rough CTC">About ₹5.5 lakh</td></tr>
+</tbody></table></div>
+<p>So on a CTC of about ₹10.5 lakh, saving for six months is comfortable. On about ₹5.5 lakh, give it a year, saving first rather than paying interest on an EMI. Below that, it'll squeeze other things. Rohit, at ₹60,000 take-home, sits in between: about eight months of saving (₹9,000 a month) passes the test. Your own split depends on rent, EMIs and family costs, so try it in the <a href="/budget-planner/">budget planner</a>.</p>
+
+<h2 id="pay">Four ways to pay</h2>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col">How</th><th scope="col">A month</th><th scope="col">Extra cost</th><th scope="col">Total</th></tr></thead><tbody>
+<tr><th scope="row">Save first for 6 months</th><td data-l="A month">₹11,832 saved</td><td data-l="Extra cost">₹0 (you can even earn a little interest)</td><td data-l="Total">₹70,989</td></tr>
+<tr><th scope="row">No-cost EMI, 6 months</th><td data-l="A month">₹11,832</td><td data-l="Extra cost">A processing fee and GST on the interest part, usually a few hundred rupees</td><td data-l="Total">About ₹71,500</td></tr>
+<tr><th scope="row">Card EMI at 16% a year, 12 months</th><td data-l="A month">₹6,441</td><td data-l="Extra cost">₹6,302 interest, plus fee and GST</td><td data-l="Total">₹77,291+</td></tr>
+<tr><th scope="row">Revolving on the credit card, about 3% a month, 12 months</th><td data-l="A month">₹7,132</td><td data-l="Extra cost">₹14,591 interest</td><td data-l="Total">₹85,580</td></tr>
+</tbody></table></div>
+<ul>
+  <li><strong>No-cost EMI</strong> isn't free money: the interest is given back as a discount, but banks usually charge a processing fee and 18% GST on the interest part, and you may lose a cash discount. Ask for the total at checkout, and compare it with the cash price.</li>
+  <li><strong>Card EMI rates</strong> vary by bank, usually 13–24% a year. We used 16% as an example. Work out your own on the <a href="/emi-calculator/">EMI calculator</a>.</li>
+  <li><strong>Never just pay the minimum</strong> on a card bill for a purchase like this. That's the most expensive way.</li>
+  <li><strong>EMIs show up on your credit report.</strong> Missing one hurts your score just before you might need a car or home loan.</li>
+</ul>
+
+<h2 id="extras">Costs people miss</h2>
+<ul>
+  <li><strong>GTA+:</strong> eligible copies come with one free month, then it renews as a paid plan unless you cancel. Set a reminder.</li>
+  <li><strong>Download size:</strong> you need at least 212 GB free on a PS5. On a capped broadband or phone hotspot, that can mean a data top-up.</li>
+  <li><strong>Online play:</strong> GTA 6 is single-player at launch, with no date for GTA Online yet, so don't buy an online subscription just for it today.</li>
+  <li><strong>It's 18+:</strong> the game is rated for adults. If it's a gift, it isn't a children's game.</li>
+  <li><strong>Fake deals:</strong> codes or consoles far below these prices are usually scams. Read <a href="/guides/gta-6-scams-fake-downloads/">GTA 6 scams: fake PC downloads, beta keys and cheap codes</a>.</li>
+</ul>
+
+<h2 id="method">How we worked it out</h2>
+<p>Prices: GTA 6 editions from PlayStation India store listings; PS5 prices from Amazon India on 28 October 2026, as reported by YourStory; the July 2026 PS5 price rise as reported by Smartprix and LatestLY. EMIs use the standard reducing-balance formula, as in our <a href="/emi-calculator/">EMI calculator</a>: ₹70,989 at 16% a year for 12 months gives ₹6,441 a month; at 36% a year (about 3% a month on a revolving card balance) ₹7,132 a month. Fees, GST and card rates vary by bank and are shown as examples, not quotes. Rohit is an illustration. Rough CTC: new tax regime for tax year 2026-27 (no income tax on salary up to ₹12.75 lakh, after the ₹75,000 standard deduction), basic at 50% of pay, employee and employer PF at 12% of basic (capped at the ₹25,000 wage ceiling), gratuity at 4.81% of basic and ₹200 professional tax; your CTC may include other parts, so treat it as a guide. Read <a href="/methodology/">how we check our numbers</a>.</p>
+<p class="g-note">Salarist isn't linked to Rockstar Games, Sony or Microsoft, and doesn't sell consoles or games.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "GTA 6 and PS5 cost", body, "GTA 6 cost")
+
+def guide_gta6_leave():
+    path = "/guides/day-off-for-gta-6-leave-rules/"
+    toc = [("short-answer", "The short answer"), ("companies", "Who gave a day off"), ("which", "Which leave to use"), ("worth", "What a day of leave is worth"),
+           ("rules", "The rules on earned leave"), ("method", "Sources")]
+    body = guide_head(path, "When GTA 6 launched on 19 November, a few Indian companies made headlines by giving staff the day off. Most didn't. If you want a day for a launch, a match or a concert, here's which leave to spend, and what each choice really costs you.",
+                      "A calendar with one day circled and a game controller beside it").replace("TYPE_LINE", "<span>Leave Planner 2027</span>")
+    body += f"""
+<div class="wrap g-body prose">
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p>A company holiday costs you nothing. If you have to take leave, <strong>use casual leave or an optional holiday first</strong>: they usually lapse at the end of the year anyway. Spend <strong>earned leave</strong> last, because it carries forward and is paid out in cash when you leave: on a ₹40,000 basic, each day is worth about <strong>₹1,333</strong>. Don't use sick leave for a planned day off, and avoid loss of pay, which cuts a day's salary.</p>
+
+<h2 id="companies">Who gave a day off</h2>
+<ul>
+  <li><strong>Inde by ChairsCarte</strong>, a Chennai interior design firm, declared 19 November a holiday for employees, interns and freelancers.</li>
+  <li><strong>Influish</strong> gave paid leave to all its 50 employees, and opened its office gaming setup for staff without a PS5.</li>
+  <li><strong>boAt</strong> offered employees an optional day off.</li>
+</ul>
+<p>Abroad, Logitech gave its 7,000 employees the day off, and Palworld's developer gave five days. These are perks, not rules: no law gives you a day off for a game.</p>
+
+<h2 id="which">Which leave to use</h2>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col">Type</th><th scope="col">Good for a day off?</th><th scope="col">Why</th></tr></thead><tbody>
+<tr><th scope="row">Company or optional holiday</th><td data-l="Good for a day off?">Best</td><td data-l="Why">Free. If your office lets you pick restricted holidays, check if one is left this year</td></tr>
+<tr><th scope="row">Casual leave</th><td data-l="Good for a day off?">Yes, first</td><td data-l="Why">Meant for short personal needs, and usually lapses at year-end under company policy or your state's shops law</td></tr>
+<tr><th scope="row">Earned (annual) leave</th><td data-l="Good for a day off?">Yes, but it costs</td><td data-l="Why">It carries forward and is paid out when you leave, so each day has a cash value</td></tr>
+<tr><th scope="row">Sick leave</th><td data-l="Good for a day off?">No</td><td data-l="Why">Meant for illness. Using it for a planned day off breaks most company policies</td></tr>
+<tr><th scope="row">Loss of pay</th><td data-l="Good for a day off?">Last resort</td><td data-l="Why">A day's salary is deducted, and it can affect a bonus or appraisal that counts attendance</td></tr>
+</tbody></table></div>
+<p>Joining a long weekend? One day of leave next to a holiday can make a four-day break. The <a href="/leave-planner-2027/">leave planner</a> finds those days for 2027.</p>
+
+<h2 id="worth">What a day of leave is worth</h2>
+<p>A day of earned leave is usually valued at <strong>monthly basic ÷ 30</strong> (some companies use gross pay). That's what you'd get for it in cash at year-end above the carry-forward limit, or when you leave the job.</p>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">Monthly basic</th><th scope="col">One day of earned leave</th><th scope="col">Five days</th></tr></thead><tbody>
+<tr><th scope="row">₹25,000</th><td>₹833</td><td>₹4,167</td></tr>
+<tr><th scope="row">₹40,000</th><td>₹1,333</td><td>₹6,667</td></tr>
+<tr><th scope="row">₹75,000</th><td>₹2,500</td><td>₹12,500</td></tr>
+</tbody></table></div>
+<p>So a GTA day on earned leave costs about as much as a second copy of the game. That's fine if it's worth it to you; just spend the leave that lapses first. Leaving soon? See <a href="/guides/use-or-encash-leave-before-resigning/">use or encash your leave before resigning</a>.</p>
+
+<h2 id="rules">The rules on earned leave</h2>
+<ul>
+  <li><strong>Earning it:</strong> under the Occupational Safety, Health and Working Conditions (OSH) Code, 2020, in force since 21 November 2025, a worker who has worked 180 days or more in a calendar year earns one day of annual leave for every 20 days worked.</li>
+  <li><strong>Carrying it forward:</strong> up to 30 days into the next year. You can ask for leave above that to be encashed at the year-end.</li>
+  <li><strong>If your leave is refused:</strong> leave you applied for and were refused carries forward without the 30-day limit, so keep the refusal on record.</li>
+  <li><strong>When you leave:</strong> unused annual leave is paid out. Tax on it depends on the limits in our <a href="/guides/leave-encashment-tax-on-resignation/">leave encashment tax guide</a>.</li>
+</ul>
+<p>The OSH Code's leave section covers “workers”. Many office staff, especially managers, follow their state's shops and establishments law or a company policy instead, which is often more generous. Check your HR policy for your own numbers.</p>
+
+<h2 id="method">Sources</h2>
+<p>Company announcements as reported by Analytics Insight, Oneindia and NewsBytes (November 2026). OSH Code, 2020, section 32 (annual leave with wages: 180-day eligibility, 1 day per 20 days worked, 30-day carry-forward, encashment, refused leave). Leave value = monthly basic ÷ 30, as in our <a href="/best-day-to-resign/">best day to resign</a> tool. Read <a href="/methodology/">how we check our numbers</a>.</p>
+<p class="g-note">Salarist isn't linked to Rockstar Games or any company named here. This is general information, not legal advice.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Day off for GTA 6", body, "GTA 6 day off")
+
 def stay_safe_page():
     gmap = {g[0]: g for g in GUIDES}
-    cards = "".join(f'<a class="g-card" href="{g[0]}">{_pic(g[4], "")}<span class="k">Stay safe · {_date(g[3])}</span><b>{g[1]}</b><span>{g[2]}</span></a>' for g in (gmap[x] for x in SAFETY_GUIDES if x in gmap))
+    cards = "".join(f'<a class="g-card" href="{g[0]}">{_pic(g[4], "")}<span class="k">Stay safe · {_date(g[3])}</span><b>{g[1]}</b><span>{g[2]}</span></a>' for g in (gmap[x] for x in SAFETY_GUIDES if x in gmap and x not in HELD))
     body = f"""<section class="tool-hero"><div class="wrap">
   <p class="eyebrow">Stay safe</p>
   <h1>Stay safe from money scams</h1>
@@ -12542,7 +12739,7 @@ def stay_safe_page():
 </div></section>
 {related("/guides/digital-arrest-scam/")}"""
     graph = [{"@type": "CollectionPage", "name": "Stay safe from money scams", "url": SITE + "/stay-safe/", "inLanguage": "en-IN",
-              "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE + x} for i, x in enumerate(SAFETY_GUIDES)]}}]
+              "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE + x} for i, x in enumerate([y for y in SAFETY_GUIDES if y not in HELD])]}}]
     return layout("/stay-safe/", "Stay Safe from Money Scams: Guides and Where to Report",
                   "How digital arrest and other money scams work, the red flags, and where to report: 1930, cybercrime.gov.in and Chakshu.",
                   body, crumbs=[("/", "Home"), ("/stay-safe/", "Stay safe")], graph=graph, css=("tool.css", "guide.css"), og="og-home.png")
@@ -14413,6 +14610,9 @@ def main():
     write("/guides/company-car-lease-vs-car-loan/", guide_car())
     write("/guides/company-car-lease-policy/", guide_car_policy())
     write("/guides/digital-arrest-scam/", guide_digital_arrest())
+    write("/guides/gta-6-scams-fake-downloads/", guide_gta6_scams())
+    write("/guides/gta-6-ps5-cost-emi-or-save/", guide_gta6_cost())
+    write("/guides/day-off-for-gta-6-leave-rules/", guide_gta6_leave())
     if S2_LIVE: write("/stay-safe/", stay_safe_page())
     write("/guides/company-car-perquisite-value-2026/", guide_perk())
     write("/guides/best-months-for-a-week-long-break-2027/", guide_months())
@@ -14547,7 +14747,7 @@ def main():
     write("/guides/prepay-home-loan-early-or-later/", guide_prepay_timing())
     for p, (name, title, desc, h1, b) in PAGES.items(): write(p, text_page(p, name, title, desc, h1, b))
     write("/404.html", page_404())
-    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
+    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/gta-6-scams-fake-downloads/", "0.7"), ("/guides/gta-6-ps5-cost-emi-or-save/", "0.7"), ("/guides/day-off-for-gta-6-leave-rules/", "0.6"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
     # lastmod: the date each page's content last changed. A page's date moves only when its HTML changes
     # (ignoring the ?v= cache-busting hashes), tracked in src/data/lastmod.json.
     import hashlib, datetime
