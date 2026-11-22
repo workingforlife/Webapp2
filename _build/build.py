@@ -51,6 +51,8 @@ HOLD = {
     "e1": ["/guides/epf-withdrawal-changes-november-2026/"],
     # Batch S1 (20 Nov): search-console follow-up guide; pushed on its own with the SEO tweaks.
     "s1": ["/guides/company-car-lease-policy/"],
+    # Batch S2 (22 Nov): Stay safe section with the digital arrest guide (news-led, timed with the first YouTube video).
+    "s2": ["/guides/digital-arrest-scam/"],
     # Batch T9 (20 Nov): back to office cost calculator (N7, hero) with its guides, released together.
     "t9": ["/return-to-office-cost-calculator/", "/guides/return-to-office-cost/", "/guides/cheapest-way-to-commute-to-office/", "/guides/move-closer-to-office-or-commute/", "/guides/what-is-your-commute-time-worth/", "/guides/pay-rise-to-cover-return-to-office/", "/guides/meal-card-tax-free-200-per-meal/"],
     # Batch T8 (20 Nov): health insurance cover calculator (N6, quick) with its guides, released together.
@@ -64,7 +66,7 @@ HOLD = {
     "t3": ["/fire-calculator/", "/guides/fire-number-india/", "/guides/retire-at-45-bridge-epf-nps/", "/guides/is-25x-enough-early-retirement/", "/guides/lean-fat-coast-fire/", "/guides/savings-rate-early-retirement/", "/guides/epf-nps-if-you-retire-early/"],
     "t2": ["/best-day-to-resign/", "/guides/when-to-resign-best-last-day/", "/guides/resign-before-or-after-rsu-vesting/", "/guides/joining-bonus-clawback/", "/guides/when-to-hand-in-notice/", "/guides/use-or-encash-leave-before-resigning/", "/guides/wait-for-bonus-or-join-now/"],
 }
-RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov
+RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2 22 Nov
 # Review builds only: SALARIST_PREVIEW=t1 python3 build.py builds a held batch too (never push such a build).
 RELEASED |= {b for b in os.environ.get("SALARIST_PREVIEW", "").split(",") if b}
 HELD = {p for b, ps in HOLD.items() if b not in RELEASED for p in ps}
@@ -98,6 +100,10 @@ TERM_LIVE = True   # set False to build without the term insurance calculator (i
 if TERM_LIVE: LIVE_TOOLS.append(("/term-insurance-calculator/", "Term Insurance Calculator"))
 JO_LIVE = "t5" in RELEASED   # job offer comparator: goes live with batch T5
 if JO_LIVE: LIVE_TOOLS.append(("/job-offer-comparator/", "Job Offer Comparator"))
+S2_LIVE = "s2" in RELEASED   # Stay safe section (scam guides + /stay-safe/ hub): goes live with batch S2
+# Scam and safety guides: not tied to a tool; listed on /stay-safe/ and in their own section on /guides/ (exempt from the "guide under a tool" check).
+SAFETY_GUIDES = ["/guides/digital-arrest-scam/"]
+SAFETY_RELATED = ["/budget-planner/", "/fd-ppf-rd-calculator/", "/retirement-planner/", "/health-insurance-cover-calculator/"]
 SO_LIVE = "t7" in RELEASED   # ESOP and RSU tax calculator: goes live with batch T7
 if SO_LIVE: LIVE_TOOLS.append(("/esop-rsu-tax-calculator/", "ESOP and RSU Tax Calculator"))
 RT_LIVE = "t9" in RELEASED   # back to office cost calculator (N7): goes live with batch T9
@@ -165,6 +171,7 @@ SEO = {
     "/guides/hra-vs-home-loan-tax-benefits/": ("HRA vs Home Loan Tax Benefits: Which Saves More?", None),
     "/guides/restricted-holidays-2027/": ("Restricted Holidays 2027: Which Two to Pick", None),
     "/guides/budget-on-50000-1-lakh-2-lakh-salary/": ("Budget on ₹50,000, ₹1 Lakh or ₹2 Lakh Salary: 3 Examples", None),
+    "/guides/digital-arrest-scam/": ("Digital Arrest Scam: How It Works and What to Do", "No police or CBI officer arrests you on a video call. How the digital arrest scam works, red flags, and what to do: 1930, cybercrime.gov.in."),
     "/guides/company-car-lease-policy/": ("Company Car Lease Policy for Employees: What to Check", "What a company car lease policy covers: eligibility, rental, tax on the car, mileage, buy-back and leaving early, with one employee's numbers."),
     "/guides/company-car-lease-vs-car-loan/": ("Company Car Lease vs Car Loan in India: How to Decide", None),
     "/guides/company-car-perquisite-value-2026/": ("Company Car Perquisite Value 2026: New ₹5,000/₹7,000 Rules", None),
@@ -362,8 +369,9 @@ def layout(path, title, desc, body, crumbs=None, graph=None, css=(), js=(), og="
     menu_list = sorted([(u, n) for u, n in LIVE_TOOLS + MENU_EXTRA if u not in QUICK_TOOLS], key=lambda x: _tool_pub(x[0]), reverse=True)   # newest decision tools first
     menu_tools = "".join(f'<li><a href="{u}"{" aria-current=\"page\"" if u == path else ""}>{n}</a></li>' for u, n in menu_list)
     foot_tools = "".join(f'<li><a href="{u}">{n}</a></li>' for u, n in menu_list[:6])
-    menu_sits = "".join(f'<li><a href="{x[0]}"{" aria-current=\"page\"" if x[0] == path else ""}>{x[1]}</a></li>' for x in SITUATIONS)
-    foot_sits = "".join(f'<li><a href="{x[0]}">{x[1]}</a></li>' for x in SITUATIONS)
+    sits = [(x[0], x[1]) for x in SITUATIONS] + ([("/stay-safe/", "Stay safe from scams")] if S2_LIVE else [])
+    menu_sits = "".join(f'<li><a href="{u}"{" aria-current=\"page\"" if u == path else ""}>{n}</a></li>' for u, n in sits)
+    foot_sits = "".join(f'<li><a href="{u}">{n}</a></li>' for u, n in sits)
     foot_topics = "".join(f'<li><a href="/guides/?topic={k}">{v}</a></li>' for k, v in TOPICS)
     return f'''<!DOCTYPE html>
 <html lang="en-IN">
@@ -1096,6 +1104,7 @@ def _tool_index():
 def related(path):
     idx = _tool_index()
     if path in idx: picks = RELATED.get(path, [])
+    elif path in SAFETY_GUIDES: picks = list(SAFETY_RELATED)
     else:   # a guide: its own tool first, then that tool's related tools
         own = next((p for p, (n, d, gl) in idx.items() if path in gl), None)
         picks = ([own] + RELATED.get(own, [])) if own else list(TOOL_CARDS)
@@ -1149,6 +1158,7 @@ def check_links():
         elif not [q for q in RELATED[p] if q in idx]: bad.append(f"{p}: RELATED lists no live tool")
         if not any(p in v for k, v in RELATED.items() if k != p and k in idx): bad.append(f"{p}: no other tool links to it in RELATED")
     for g in GUIDES:
+        if g[0] in SAFETY_GUIDES: continue
         if not any(g[0] in gl for n, d, gl in idx.values()): bad.append(f"{g[0]}: guide not listed under any tool in catalog()")
     if bad: raise SystemExit("Interlinking check failed:\n  " + "\n  ".join(bad))
 
@@ -4927,6 +4937,9 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
     ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "Budgeting on ₹50,000, ₹1 lakh or ₹2 lakh a month: three example budgets",
      "Three example monthly budgets for in-hand pay of ₹50,000, ₹1 lakh and ₹2 lakh: where the money goes, how much each saves, and what to fix first.",
      "2026-11-13", "guide-budget-by-income", "Your money"),
+    ("/guides/digital-arrest-scam/", "Digital arrest scam: how it works and what to do if you get the call",
+     "There's no such thing as a digital arrest. How the video-call scam works, the red flags, and the exact steps if you're called or have already paid.",
+     "2026-11-22", "guide-digital-arrest", "Stay safe"),
     ("/guides/company-car-lease-policy/", "Company car lease policy: what it says, and what to check before you sign",
      "How an employee car lease works, a typical policy line by line, what it saves in tax, and six things to check, with one employee's numbers.",
      "2026-11-20", "guide-car-policy", "Your car"),
@@ -6533,6 +6546,7 @@ def search_index():
     for grp, items in catalog():
         for p, n, d, live, st, gl in items:
             for g in gl: gtool.setdefault(g, n)
+    for g in SAFETY_GUIDES: gtool[g] = "Stay safe from scams"
     items = [{"u": p, "t": n, "d": d, "k": "tool", "g": grp} for grp, its in catalog() for p, n, d, live, st, gl in its if live]
     items += [{"u": g[0], "t": g[1], "d": g[2], "k": "guide", "g": gtool.get(g[0], g[5]), "p": PUBLISHED.get(g[0], g[3])} for g in GUIDES]
     return json.dumps(items, ensure_ascii=False, separators=(",", ":"))
@@ -12422,6 +12436,114 @@ def _t7():
 _VIKRAM = "Vikram, 34, works in Bengaluru for the Indian arm of a US-listed tech company. His salary and bonus come to ₹40 lakh a year. In tax year 2026-27, 100 of his RSUs vest, worth ₹17,500 each in rupees on the vesting date."
 _SO_METHOD = 'From the <a href="/esop-rsu-tax-calculator/">ESOP and RSU tax calculator</a>\'s own code with <a href="/guides/rsu-tax-india-worked-example/">Vikram\'s example</a>: new regime for tax year 2026-27 (₹75,000 standard deduction, rebate, surcharge, 4% cess); perquisite under section 17(1)(d) of the Income-tax Act, 2025; capital gains under sections 196, 197 and 198, with surcharge on them capped at 15%. The sale is assumed to fall in a year with the same other income. Read <a href="/methodology/">how we check our numbers</a>.'
 
+def guide_digital_arrest():
+    path = "/guides/digital-arrest-scam/"
+    toc = [("short-answer", "The short answer"), ("how", "How the scam works"), ("numbers", "How big it is"), ("flags", "Red flags"),
+           ("call", "If you get the call"), ("paid", "If you've already paid"), ("protect", "Protect your savings before it happens"), ("method", "Sources")]
+    body = guide_head(path, "A video call from someone in a police uniform says your Aadhaar is linked to a drugs parcel or money laundering, and you're under “digital arrest” until you clear your name. It's a scam, and it has taken thousands of crores from Indians, many of them educated and careful. Here's how it works and exactly what to do.",
+                      "A phone showing a video call from a fake officer, with a warning sign").replace("TYPE_LINE", "<span>Stay safe from scams</span>")
+    body += f"""
+<div class="wrap g-body prose">
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>There is no such thing as a "digital arrest" in Indian law.</strong> No police, CBI, ED, customs, RBI, TRAI or court officer arrests or questions you on a video call, keeps you on camera, or asks you to move money to "verify" it. If you get such a call, hang up, tell someone you trust, and report the number. If you've already sent money, <strong>call 1930 at once</strong> and report at cybercrime.gov.in: the faster you report, the better the chance your bank can stop the money.</p>
+<div class="g-callout"><b>Lost money? Act now:</b> call <a href="tel:1930">1930</a> (national cyber fraud helpline) and file at <a href="https://cybercrime.gov.in" rel="noopener">cybercrime.gov.in</a>. Got a suspicious call or message but paid nothing? Report it on <a href="https://sancharsaathi.gov.in/sfc/" rel="noopener">Chakshu</a> (Sanchar Saathi).</div>
+
+<h2 id="how">How the scam works</h2>
+<p>Police and the Home Ministry's Indian Cyber Crime Coordination Centre (I4C) describe the same pattern again and again. A typical call goes like this:</p>
+<ol class="g-check">
+  <li><strong>The hook:</strong> a call, often a recorded voice, says a courier parcel in your name holds drugs or fake passports, or your mobile number or Aadhaar has been used for crime and will be blocked.</li>
+  <li><strong>The handover:</strong> you're "connected" to a police, CBI, ED or narcotics "officer", then moved to a WhatsApp or Skype video call.</li>
+  <li><strong>The show:</strong> a uniform, a police-station backdrop, official-looking logos, and an "arrest warrant" or court order sent on WhatsApp.</li>
+  <li><strong>The isolation:</strong> you're told the case is secret, not to disconnect, not to tell family, and to stay on camera, sometimes for hours or days.</li>
+  <li><strong>The money:</strong> to "prove your innocence" you must move your savings to a "safe" or "RBI verification" account, often by breaking FDs, selling mutual funds or taking a loan, with a promise that it will be refunded.</li>
+</ol>
+<p>It works because it uses fear, authority and urgency to stop you thinking clearly, and cuts you off from anyone who could tell you it's a scam.</p>
+
+<h2 id="numbers">How big it is</h2>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">Year</th><th scope="col">Digital arrest cases</th><th scope="col">Money lost</th></tr></thead><tbody>
+<tr><th scope="row">2022</th><td>39,925</td><td>₹91 crore</td></tr>
+<tr><th scope="row">2023</th><td>60,676</td><td>₹339 crore</td></tr>
+<tr><th scope="row">2024</th><td>1,23,672</td><td>₹1,936 crore</td></tr>
+<tr><th scope="row">2025</th><td>17,264</td><td>₹644 crore</td></tr>
+</tbody></table></div>
+<p>Cases fell sharply in 2025 after awareness campaigns and the blocking of thousands of WhatsApp and Skype accounts, but single losses are still huge. In January 2026 a retired doctor couple in south Delhi lost ₹14.85 crore after being kept on video calls for over two weeks; the money went to eight accounts and was spread across hundreds of mule accounts. The Supreme Court took up digital arrest cases on its own in October 2025 and on 1 December 2025 made the CBI the main agency to investigate them across India.</p>
+
+<h2 id="flags">Red flags</h2>
+<ul>
+  <li>Any "officer" who wants to question or arrest you <strong>on a video call</strong>.</li>
+  <li>Being told <strong>not to disconnect</strong> or not to tell your family.</li>
+  <li>Documents, warrants or ID cards <strong>sent on WhatsApp</strong>.</li>
+  <li>Any request to <strong>transfer money</strong>, break an FD, redeem investments or take a loan "for verification".</li>
+  <li>Calls that start with a recorded message about a parcel, your SIM or your Aadhaar.</li>
+</ul>
+
+<h2 id="call">If you get the call</h2>
+<p>The government's advice, in three words: <strong>ruko, socho, action lo</strong> (stop, think, act).</p>
+<ol class="g-check">
+  <li><strong>Hang up.</strong> You are not under arrest and you don't need anyone's permission to disconnect.</li>
+  <li><strong>Talk to someone</strong> you trust, right away. The scam depends on keeping you alone.</li>
+  <li><strong>Share nothing:</strong> no OTP, Aadhaar, PAN, bank details or screen-sharing.</li>
+  <li><strong>Check for yourself</strong> by calling your local police station on a number you look up, not one the caller gives you.</li>
+  <li><strong>Report the number</strong> on Chakshu at sancharsaathi.gov.in within 30 days, so it can be blocked.</li>
+</ol>
+
+<h2 id="paid">If you've already paid</h2>
+<ol class="g-check">
+  <li><strong>Call 1930 immediately.</strong> The national helpline feeds a system that alerts banks to hold the money; it had saved over ₹4,386 crore across more than 13 lakh complaints by early 2025. Minutes matter.</li>
+  <li><strong>File a complaint</strong> at cybercrime.gov.in, and note the acknowledgement number.</li>
+  <li><strong>Call your bank's fraud line</strong> to block further debits and ask it to flag the receiving accounts.</li>
+  <li><strong>Keep everything:</strong> numbers, screenshots, the "documents" you were sent, and every transaction ID.</li>
+  <li><strong>Follow up</strong> with your local police or cyber cell, which turns the complaint into an FIR.</li>
+</ol>
+<p>Because you made the transfers yourself, the bank rules that protect you from <em>unauthorised</em> transactions usually don't apply. That's why speed of reporting matters so much.</p>
+
+<h2 id="protect">Protect your savings before it happens</h2>
+<ul>
+  <li><strong>Set limits:</strong> lower the daily UPI and net-banking transfer limits in your bank app to what you actually need. Large transfers then need a deliberate step.</li>
+  <li><strong>Keep spending money separate:</strong> a small account for UPI and cards, with savings and FDs elsewhere.</li>
+  <li><strong>Agree a family rule:</strong> no large transfer, FD break or loan without first talking to one named person.</li>
+  <li><strong>Talk to your parents:</strong> people over 60 are targeted most. Show them this page, and make sure they know about 1930.</li>
+  <li><strong>Keep an emergency fund</strong> so a shock doesn't push you into a panicked decision: see the <a href="/budget-planner/">budget planner</a>.</li>
+</ul>
+
+<h2 id="method">Sources</h2>
+<p>Ministry of Home Affairs, "Steps taken to address the issue of digital arrest scams" (PIB, 12 March 2025): blocked WhatsApp and Skype accounts, SIM cards and IMEIs, the 1930 helpline, cybercrime.gov.in, and the Citizen Financial Cyber Fraud Reporting and Management System. Cases and losses for 2022–2024 as reported to Parliament in March 2025; 2025 from I4C data reported by ThePrint (April 2026). Department of Telecommunications, Sanchar Saathi (Chakshu). Supreme Court order of 1 December 2025 in Suo Motu Writ Petition (Criminal) No. 3 of 2025. The Delhi case as reported by PTI in January 2026. "Ruko, socho, action lo" from the Prime Minister's Mann Ki Baat of 27 October 2024. Read <a href="/methodology/">how we check our facts</a>.</p>
+<p class="g-note">This article is for awareness, not legal advice. If you're in danger or being threatened, call 112.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Digital arrest scam", body, "Digital arrest")
+
+def stay_safe_page():
+    gmap = {g[0]: g for g in GUIDES}
+    cards = "".join(f'<a class="g-card" href="{g[0]}">{_pic(g[4], "")}<span class="k">Stay safe · {_date(g[3])}</span><b>{g[1]}</b><span>{g[2]}</span></a>' for g in (gmap[x] for x in SAFETY_GUIDES if x in gmap))
+    body = f"""<section class="tool-hero"><div class="wrap">
+  <p class="eyebrow">Stay safe</p>
+  <h1>Stay safe from money scams</h1>
+  <p class="lead">How the scams that target salaried Indians and their parents work, the red flags, and exactly where to report one. Checked against government advisories.</p>
+</div></section>
+<section style="padding-top:0"><div class="wrap">
+  <div style="border:1px solid var(--line,#D6DEEA);border-left:6px solid #E5484D;border-radius:16px;padding:18px 20px;margin:0 0 28px">
+    <h2 class="list-h" style="margin-top:0">Where to report</h2>
+    <ul style="margin:0;padding-left:20px;line-height:1.6">
+      <li><b>Lost money?</b> Call <a href="tel:1930">1930</a>, the national cyber fraud helpline, at once. Then file at <a href="https://cybercrime.gov.in" rel="noopener">cybercrime.gov.in</a> and call your bank's fraud line.</li>
+      <li><b>Suspicious call, SMS or WhatsApp, nothing paid?</b> Report it on <a href="https://sancharsaathi.gov.in/sfc/" rel="noopener">Chakshu</a> (Sanchar Saathi) within 30 days.</li>
+      <li><b>Being threatened right now?</b> Hang up and call <a href="tel:112">112</a>.</li>
+    </ul>
+  </div>
+  <h2 class="list-h">Scam guides</h2>
+  <div class="g-cards">{cards}</div>
+  <p class="hint" style="margin-top:18px">More guides on scams are on the way. All our <a href="/guides/">guides</a>.</p>
+</div></section>
+{related("/guides/digital-arrest-scam/")}"""
+    graph = [{"@type": "CollectionPage", "name": "Stay safe from money scams", "url": SITE + "/stay-safe/", "inLanguage": "en-IN",
+              "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE + x} for i, x in enumerate(SAFETY_GUIDES)]}}]
+    return layout("/stay-safe/", "Stay Safe from Money Scams: Guides and Where to Report",
+                  "How digital arrest and other money scams work, the red flags, and where to report: 1930, cybercrime.gov.in and Chakshu.",
+                  body, crumbs=[("/", "Home"), ("/stay-safe/", "Stay safe")], graph=graph, css=("tool.css", "guide.css"), og="og-home.png")
+
 _T9C = {}
 def _t9():
     if not _T9C: _T9C.update(_num("guide_t9_numbers.js"))
@@ -14049,7 +14171,7 @@ def guide_mf_tax():
 """
     return article(path, "x", "Tax on SIP and mutual funds", body, "SIP and mutual fund tax")
 
-TOPICS = [("retire", "Retirement and pension"), ("invest", "Investing"), ("home", "Home and loans"), ("tax", "Tax"), ("car", "Car"), ("money", "Pay, budget, insurance and leave")]
+TOPICS = [("retire", "Retirement and pension"), ("invest", "Investing"), ("home", "Home and loans"), ("tax", "Tax"), ("car", "Car"), ("money", "Pay, budget, insurance and leave")] + ([("safe", "Scams and safety")] if S2_LIVE else [])
 TOOL_TOPIC = {"/return-to-office-cost-calculator/": "pay", "/health-insurance-cover-calculator/": "money", "/esop-rsu-tax-calculator/": "tax", "/salary-hike-vs-inflation/": "money", "/epf-calculator/": "retire", "/eps-pension-calculator/": "retire", "/nps-calculator/": "retire", "/retirement-planner/": "retire", "/gratuity-calculator/": "retire",
               "/sip-calculator/": "invest", "/fd-ppf-rd-calculator/": "invest", "/rent-vs-buy/": "home", "/prepay-vs-invest/": "home", "/emi-calculator/": "home",
               "/income-tax-section-finder/": "tax", "/company-car-lease-vs-loan/": "car", "/car-ownership-cost/": "car", "/budget-planner/": "money", "/leave-planner-2027/": "money", "/full-and-final-settlement/": "money", "/labour-codes-salary-calculator/": "money", "/best-day-to-resign/": "money", "/fire-calculator/": "invest", "/swp-calculator/": "invest", "/job-offer-comparator/": "money", "/term-insurance-calculator/": "money", "/sukanya-samriddhi-calculator/": "invest"}
@@ -14084,7 +14206,7 @@ def guides_index():
     mains = {gl[0] for tp, n, gl in tools if gl}
     def card(g, tool_name):
         p, t, ds, d, im, sec = g
-        tp = home.get(p); topics = {TOOL_TOPIC.get(tp, "money")}
+        tp = home.get(p); topics = {"safe"} if p in SAFETY_GUIDES else {TOOL_TOPIC.get(tp, "money")}
         if any(w in (t + " " + ds).lower() for w in TAX_WORDS): topics.add("tax")
         badge = '<span class="gx-main">Start here</span>' if p in mains else ""
         return (f'<a class="g-card" href="{p}" data-date="{d}" data-pub="{_pub(p, d)}" data-i="{gidx[p]}" data-topics="{" ".join(sorted(topics))}" data-main="{1 if p in mains else 0}" data-text="{H.escape((t + " " + ds + " " + tool_name).lower())}">'
@@ -14099,6 +14221,12 @@ def guides_index():
                  f'<p class="hint" style="margin:0 0 14px">{len(gs)} guide{"s" if len(gs) != 1 else ""} · <a href="{tp}">Open the {n} tool</a></p><div class="g-cards">'
                  + "".join(card(g, n) for g in gs) + "</div>"
                  + (f'<button type="button" class="btn-sm gx-more" hidden>Show all {len(gs)} guides</button>' if len(gs) > 3 else "") + "</div>")
+    safe = [g for g in GUIDES if g[0] in SAFETY_GUIDES and g[0] not in used]
+    if safe:
+        used.update(g[0] for g in safe)
+        secs = (f'<div class="gx-sec" data-topic="safe"><h2 class="list-h" id="stay-safe" style="margin:36px 0 6px;scroll-margin-top:90px">Stay safe from scams</h2>'
+                f'<p class="hint" style="margin:0 0 14px">{len(safe)} guide{"s" if len(safe) != 1 else ""} · <a href="/stay-safe/">Where to report a scam</a></p><div class="g-cards">'
+                + "".join(card(g, "Stay safe") for g in safe) + "</div></div>") + secs
     rest = [g for g in GUIDES if g[0] not in used]
     if rest: secs += '<div class="gx-sec" data-topic="money"><h2 class="list-h" style="margin:36px 0 14px">More guides</h2><div class="g-cards">' + "".join(card(g, g[5]) for g in rest) + "</div></div>"
     chips = '<button type="button" class="gx-chip" data-t="all" aria-pressed="true">All</button>' + "".join(f'<button type="button" class="gx-chip" data-t="{k}" aria-pressed="false">{v}</button>' for k, v in TOPICS)
@@ -14281,6 +14409,8 @@ def main():
     write("/guides/budget-on-50000-1-lakh-2-lakh-salary/", guide_budget_tiers())
     write("/guides/company-car-lease-vs-car-loan/", guide_car())
     write("/guides/company-car-lease-policy/", guide_car_policy())
+    write("/guides/digital-arrest-scam/", guide_digital_arrest())
+    if S2_LIVE: write("/stay-safe/", stay_safe_page())
     write("/guides/company-car-perquisite-value-2026/", guide_perk())
     write("/guides/best-months-for-a-week-long-break-2027/", guide_months())
     write("/guides/long-weekends-2027-six-day-week/", guide_sixday())
@@ -14414,7 +14544,7 @@ def main():
     write("/guides/prepay-home-loan-early-or-later/", guide_prepay_timing())
     for p, (name, title, desc, h1, b) in PAGES.items(): write(p, text_page(p, name, title, desc, h1, b))
     write("/404.html", page_404())
-    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
+    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
     # lastmod: the date each page's content last changed. A page's date moves only when its HTML changes
     # (ignoring the ?v= cache-busting hashes), tracked in src/data/lastmod.json.
     import hashlib, datetime
@@ -14422,6 +14552,7 @@ def main():
     lm = json.load(open(lm_file)) if os.path.exists(lm_file) else {}
     today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).date().isoformat()
     urls = [(u, pr) for u, pr in urls if u not in HELD]
+    if S2_LIVE: urls.append(("/stay-safe/", "0.7"))
     for u, _ in urls:
         html = open(os.path.join(DIST, u.strip("/"), "index.html") if u != "/" else os.path.join(DIST, "index.html"), encoding="utf-8").read()
         h = hashlib.sha256(re.sub(r"\?v=[0-9a-f]+", "", html).encode()).hexdigest()[:16]
