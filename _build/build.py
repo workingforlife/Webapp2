@@ -358,7 +358,10 @@ def layout(path, title, desc, body, crumbs=None, graph=None, css=(), js=(), og="
     if crumbs: graph.append(breadcrumbs_ld(crumbs))
     canon = SITE + path
     main_cls = ' class="home"' if path == "/" else ""
-    nav = "".join(f'<a href="{u}" class="hide-sm"{" aria-current=\"page\"" if u == path else ""}>{n}</a>' for u, n in NAV)
+    nav_items = list(NAV)
+    if S2_LIVE: nav_items.insert(next((i + 1 for i, (u, n) in enumerate(nav_items) if u == "/guides/"), len(nav_items)), ("/stay-safe/", "Stay safe"))
+    nav = "".join(f'<a href="{u}" class="hide-sm"{" aria-current=\"page\"" if u == path else ""}>{n}</a>' for u, n in nav_items)
+    safe_li = '<li><a href="/stay-safe/">Stay safe from scams</a></li>' if S2_LIVE else ""
     crumb_html = ""
     if crumbs:
         items = "".join((f'<li><a href="{u}">{H.escape(n)}</a></li>' if i < len(crumbs) - 1 else f'<li aria-current="page">{H.escape(n)}</li>') for i, (u, n) in enumerate(crumbs))
@@ -370,7 +373,7 @@ def layout(path, title, desc, body, crumbs=None, graph=None, css=(), js=(), og="
     menu_tools = "".join(f'<li><a href="{u}"{" aria-current=\"page\"" if u == path else ""}>{n}</a></li>' for u, n in menu_list)
     foot_tools = "".join(f'<li><a href="{u}">{n}</a></li>' for u, n in menu_list[:6])
     sits = [(x[0], x[1]) for x in SITUATIONS] + ([("/stay-safe/", "Stay safe from scams")] if S2_LIVE else [])
-    menu_sits = "".join(f'<li><a href="{u}"{" aria-current=\"page\"" if u == path else ""}>{n}</a></li>' for u, n in sits)
+    menu_sits = "".join(f'<li><a href="{x[0]}"{" aria-current=\"page\"" if x[0] == path else ""}>{x[1]}</a></li>' for x in SITUATIONS)
     foot_sits = "".join(f'<li><a href="{u}">{n}</a></li>' for u, n in sits)
     foot_topics = "".join(f'<li><a href="/guides/?topic={k}">{v}</a></li>' for k, v in TOPICS)
     return f'''<!DOCTYPE html>
@@ -431,7 +434,7 @@ def layout(path, title, desc, body, crumbs=None, graph=None, css=(), js=(), og="
       <p class="menu-h">Your situation</p>
       <ul>{menu_sits}</ul>
       <p class="menu-h">Salarist</p>
-      <ul><li><a href="/guides/">Guides</a></li><li><a href="/methodology/">How we check our numbers</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul>
+      <ul><li><a href="/guides/">Guides</a></li>{safe_li}<li><a href="/methodology/">How we check our numbers</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul>
     </div>
   </div>
 </header>
@@ -450,7 +453,7 @@ def layout(path, title, desc, body, crumbs=None, graph=None, css=(), js=(), og="
       <div><h4>Tools</h4><ul>{foot_tools}<li><a href="/tools/"><b>All tools</b></a></li><li><a href="/tools/#soon">What's coming</a></li></ul></div>
       <div><h4>Guides by topic</h4><ul>{foot_topics}<li><a href="/guides/"><b>All guides</b></a></li></ul></div>
       <div><h4>Salarist</h4><ul>
-        <li><a href="/guides/">Guides</a></li><li><a href="/about/">About</a></li><li><a href="/methodology/">How we check our numbers</a></li><li><a href="/contact/">Contact</a></li>
+        <li><a href="/guides/">Guides</a></li>{safe_li}<li><a href="/about/">About</a></li><li><a href="/methodology/">How we check our numbers</a></li><li><a href="/contact/">Contact</a></li>
         <li><a href="/privacy/">Privacy policy</a></li><li><a href="/terms/">Terms of use</a></li><li><a href="/disclaimer/">Disclaimer</a></li></ul></div>
     </div>
     <p class="disc">Salarist provides estimates for information only. It is not tax, legal or financial advice. Check important decisions with a qualified adviser. © 2026 Salarist.</p>
