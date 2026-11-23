@@ -1,7 +1,7 @@
 {
  "/": {
-  "date": "2026-11-22",
-  "hash": "a67f83448318bd87"
+  "date": "2026-11-23",
+  "hash": "e0e441c2b5515633"
  },
  "/about/": {
   "date": "2026-11-22",
@@ -16,24 +16,24 @@
   "hash": "5d8f1917458bbc75"
  },
  "/buying-a-car/": {
-  "date": "2026-11-22",
-  "hash": "d605e82f8197554b"
+  "date": "2026-11-23",
+  "hash": "02d0bf2cc83cb89f"
  },
  "/buying-a-home/": {
-  "date": "2026-11-22",
-  "hash": "6d3956c758804741"
+  "date": "2026-11-23",
+  "hash": "d444324358a16f8f"
  },
  "/car-ownership-cost/": {
-  "date": "2026-11-22",
-  "hash": "62526ec87a7c057b"
+  "date": "2026-11-23",
+  "hash": "d5a23c1bf72790fa"
  },
  "/changing-jobs/": {
-  "date": "2026-11-22",
-  "hash": "de5a801d5bfc1b83"
+  "date": "2026-11-23",
+  "hash": "44def2a8c4a393c4"
  },
  "/company-car-lease-vs-loan/": {
-  "date": "2026-11-22",
-  "hash": "d9b8d2e0670356ff"
+  "date": "2026-11-23",
+  "hash": "c61d2d0c9a915ef2"
  },
  "/contact/": {
   "date": "2026-11-22",
@@ -44,8 +44,8 @@
   "hash": "c1418d8c567932fb"
  },
  "/emi-calculator/": {
-  "date": "2026-11-22",
-  "hash": "1b5fed9ab1cac352"
+  "date": "2026-11-23",
+  "hash": "f3d189bf2b67998f"
  },
  "/epf-calculator/": {
   "date": "2026-11-22",
@@ -76,8 +76,8 @@
   "hash": "87855949685a725c"
  },
  "/guides/": {
-  "date": "2026-11-22",
-  "hash": "42b5e0b524435392"
+  "date": "2026-11-23",
+  "hash": "20f85982bf105135"
  },
  "/guides/25x-rule-retirement-india/": {
   "date": "2026-11-22",
@@ -112,20 +112,28 @@
   "hash": "71d2542751dc37e3"
  },
  "/guides/car-lease-20-percent-slab-and-ev/": {
-  "date": "2026-11-22",
-  "hash": "db1c26bfe7e929f3"
+  "date": "2026-11-23",
+  "hash": "fa815c9e96ab735c"
+ },
+ "/guides/car-lease-job-change-buy-back-or-hand-back/": {
+  "date": "2026-11-23",
+  "hash": "836824df601b6313"
  },
  "/guides/car-lease-new-tax-regime/": {
   "date": "2026-11-22",
   "hash": "f1ab7b4581875153"
+ },
+ "/guides/car-loan-or-cash/": {
+  "date": "2026-11-23",
+  "hash": "3a00a2eb6a6dc679"
  },
  "/guides/cheapest-way-to-commute-to-office/": {
   "date": "2026-11-21",
   "hash": "2a54957f03b3f9ad"
  },
  "/guides/company-car-lease-policy/": {
-  "date": "2026-11-22",
-  "hash": "28a105079cfb5964"
+  "date": "2026-11-23",
+  "hash": "bfdd018e35ddffc2"
  },
  "/guides/company-car-lease-vs-car-loan/": {
   "date": "2026-11-22",
@@ -187,6 +195,10 @@
   "date": "2026-11-20",
   "hash": "045a16e7e3fc9098"
  },
+ "/guides/ev-worth-it-1000-km-a-month/": {
+  "date": "2026-11-23",
+  "hash": "d5304bf53f1115cb"
+ },
  "/guides/fd-for-senior-citizens-tds-and-tax/": {
   "date": "2026-11-22",
   "hash": "6cdfa26b1c25c41b"
@@ -200,8 +212,12 @@
   "hash": "e2204c207152c3ec"
  },
  "/guides/first-salary-budget/": {
-  "date": "2026-11-22",
-  "hash": "50a891736005f70c"
+  "date": "2026-11-23",
+  "hash": "199574e19124e554"
+ },
+ "/guides/first-sip-on-first-salary/": {
+  "date": "2026-11-23",
+  "hash": "855214f8cd78fa3a"
  },
  "/guides/floating-or-fixed-home-loan/": {
   "date": "2026-11-22",
@@ -220,8 +236,8 @@
   "hash": "abf549293d9ab0cf"
  },
  "/guides/government-ev-rule-should-you-switch/": {
-  "date": "2026-11-22",
-  "hash": "282cdf49c8e5a18a"
+  "date": "2026-11-23",
+  "hash": "16f4a9c0a1784af2"
  },
  "/guides/gratuity-fixed-term-employees/": {
   "date": "2026-11-22",
@@ -246,6 +262,10 @@
  "/guides/higher-basic-more-tax/": {
   "date": "2026-11-22",
   "hash": "0272f1e96078fd4d"
+ },
+ "/guides/home-loan-down-payment/": {
+  "date": "2026-11-23",
+  "hash": "0726787b221d0f7e"
  },
  "/guides/home-loan-insurance-vs-term-plan/": {
   "date": "2026-11-22",
@@ -335,6 +355,10 @@
   "date": "2026-11-22",
   "hash": "e6e0b448047c5a85"
  },
+ "/guides/new-or-used-car/": {
+  "date": "2026-11-23",
+  "hash": "dfc65020a0f1eaf2"
+ },
  "/guides/notice-period-buyout/": {
   "date": "2026-11-22",
   "hash": "40344a1b6471906c"
@@ -350,6 +374,10 @@
  "/guides/nps-vs-ppf-vs-epf/": {
   "date": "2026-11-22",
   "hash": "a7383f868171282e"
+ },
+ "/guides/part-pay-car-or-personal-loan/": {
+  "date": "2026-11-23",
+  "hash": "071af8da705da667"
  },
  "/guides/pay-rise-to-cover-return-to-office/": {
   "date": "2026-11-21",
@@ -392,8 +420,8 @@
   "hash": "623317e2e20789b7"
  },
  "/guides/rent-or-buy-by-age-and-moving-cities/": {
-  "date": "2026-11-22",
-  "hash": "e69f0ecada9e2900"
+  "date": "2026-11-23",
+  "hash": "9055b7c955458465"
  },
  "/guides/rent-vs-buy/": {
   "date": "2026-11-22",
@@ -434,6 +462,10 @@
  "/guides/settlement-not-paid-on-time/": {
   "date": "2026-11-22",
   "hash": "c0756745cc21bd67"
+ },
+ "/guides/sip-lower-return/": {
+  "date": "2026-11-23",
+  "hash": "9ba7bc48e01851e0"
  },
  "/guides/sip-or-lump-sum-bonus/": {
   "date": "2026-11-22",
@@ -552,8 +584,8 @@
   "hash": "83d6b39bbf223e7d"
  },
  "/rent-vs-buy/": {
-  "date": "2026-11-22",
-  "hash": "629d97f022b8a162"
+  "date": "2026-11-23",
+  "hash": "050cb93a964dbad8"
  },
  "/retirement-planner/": {
   "date": "2026-11-22",
@@ -564,8 +596,8 @@
   "hash": "3352edbe2f9d3df3"
  },
  "/sip-calculator/": {
-  "date": "2026-11-22",
-  "hash": "7fa4267c4e7a2d2b"
+  "date": "2026-11-23",
+  "hash": "2b36ddb6c5ecc2eb"
  },
  "/stay-safe/": {
   "date": "2026-11-22",
@@ -588,7 +620,7 @@
   "hash": "c61be06ad9c39c90"
  },
  "/tools/": {
-  "date": "2026-11-22",
-  "hash": "46a7cfc7c7c5f976"
+  "date": "2026-11-23",
+  "hash": "0e7d6f68154f2d3e"
  }
 }
