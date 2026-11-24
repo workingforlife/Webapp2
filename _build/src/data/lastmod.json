@@ -1,15 +1,15 @@
 {
  "/": {
-  "date": "2026-11-23",
-  "hash": "e0e441c2b5515633"
+  "date": "2026-11-24",
+  "hash": "ffd7b075ba137aee"
  },
  "/about/": {
   "date": "2026-11-22",
   "hash": "79a6e0ecbc6777f2"
  },
  "/best-day-to-resign/": {
-  "date": "2026-11-22",
-  "hash": "527ef049bc7b1bcb"
+  "date": "2026-11-24",
+  "hash": "1fa9054a65af53cc"
  },
  "/budget-planner/": {
   "date": "2026-11-22",
@@ -76,8 +76,8 @@
   "hash": "87855949685a725c"
  },
  "/guides/": {
-  "date": "2026-11-23",
-  "hash": "20f85982bf105135"
+  "date": "2026-11-24",
+  "hash": "2d3c692e2873786b"
  },
  "/guides/25x-rule-retirement-india/": {
   "date": "2026-11-22",
@@ -523,6 +523,10 @@
   "date": "2026-11-22",
   "hash": "9423c4d0d2554576"
  },
+ "/guides/voluntary-exit-offer-how-to-judge/": {
+  "date": "2026-11-24",
+  "hash": "b0cce5a9a0a11b35"
+ },
  "/guides/vpf-worth-it/": {
   "date": "2026-11-22",
   "hash": "09af0f41a4970317"
@@ -534,6 +538,10 @@
  "/guides/what-is-your-commute-time-worth/": {
   "date": "2026-11-21",
   "hash": "e8af8a20e758e11e"
+ },
+ "/guides/whatsapp-web-safety-i4c-advisory/": {
+  "date": "2026-11-24",
+  "hash": "f2345670289b109d"
  },
  "/guides/when-to-hand-in-notice/": {
   "date": "2026-11-22",
@@ -600,8 +608,8 @@
   "hash": "2b36ddb6c5ecc2eb"
  },
  "/stay-safe/": {
-  "date": "2026-11-22",
-  "hash": "907a853ca37b6496"
+  "date": "2026-11-24",
+  "hash": "369bc103f45a780b"
  },
  "/sukanya-samriddhi-calculator/": {
   "date": "2026-11-22",
@@ -620,7 +628,7 @@
   "hash": "c61be06ad9c39c90"
  },
  "/tools/": {
-  "date": "2026-11-23",
-  "hash": "0e7d6f68154f2d3e"
+  "date": "2026-11-24",
+  "hash": "a7e69def4f0655b8"
  }
 }

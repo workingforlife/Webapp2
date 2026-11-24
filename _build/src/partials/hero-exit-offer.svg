@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="An envelope with an offer letter, a calculator and a calendar with a deadline circled">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5FE0"/><stop offset="1" stop-color="#0B2A6B"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".18"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="#FFFFFF" opacity=".08"><circle cx="190" cy="760" r="80"/><circle cx="1450" cy="740" r="64"/><circle cx="230" cy="160" r="46"/></g>
+
+<g transform="translate(360 260)">
+  <rect width="520" height="360" rx="24" fill="#F4F7FC"/>
+  <path d="M0 24 L260 220 L520 24" fill="none" stroke="#CDD6E3" stroke-width="10"/>
+  <g transform="translate(70 -120)"><rect width="380" height="280" rx="16" fill="#FFFFFF" stroke="#CDD6E3" stroke-width="4"/>
+    <rect x="34" y="34" width="200" height="22" rx="11" fill="#5876B8"/><rect x="34" y="80" width="300" height="14" rx="7" fill="#CDD6E3"/>
+    <rect x="34" y="108" width="260" height="14" rx="7" fill="#CDD6E3"/><rect x="34" y="136" width="280" height="14" rx="7" fill="#CDD6E3"/>
+    <text x="34" y="220" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="52" fill="#0B2A6B">₹ ?</text></g>
+  <path d="M0 120 L260 250 L520 120 L520 336 A24 24 0 0 1 496 360 L24 360 A24 24 0 0 1 0 336 Z" fill="#E3E9F4"/>
+</g>
+<g transform="translate(980 250)"><rect width="220" height="300" rx="24" fill="#0E1B3D"/><rect x="24" y="24" width="172" height="70" rx="10" fill="#5BC48C"/>
+  <g fill="#2A3F73"><rect x="24" y="120" width="44" height="40" rx="8"/><rect x="84" y="120" width="44" height="40" rx="8"/><rect x="144" y="120" width="44" height="40" rx="8"/><rect x="24" y="178" width="44" height="40" rx="8"/><rect x="84" y="178" width="44" height="40" rx="8"/><rect x="144" y="178" width="44" height="40" rx="8"/><rect x="24" y="236" width="44" height="40" rx="8"/><rect x="84" y="236" width="44" height="40" rx="8"/><rect x="144" y="236" width="44" height="40" rx="8"/></g></g>
+<g transform="translate(1250 300)"><rect width="250" height="250" rx="20" fill="#FFFFFF"/><rect width="250" height="60" rx="20" fill="#E5484D"/><rect y="40" width="250" height="20" fill="#E5484D"/>
+  <g fill="#CDD6E3"><rect x="22" y="84" width="40" height="36" rx="7"/><rect x="76" y="84" width="40" height="36" rx="7"/><rect x="130" y="84" width="40" height="36" rx="7"/><rect x="184" y="84" width="40" height="36" rx="7"/><rect x="22" y="136" width="40" height="36" rx="7"/><rect x="76" y="136" width="40" height="36" rx="7"/><rect x="130" y="136" width="40" height="36" rx="7"/><rect x="184" y="136" width="40" height="36" rx="7"/><rect x="22" y="188" width="40" height="36" rx="7"/><rect x="76" y="188" width="40" height="36" rx="7"/><rect x="130" y="188" width="40" height="36" rx="7"/><rect x="184" y="188" width="40" height="36" rx="7"/></g>
+  <circle cx="150" cy="154" r="32" fill="none" stroke="#E5484D" stroke-width="8"/></g>
+</svg>

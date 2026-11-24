@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A laptop showing a chat app with a padlock and a log-out button">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5FE0"/><stop offset="1" stop-color="#0B2A6B"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".18"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="#FFFFFF" opacity=".08"><circle cx="190" cy="760" r="80"/><circle cx="1450" cy="740" r="64"/><circle cx="230" cy="160" r="46"/></g>
+
+<g transform="translate(400 200)">
+  <rect width="760" height="470" rx="28" fill="#0E1B3D"/><rect x="24" y="24" width="712" height="422" rx="12" fill="#1B2C57"/>
+  <rect x="24" y="24" width="220" height="422" fill="#22356A"/>
+  <g fill="#3A5596"><circle cx="70" cy="80" r="24"/><rect x="108" y="68" width="110" height="12" rx="6"/><rect x="108" y="88" width="80" height="10" rx="5" fill="#2A3F73"/><circle cx="70" cy="160" r="24"/><rect x="108" y="148" width="110" height="12" rx="6"/><rect x="108" y="168" width="80" height="10" rx="5" fill="#2A3F73"/><circle cx="70" cy="240" r="24"/><rect x="108" y="228" width="110" height="12" rx="6"/><rect x="108" y="248" width="80" height="10" rx="5" fill="#2A3F73"/><circle cx="70" cy="320" r="24"/><rect x="108" y="308" width="110" height="12" rx="6"/><rect x="108" y="328" width="80" height="10" rx="5" fill="#2A3F73"/><circle cx="70" cy="400" r="24"/><rect x="108" y="388" width="110" height="12" rx="6"/><rect x="108" y="408" width="80" height="10" rx="5" fill="#2A3F73"/></g>
+  <rect x="290" y="80" width="260" height="56" rx="18" fill="#3A5596"/><rect x="420" y="160" width="280" height="56" rx="18" fill="#2F8F5B"/>
+  <rect x="290" y="240" width="220" height="56" rx="18" fill="#3A5596"/>
+  <g transform="translate(560 330)"><rect width="150" height="60" rx="30" fill="#E5484D"/><path d="M40 30 L70 30 M58 18 L70 30 L58 42" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="82" y="22" width="44" height="16" rx="8" fill="#fff"/></g>
+  <path d="M-40 470 L800 470 L760 500 L0 500 Z" fill="#0E1B3D"/>
+</g>
+<g transform="translate(1230 260)"><rect x="0" y="90" width="200" height="170" rx="24" fill="#FFD27A"/>
+  <path d="M40 90 L40 60 A60 60 0 0 1 160 60 L160 90" fill="none" stroke="#FFD27A" stroke-width="26"/>
+  <circle cx="100" cy="160" r="20" fill="#0B2A6B"/><rect x="92" y="170" width="16" height="44" rx="8" fill="#0B2A6B"/></g>
+</svg>
