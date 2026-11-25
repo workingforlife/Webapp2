@@ -56,6 +56,8 @@ HOLD = {
     # Batch S3 (drafted 22 Nov): GTA 6 trend guides (scams; what it costs and how to pay).
     # Batch S4 (drafted 24 Nov): news-led: voluntary exit offers; I4C WhatsApp Web advisory.
     "s4": ["/guides/voluntary-exit-offer-how-to-judge/", "/guides/whatsapp-web-safety-i4c-advisory/"],
+    # Batch S5 (drafted 25 Nov, approved 25 Nov): trend guides: RBI draft stop switch and trusted person; belated ITR by 31 Dec.
+    "s5": ["/guides/rbi-stop-switch-trusted-person/", "/guides/belated-itr-31-december/"],
     "s3": ["/guides/gta-6-scams-fake-downloads/", "/guides/gta-6-ps5-cost-emi-or-save/", "/guides/day-off-for-gta-6-leave-rules/"],
     # Batch T9 (20 Nov): back to office cost calculator (N7, hero) with its guides, released together.
     "t9": ["/return-to-office-cost-calculator/", "/guides/return-to-office-cost/", "/guides/cheapest-way-to-commute-to-office/", "/guides/move-closer-to-office-or-commute/", "/guides/what-is-your-commute-time-worth/", "/guides/pay-rise-to-cover-return-to-office/", "/guides/meal-card-tax-free-200-per-meal/"],
@@ -70,7 +72,7 @@ HOLD = {
     "t3": ["/fire-calculator/", "/guides/fire-number-india/", "/guides/retire-at-45-bridge-epf-nps/", "/guides/is-25x-enough-early-retirement/", "/guides/lean-fat-coast-fire/", "/guides/savings-rate-early-retirement/", "/guides/epf-nps-if-you-retire-early/", "/guides/wedding-invite-apk-scam/"],  # wedding-invite APK guide added 24 Nov (your call), source for YouTube video 3
     "t2": ["/best-day-to-resign/", "/guides/when-to-resign-best-last-day/", "/guides/resign-before-or-after-rsu-vesting/", "/guides/joining-bonus-clawback/", "/guides/when-to-hand-in-notice/", "/guides/use-or-encash-leave-before-resigning/", "/guides/wait-for-bonus-or-join-now/"],
 }
-RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2", "s3", "c1", "s4", "t3"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2, s3 22 Nov; c1 23 Nov, s4 24 Nov; t3 25 Nov
+RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2", "s3", "c1", "s4", "t3", "s5"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2, s3 22 Nov; c1 23 Nov, s4 24 Nov; t3, s5 25 Nov
 # Review builds only: SALARIST_PREVIEW=t1 python3 build.py builds a held batch too (never push such a build).
 RELEASED |= {b for b in os.environ.get("SALARIST_PREVIEW", "").split(",") if b}
 HELD = {p for b, ps in HOLD.items() if b not in RELEASED for p in ps}
@@ -106,7 +108,7 @@ JO_LIVE = "t5" in RELEASED   # job offer comparator: goes live with batch T5
 if JO_LIVE: LIVE_TOOLS.append(("/job-offer-comparator/", "Job Offer Comparator"))
 S2_LIVE = "s2" in RELEASED   # Stay safe section (scam guides + /stay-safe/ hub): goes live with batch S2
 # Scam and safety guides: not tied to a tool; listed on /stay-safe/ and in their own section on /guides/ (exempt from the "guide under a tool" check).
-SAFETY_GUIDES = ["/guides/digital-arrest-scam/", "/guides/gta-6-scams-fake-downloads/", "/guides/whatsapp-web-safety-i4c-advisory/", "/guides/wedding-invite-apk-scam/"]
+SAFETY_GUIDES = ["/guides/digital-arrest-scam/", "/guides/gta-6-scams-fake-downloads/", "/guides/whatsapp-web-safety-i4c-advisory/", "/guides/wedding-invite-apk-scam/", "/guides/rbi-stop-switch-trusted-person/"]
 SAFETY_RELATED = ["/budget-planner/", "/fd-ppf-rd-calculator/", "/retirement-planner/", "/health-insurance-cover-calculator/"]
 SO_LIVE = "t7" in RELEASED   # ESOP and RSU tax calculator: goes live with batch T7
 if SO_LIVE: LIVE_TOOLS.append(("/esop-rsu-tax-calculator/", "ESOP and RSU Tax Calculator"))
@@ -178,6 +180,8 @@ SEO = {
     "/guides/gta-6-scams-fake-downloads/": ("GTA 6 Scams: Fake PC Downloads, Beta Keys and Codes", "There's no GTA 6 for PC or phones, no demo and no beta. How the fake downloads and cheap-code scams work, and what to do if you clicked one."),
     "/guides/gta-6-ps5-cost-emi-or-save/": ("GTA 6 and PS5 Cost in India: EMI, Card or Save First?", "A PS5 and GTA 6 cost about ₹71,000. What that means on a ₹60,000 salary, and what no-cost EMI, card EMI and saving first really cost."),
     "/guides/day-off-for-gta-6-leave-rules/": ("Day Off for GTA 6? Which Leave to Use and What It Costs", "Some Indian firms gave a GTA 6 holiday. If yours didn't: casual, earned or sick leave, what a day of earned leave is worth, and the OSH Code rules."),
+    "/guides/rbi-stop-switch-trusted-person/": ("RBI Stop Switch: Freeze All Bank Payments in One Go", "RBI's draft lets you block every outgoing payment at once, set your own limits and name a trusted person to approve big transfers. What it means."),
+    "/guides/belated-itr-31-december/": ("Missed Your ITR? File a Belated Return by 31 Dec 2026", "Missed 31 July? A belated return by 31 Dec costs ₹5,000 (₹1,000 up to ₹5 lakh) plus interest. After that you lose refunds. Worked examples."),
     "/guides/wedding-invite-apk-scam/": ("Fake Wedding Invite APK Scam: What It Unlocks, What to Do", "A WhatsApp wedding card that ends in .apk is an app, not a card. The 3 permissions it needs, the same trick as e-challan or pension apps, and what to do."),
     "/guides/voluntary-exit-offer-how-to-judge/": ("Voluntary Exit or Severance Offer? How to Judge It", "Got a voluntary exit or severance offer? What it's worth after tax, the ₹5 lakh VRS rule, gratuity, RSUs, health cover and how many months it buys."),
     "/guides/whatsapp-web-safety-i4c-advisory/": ("WhatsApp Web Warning: Log Out and Check Linked Devices", "The Home Ministry's I4C warns a logged-in WhatsApp Web session can be misused. What the risk is, how to check linked devices, and what to do."),
@@ -546,7 +550,7 @@ SITUATIONS = [
      "The Income-tax Act, 2025 renumbered everything. Find your sections, check the tax on your salary, stock and savings, and avoid TDS surprises.",
      "Tax Season for Salaried India: Sections, Form 130, TDS", "New section numbers, Form 130, tax on salary, ESOPs and RSUs, gratuity, leave encashment, FD interest and mutual funds, for salaried people.",
      [("Learn the new numbers", "80C, HRA and Form 16 have new names under the 2025 Act. Find yours.",
-       ["/income-tax-section-finder/", "/guides/new-income-tax-section-numbers/", "/guides/tax-year-explained/", "/guides/payslip-form-130-new-section-numbers/"]),
+       ["/income-tax-section-finder/", "/guides/new-income-tax-section-numbers/", "/guides/tax-year-explained/", "/guides/payslip-form-130-new-section-numbers/", "/guides/belated-itr-31-december/"]),
       ("Check the tax on your salary", "Your structure, employer NPS, a hike, and two employers in one year.",
        ["/labour-codes-salary-calculator/", "/guides/higher-basic-more-tax/", "/guides/employer-nps-14-percent-new-regime/", "/guides/hike-take-home-after-tax/", "/guides/two-employers-one-year-tax/"]),
       ("Stock, gratuity and leave", "ESOPs and RSUs, foreign shares in Schedule FA, gratuity and leave encashment limits.",
@@ -4455,7 +4459,7 @@ def sections_page():
 <div class="wrap aff-slot" aria-label="Sponsored"></div>
 
 <section style="padding-top:0"><div class="wrap prose">
-  <p class="g-callout"><b>Want the main ones in one place?</b> Read <a href="/guides/new-income-tax-section-numbers/">New income tax section numbers</a>: 80C, HRA, 24(b), Form 16 and more, with regime. New terms: <a href="/guides/tax-year-explained/">"Tax year" explained</a> and <a href="/guides/payslip-form-130-new-section-numbers/">Your payslip and Form 130</a>.</p>
+  <p class="g-callout"><b>Want the main ones in one place?</b> Read <a href="/guides/new-income-tax-section-numbers/">New income tax section numbers</a>: 80C, HRA, 24(b), Form 16 and more, with regime. New terms: <a href="/guides/tax-year-explained/">"Tax year" explained</a> and <a href="/guides/payslip-form-130-new-section-numbers/">Your payslip and Form 130</a>. Missed your 2025-26 return? <a href="/guides/belated-itr-31-december/">File a belated return by 31 December</a>.</p>
   <h2>How to read the new section numbers</h2>
   <ul>
     <li><strong>Plain numbers.</strong> The new Act has no lettered sections like 80C or 80CCD(1B). Deductions are sections 122 to 154.</li>
@@ -4959,6 +4963,12 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
     ("/guides/wedding-invite-apk-scam/", "The wedding card that empties your account: the fake invite APK scam",
      "A wedding card on WhatsApp that ends in .apk is an app, not a card. What it unlocks on your phone, the same trick in other disguises, and exactly what to do.",
      "2026-11-25", "guide-wedding-apk", "Stay safe"),
+    ("/guides/rbi-stop-switch-trusted-person/", "RBI's \"stop switch\": freeze your bank payments in one go",
+     "RBI's draft rules would let you block every new payment at once, set your own limits, and name someone to approve big transfers. What's proposed, and what to do today.",
+     "2026-11-25", "guide-stop-switch", "Stay safe"),
+    ("/guides/belated-itr-31-december/", "Missed your ITR? File a belated return by 31 December",
+     "A belated return for 2025-26 costs ₹5,000 (₹1,000 up to ₹5 lakh) plus interest. Miss 31 December and refunds are lost. Two worked examples, and the old regime catch.",
+     "2026-11-25", "guide-belated-itr", "Your tax"),
     ("/guides/voluntary-exit-offer-how-to-judge/", "Got a voluntary exit offer? How to judge what it's really worth",
      "Exit and severance offers come with a deadline. What the payout is worth after tax, what you give up, and how many months of expenses it buys.",
      "2026-11-24", "guide-exit-offer", "Your pay"),
@@ -6531,7 +6541,7 @@ def _catalog():
                       ("/full-and-final-settlement/", "Full and Final Settlement", "What you get when you leave: last salary, leave encashment, gratuity, notice recovery and when it's due.", L("/full-and-final-settlement/"), "Coming soon", ["/guides/full-and-final-settlement-explained/", "/guides/transfer-pf-dont-withdraw/", "/guides/leave-encashment-tax-on-resignation/", "/guides/notice-period-buyout/", "/guides/two-employers-one-year-tax/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/"]),
                       ("/gratuity-calculator/", "Gratuity Calculator", "Your gratuity under the new labour codes, how much is tax-free, and what staying longer adds.", L("/gratuity-calculator/"), "Coming soon", ["/guides/gratuity-new-labour-codes/", "/guides/gratuity-six-month-rule-when-to-resign/", "/guides/gratuity-fixed-term-employees/", "/guides/is-gratuity-taxable-20-lakh-limit/", "/guides/low-basic-salary-gratuity/"])]),
         ("Your tax", [("/esop-rsu-tax-calculator/", "ESOP and RSU Tax Calculator", "Tax on your ESOPs or RSUs when they vest or you exercise, and when you sell: what you actually keep.", L("/esop-rsu-tax-calculator/"), "Coming soon", ["/guides/rsu-tax-india-worked-example/", "/guides/esop-tax-exercise-and-sale/", "/guides/sell-rsus-at-vest-or-hold/", "/guides/startup-esop-tax-deferral/", "/guides/foreign-rsu-schedule-fa-tax-credit/", "/guides/rsu-esop-price-falls-after-vesting/"]),
-                      ("/income-tax-section-finder/", "Income Tax Section Finder", "Old section numbers like 80C, HRA and 24(b), and where they are in the Income-tax Act, 2025.", L("/income-tax-section-finder/"), "Coming soon", ["/guides/new-income-tax-section-numbers/", "/guides/tax-year-explained/", "/guides/payslip-form-130-new-section-numbers/"])]),
+                      ("/income-tax-section-finder/", "Income Tax Section Finder", "Old section numbers like 80C, HRA and 24(b), and where they are in the Income-tax Act, 2025.", L("/income-tax-section-finder/"), "Coming soon", ["/guides/new-income-tax-section-numbers/", "/guides/tax-year-explained/", "/guides/payslip-form-130-new-section-numbers/", "/guides/belated-itr-31-december/"])]),
         ("Your loans", [("/prepay-vs-invest/", "Prepay or Invest", "Should extra money go into your home loan or into investments? After tax.", True, "", ["/guides/prepay-home-loan-or-invest/", "/guides/prepay-home-loan-early-or-later/", "/guides/prepay-with-bonus-or-invest/"]),
                         ("/emi-calculator/", "EMI Calculator", "Your EMI, with part-payments at any time and rate changes. Save your plan and carry on later.", L("/emi-calculator/"), "Coming soon", ["/guides/how-part-payments-cut-your-home-loan/", "/guides/home-loan-rate-rise-emi-or-tenure/", "/guides/part-pay-car-or-personal-loan/", "/guides/floating-or-fixed-home-loan/"])]),
         ("Your investments", [("/fire-calculator/", "FIRE Calculator", "When can you stop working? Your FIRE number and age, with EPF and NPS unlocking at 58 and 60.", L("/fire-calculator/"), "Coming soon", ["/guides/fire-number-india/", "/guides/retire-at-45-bridge-epf-nps/", "/guides/is-25x-enough-early-retirement/", "/guides/lean-fat-coast-fire/", "/guides/savings-rate-early-retirement/", "/guides/epf-nps-if-you-retire-early/"]),
@@ -12541,6 +12551,7 @@ def guide_digital_arrest():
 <h2 id="method">Sources</h2>
 <p>Ministry of Home Affairs, "Steps taken to address the issue of digital arrest scams" (PIB, 12 March 2025): blocked WhatsApp and Skype accounts, SIM cards and IMEIs, the 1930 helpline, cybercrime.gov.in, and the Citizen Financial Cyber Fraud Reporting and Management System. Cases and losses for 2022–2024 as reported to Parliament in March 2025; 2025 from I4C data reported by ThePrint (April 2026). Department of Telecommunications, Sanchar Saathi (Chakshu). Supreme Court order of 1 December 2025 in Suo Motu Writ Petition (Criminal) No. 3 of 2025. The Delhi case as reported by PTI in January 2026. "Ruko, socho, action lo" from the Prime Minister's Mann Ki Baat of 27 October 2024. Read <a href="/methodology/">how we check our facts</a>.</p>
 <p>Another scam doing the rounds: a <a href="/guides/wedding-invite-apk-scam/">fake wedding card on WhatsApp that is really an app</a>.</p>
+<p>In the news: RBI wants banks to give you a <a href="/guides/rbi-stop-switch-trusted-person/">stop switch and a trusted person for big transfers</a>, so a scammer on the line can't empty your account.</p>
 <p class="g-note">This article is for awareness, not legal advice. If you're in danger or being threatened, call 112.</p>
 </div>
 </article>
@@ -12962,6 +12973,175 @@ def guide_wedding_apk():
 {related(path)}
 """
     return article(path, "x", "Wedding invite APK scam", body, "Wedding invite scam")
+
+def guide_stop_switch():
+    path = "/guides/rbi-stop-switch-trusted-person/"
+    toc = [("short-answer", "The short answer"), ("what", "What RBI has proposed"), ("switch", "The stop switch"), ("limits", "Limits you set yourself"),
+           ("trusted", "A trusted person for big transfers"), ("example", "How it would stop a scam"), ("bank", "When the bank is to blame"),
+           ("today", "What you can do today"), ("method", "Sources")]
+    body = guide_head(path, "A fake police officer calls your father and tells him to move his savings \"for verification\". Today, all that stands between the call and the money is his own judgement. RBI's new draft rules would give him a switch that freezes every payment, limits that he sets himself, and someone he trusts who must approve a big transfer.",
+                      "A banking app with a switch that pauses all outgoing payments").replace("TYPE_LINE", "<span>Stay safe from scams</span>")
+    body += f"""
+<div class="wrap g-body prose">
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p>On 23 November 2026, RBI put out draft rules that would make banks give you three new controls:</p>
+<ul>
+  <li>a <strong>stop switch</strong> that blocks every new payment from your account at once;</li>
+  <li><strong>your own limits</strong>, per payment, per payee and per day;</li>
+  <li>an optional <strong>trusted person</strong> who has one hour to approve any bank transfer above an amount you choose.</li>
+</ul>
+<p>These are proposals, not rules yet. RBI is taking comments until <strong>14 December 2026</strong>. The controls would start by <strong>1 July 2027</strong>, or earlier if your bank chooses. A wider definition of bank negligence, which makes it easier to show a fraud was the bank's fault, would apply from <strong>1 January 2027</strong>. You can already use some of these protections, covered under <a href="#today">What you can do today</a>.</p>
+
+<h2 id="what">What RBI has proposed</h2>
+<p>RBI has issued draft amendments for every type of bank: commercial, small finance, payments, regional rural, local area and co-operative banks. They build on its June 2026 directions on customer liability for fraudulent electronic banking transactions. The aim is to stop the money before it leaves your account, not only to sort out who pays after a fraud. An April 2026 discussion paper had floated a one-hour delay on high-value transfers. The draft drops that idea.</p>
+
+<h2 id="switch">The stop switch</h2>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">With the stop switch on…</th><th scope="col">Blocked or allowed</th></tr></thead><tbody>
+<tr><th scope="row">Any new payment you start (transfer, UPI, card)</th><td>Blocked</td></tr>
+<tr><th scope="row">Setting up a new autopay, mandate or standing instruction</th><td>Blocked</td></tr>
+<tr><th scope="row">Adding your account to a new UPI app</th><td>Blocked</td></tr>
+<tr><th scope="row">Salary and other money coming in</th><td>Allowed</td></tr>
+<tr><th scope="row">Autopays and SIPs already set up</th><td>Allowed</td></tr>
+<tr><th scope="row">Your home loan EMI and bank charges</th><td>Allowed</td></tr>
+</tbody></table></div>
+<p>Banks would have to offer the switch at the branch, at ATMs, in net banking and the mobile app, and on their phone banking (IVR) line. You get an SMS or email each time it's turned on or off. To turn it off again you must pass the same level of security check, or a stronger one. The bank can also make you wait a while before payments start again, so a scammer who has your phone can't simply flip it back.</p>
+
+<h2 id="limits">Limits you set yourself</h2>
+<ul>
+  <li><strong>Per payment, per payee, per day:</strong> for example, no more than ₹10,000 in one go through net banking, or ₹20,000 a day to any one payee. Your limit would apply even if the bank's own limit is higher.</li>
+  <li><strong>Channels off by default:</strong> on a new account, net banking, UPI and other digital channels would stay off until you turn them on with your consent and a security check. You can switch any channel off and on later.</li>
+  <li><strong>Time windows:</strong> you could keep a channel shut at certain hours, for example net banking from 10 PM to 7 AM.</li>
+  <li><strong>New channel, small ceiling:</strong> for the first 24 hours after a channel is switched on, the bank would cap how much can go out.</li>
+  <li><strong>Cards:</strong> separate on/off for domestic and international use, and for ATM, shop, online and contactless use.</li>
+</ul>
+
+<h2 id="trusted">A trusted person for big transfers</h2>
+<p>This is the new idea. You choose someone, typically a grown-up son or daughter. Any bank transfer above an amount you set is sent to them first:</p>
+<ul>
+  <li>They must be <strong>18 or older</strong>, have a valid ID, and use a different mobile number from yours.</li>
+  <li>They <strong>can't be</strong> a joint holder, nominee or signatory on the account. They don't see your balance, deposits or investments, only the details of the payment waiting for approval. They aren't liable for what they approve.</li>
+  <li>They have <strong>one hour</strong> to approve. If they reject it or don't answer in time, the payment is declined.</li>
+  <li>Turning it on, changing it or switching it off <strong>takes 24 hours to apply</strong>, so a scammer can't remove it in the middle of a call.</li>
+  <li>It does <strong>not</strong> cover UPI payments, payments to shops, or regular payments through standing instructions, e-mandates or NACH.</li>
+</ul>
+<p>Both you and the trusted person must agree to it. It's optional.</p>
+
+<h2 id="example">How it would stop a scam: Ramesh's ₹4 lakh</h2>
+<p>Ramesh, 66, is a retired teacher in Pune with ₹9 lakh in his savings account. His daughter Anjali, 36, works in Bengaluru. In July 2027, once his bank offers the new controls, they set up three things together:</p>
+<ol class="g-check">
+  <li>Anjali as his trusted person for any bank transfer above <strong>₹25,000</strong>.</li>
+  <li>A UPI limit of <strong>₹10,000 a day</strong>, since UPI isn't covered by the trusted person check.</li>
+  <li>Net banking switched off from 9 PM to 7 AM.</li>
+</ol>
+<p>A caller posing as a CBI officer keeps Ramesh on a video call for two hours, a classic <a href="/guides/digital-arrest-scam/">digital arrest</a>, and tells him to move ₹4 lakh to a "safe account".</p>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">What the scammer tries</th><th scope="col">Without the controls</th><th scope="col">With them</th></tr></thead><tbody>
+<tr><th scope="row">₹4 lakh by NEFT</th><td>Gone in minutes</td><td>Sent to Anjali for approval. She calls her father and rejects it.</td></tr>
+<tr><th scope="row">Then ₹1 lakh by UPI</th><td>Gone</td><td>Stopped at ₹10,000. That much is lost, so call 1930.</td></tr>
+<tr><th scope="row">Remove Anjali as trusted person</th><td>—</td><td>Takes 24 hours to apply, and Anjali is told about it</td></tr>
+<tr><th scope="row"><b>Lost</b></th><td><b>₹5,00,000</b></td><td><b>₹10,000 at most</b></td></tr>
+</tbody></table></div>
+<p>Once Anjali realises what's happening, she can ask her father to press the stop switch, or he can do it from any ATM. Every new payment stops. His pension still comes in and his existing autopays still go out.</p>
+
+<h2 id="bank">When the bank is to blame</h2>
+<p>From 1 January 2027, the draft widens what counts as the bank's negligence in a fraud. As well as failing to use the required security checks, failing to send alerts, having no round-the-clock way to report fraud, or acting slowly on complaints, it would also cover:</p>
+<ul>
+  <li>a fault or security breach in the bank's own systems that made the fraud possible;</li>
+  <li>fraud involving the bank's staff or a company the bank hired.</li>
+</ul>
+<p>Once the controls are live, a bank that doesn't offer them, or doesn't run them properly, could also be found negligent. Whatever happens, report a fraud at once. The sooner you report, the stronger your case for getting the money back.</p>
+
+<h2 id="today">What you can do today</h2>
+<p>You don't have to wait for July 2027.</p>
+<ol class="g-check">
+  <li><strong>Lower your UPI limit</strong> in your UPI app or bank app to what you really spend in a day. Do the same for your parents.</li>
+  <li><strong>Turn off what you don't use</strong> on your debit and credit cards in the bank app: international use, contactless and online use.</li>
+  <li><strong>Set a lower transfer limit</strong> in net banking. Lowering a limit usually takes effect at once; raising it often has a waiting period.</li>
+  <li><strong>Turn on alerts</strong> by SMS and email for every debit.</li>
+  <li><strong>Agree a family rule:</strong> no transfer above ₹25,000 without a call to one named person first. It's the trusted person idea, without any app.</li>
+  <li><strong>Save your bank's fraud number</strong> and 1930 in your parents' phones.</li>
+</ol>
+<p>More scams and where to report them: <a href="/stay-safe/">Stay safe from scams</a>. Planning to keep a parent's savings somewhere safer than a savings account? Compare options in the <a href="/fd-ppf-rd-calculator/">FD, PPF and RD calculator</a>.</p>
+<div style="border:1px solid var(--line,#D6DEEA);border-left:6px solid #E5484D;border-radius:16px;padding:16px 18px;margin:20px 0">
+<p style="margin:0"><b>Lost money?</b> Call <a href="tel:1930">1930</a> at once, then file at <a href="https://cybercrime.gov.in" rel="noopener">cybercrime.gov.in</a> and call your bank's fraud line to block the account. Got a suspicious call or SMS but paid nothing? Report it on <a href="https://sancharsaathi.gov.in/sfc/" rel="noopener">Chakshu</a>.</p>
+</div>
+
+<h2 id="method">Sources</h2>
+<p>RBI draft amendment directions on safeguards against fraudulent digital banking transactions, issued 23 November 2026 for public comments by 14 December 2026, as reported by Business Standard (23 and 24 November 2026), The Tribune/ANI, The Pioneer, Republic and The 420 (23–24 November 2026). RBI discussion paper "Exploring safeguards in digital payments to curb frauds", 9 April 2026. Ramesh is an illustration; the ₹25,000 and ₹10,000 limits are his choices, not RBI figures. Read <a href="/methodology/">how we check our facts</a>.</p>
+<p class="g-note">These are draft rules and may change after consultation. Salarist isn't linked to RBI or any bank.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "RBI's stop switch", body, "RBI stop switch")
+
+def guide_belated_itr():
+    path = "/guides/belated-itr-31-december/"
+    toc = [("short-answer", "The short answer"), ("dates", "The dates that matter"), ("refund", "Rohit: owed a refund"), ("due", "Priya: owes tax"),
+           ("regime", "The old regime catch"), ("revise", "Filed already, but with a mistake?"), ("how", "How to file late, step by step"), ("method", "How these numbers were worked out")]
+    body = guide_head(path, "If you didn't file your return for 2025-26 by 31 July, you can still file a \"belated\" return until 31 December 2026. After that date it gets much more expensive, and if you're owed a refund, you can lose it altogether. Here's what filing late costs, worked out for two salaried people.",
+                      "A calendar with 31 December circled next to an income-tax return").replace("TYPE_LINE", "<span>Income tax 2025-26</span>")
+    body += f"""
+<div class="wrap g-body prose">
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p>File by <strong>31 December 2026</strong>. A belated return costs a late fee of <strong>₹5,000</strong>, or ₹1,000 if your total income is ₹5 lakh or less. If you still owe tax, you also pay interest at 1% a month. You still get any refund you're owed. After 31 December, the only option left is an updated return (ITR-U), which can't claim a refund and adds a further 25% to 70% of the tax and interest. One more catch: a late return is taxed under the <strong>new regime</strong>, whatever you told your employer.</p>
+<p class="g-cta"><a class="btn" href="/income-tax-section-finder/">Look up a tax section</a></p>
+
+<h2 id="dates">The dates that matter</h2>
+<p>Income earned from April 2025 to March 2026 is still taxed under the Income-tax Act, 1961, as assessment year 2026-27. That's why this guide uses the old section numbers. (Not sure which year is which? See <a href="/guides/tax-year-explained/">"tax year" explained</a>.)</p>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col">Return</th><th scope="col">Last date</th><th scope="col">Cost</th></tr></thead><tbody>
+<tr><th scope="row">On time (most salaried people)</th><td data-l="Last date">31 July 2026 (passed)</td><td data-l="Cost">None</td></tr>
+<tr><th scope="row">Belated, section 139(4)</th><td data-l="Last date">31 December 2026</td><td data-l="Cost">₹5,000 fee (₹1,000 up to ₹5 lakh income), plus interest on any tax due</td></tr>
+<tr><th scope="row">Revised, section 139(5)</th><td data-l="Last date">31 March 2027</td><td data-l="Cost">Free until 31 Dec; ₹5,000 (₹1,000 up to ₹5 lakh) from 1 Jan to 31 Mar</td></tr>
+<tr><th scope="row">Updated (ITR-U), section 139(8A)</th><td data-l="Last date">Up to 31 March 2031</td><td data-l="Cost">Extra 25% to 70% of tax and interest; no refunds</td></tr>
+</tbody></table></div>
+
+<h2 id="refund">Rohit: owed a refund</h2>
+<p>Rohit, 31, is a data analyst in Hyderabad earning ₹14 lakh a year. His employer deducted TDS on a bonus that was later cut, so ₹18,000 more tax was deducted than he owes. He never filed.</p>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">If Rohit…</th><th scope="col">Late fee</th><th scope="col">Refund</th><th scope="col">He ends up</th></tr></thead><tbody>
+<tr><th scope="row">Files a belated return in December</th><td>₹5,000</td><td>₹18,000</td><td><b>₹13,000 better off</b></td></tr>
+<tr><th scope="row">Misses 31 December</th><td>—</td><td>Lost (an updated return can't claim one)</td><td><b>₹18,000 gone</b></td></tr>
+</tbody></table></div>
+<p>The ₹5,000 fee is paid before you file. Interest on a refund from a belated return only starts from the date you file, so every week of delay costs you.</p>
+
+<h2 id="due">Priya: owes tax</h2>
+<p>Priya, 29, changed jobs in October 2025. Both employers gave her the standard deduction and the lower tax slabs, so together they deducted ₹22,000 less tax than she owes. (Why this happens: <a href="/guides/two-employers-one-year-tax/">two employers in one year</a>.)</p>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">On ₹22,000 of tax due</th><th scope="col">Belated return, 15 Dec 2026</th><th scope="col">Updated return, July 2027</th></tr></thead><tbody>
+<tr><th scope="row">Interest, late return (234A, 1% a month from August)</th><td>₹1,100 (5 months)</td><td>₹2,640 (12 months)</td></tr>
+<tr><th scope="row">Interest, advance tax short (234B, 1% a month from April)</th><td>₹1,980 (9 months)</td><td>₹3,520 (16 months)</td></tr>
+<tr><th scope="row">Late fee (234F)</th><td>₹5,000</td><td>₹5,000</td></tr>
+<tr><th scope="row">Extra tax on an updated return (25% of tax + interest)</th><td>—</td><td>₹7,040</td></tr>
+<tr><th scope="row"><b>Cost on top of the ₹22,000</b></th><td><b>₹8,080</b></td><td><b>₹18,200</b></td></tr>
+</tbody></table></div>
+<p>A small amount of interest under section 234C, for missed advance tax instalments, comes on top in both cases. Missing 31 December would more than double Priya's cost. She also risks a notice from the tax department in the meantime.</p>
+
+<h2 id="regime">The old regime catch</h2>
+<p>If you have no business income, you can choose the old regime only in a return filed by the 31 July due date. A belated return is taxed under the <strong>new regime</strong> (section 115BAC(6)), even if you declared the old regime to your employer and it deducted TDS on that basis.</p>
+<p>If you claimed large HRA, 80C and home loan interest deductions, the new regime can mean more tax than your employer deducted. Work out the difference before you file, so the tax due doesn't take you by surprise.</p>
+<p>Losses are also affected. A loss from house property can still be carried forward from a belated return, but a capital loss, such as from shares or mutual funds, can't.</p>
+
+<h2 id="revise">Filed already, but with a mistake?</h2>
+<p>From 2025-26 income onwards, the Finance Act, 2026 gives you until <strong>31 March 2027</strong> to revise a return, up from 31 December. You might need to if you left out FD interest, the TDS figures don't match Form 26AS, or you picked the wrong form. A revision filed by 31 December is free. From 1 January to 31 March, there's a fee of ₹5,000, or ₹1,000 if your income is up to ₹5 lakh, under new section 234-I. If you need to fix something, do it this month. You can revise a belated return too.</p>
+
+<h2 id="how">How to file late, step by step</h2>
+<ol class="g-check">
+  <li>Download Form 16 from each employer, and the Annual Information Statement (AIS) and Form 26AS from the income-tax portal.</li>
+  <li>Add up income Form 16 misses: savings and FD interest, rent, and shares or mutual funds you sold.</li>
+  <li>Work out your tax under the new regime, and pay any tax due plus interest and the late fee through e-Pay Tax (self-assessment, minor head 300).</li>
+  <li>File ITR-1 or ITR-2 and choose "139(4) – belated" as the filing section.</li>
+  <li>E-verify within 30 days, with Aadhaar OTP or net banking. A return that isn't verified doesn't count as filed.</li>
+</ol>
+<p>Earned FD interest last year? See <a href="/guides/fd-interest-tax-below-50000/">tax on FD interest below ₹50,000</a>. Want to stop TDS on interest next time? See <a href="/guides/form-121-stop-tds-fd-interest/">Form 121</a>.</p>
+
+<h2 id="method">How these numbers were worked out</h2>
+<p>Income-tax Act, 1961: sections 139(1), 139(4), 139(5), 139(8A), 140B, 234A, 234B, 234F, 115BAC(6) and 80; Finance Act, 2026 (revised return window and section 234-I fee, applying to returns for 2025-26 onwards), as reported by Business Standard (5 February 2026) and tax practitioners' summaries; Finance Act, 2025 (updated returns up to 48 months; additional tax 25%, 50%, 60%, 70%). Interest is 1% a month, with part of a month counted as a full month. Section 234A runs from 1 August to the month of filing, and section 234B from 1 April. Section 234C isn't worked out. Rohit and Priya are illustrations; both have income above ₹5 lakh. Read <a href="/methodology/">how we check our numbers</a>.</p>
+<p class="g-note">This article is for information, not tax advice. If you have business, foreign or capital gains income, check with a tax professional.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Belated ITR by 31 December", body, "Belated ITR")
 
 def stay_safe_page():
     gmap = {g[0]: g for g in GUIDES}
@@ -14864,6 +15044,8 @@ def main():
     write("/guides/voluntary-exit-offer-how-to-judge/", guide_exit_offer())
     write("/guides/whatsapp-web-safety-i4c-advisory/", guide_whatsapp_web())
     write("/guides/wedding-invite-apk-scam/", guide_wedding_apk())
+    write("/guides/rbi-stop-switch-trusted-person/", guide_stop_switch())
+    write("/guides/belated-itr-31-december/", guide_belated_itr())
     if S2_LIVE: write("/stay-safe/", stay_safe_page())
     write("/guides/company-car-perquisite-value-2026/", guide_perk())
     write("/guides/best-months-for-a-week-long-break-2027/", guide_months())
@@ -14998,7 +15180,7 @@ def main():
     write("/guides/prepay-home-loan-early-or-later/", guide_prepay_timing())
     for p, (name, title, desc, h1, b) in PAGES.items(): write(p, text_page(p, name, title, desc, h1, b))
     write("/404.html", page_404())
-    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/gta-6-scams-fake-downloads/", "0.7"), ("/guides/gta-6-ps5-cost-emi-or-save/", "0.7"), ("/guides/day-off-for-gta-6-leave-rules/", "0.6"), ("/guides/voluntary-exit-offer-how-to-judge/", "0.8"), ("/guides/whatsapp-web-safety-i4c-advisory/", "0.7"), ("/guides/wedding-invite-apk-scam/", "0.8"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
+    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/gta-6-scams-fake-downloads/", "0.7"), ("/guides/gta-6-ps5-cost-emi-or-save/", "0.7"), ("/guides/day-off-for-gta-6-leave-rules/", "0.6"), ("/guides/voluntary-exit-offer-how-to-judge/", "0.8"), ("/guides/whatsapp-web-safety-i4c-advisory/", "0.7"), ("/guides/wedding-invite-apk-scam/", "0.8"), ("/guides/rbi-stop-switch-trusted-person/", "0.8"), ("/guides/belated-itr-31-december/", "0.8"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
     # lastmod: the date each page's content last changed. A page's date moves only when its HTML changes
     # (ignoring the ?v= cache-busting hashes), tracked in src/data/lastmod.json.
     import hashlib, datetime

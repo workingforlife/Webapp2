@@ -1,7 +1,7 @@
 {
  "/": {
   "date": "2026-11-25",
-  "hash": "cca639268432b20b"
+  "hash": "bcee3214cb47577f"
  },
  "/about/": {
   "date": "2026-11-25",
@@ -81,7 +81,7 @@
  },
  "/guides/": {
   "date": "2026-11-25",
-  "hash": "3a0eea0cddc80132"
+  "hash": "3dabfe60ca355e82"
  },
  "/guides/25x-rule-retirement-india/": {
   "date": "2026-11-25",
@@ -94,6 +94,10 @@
  "/guides/basic-pay-50-percent-rule/": {
   "date": "2026-11-25",
   "hash": "03d8e5993abc7d3c"
+ },
+ "/guides/belated-itr-31-december/": {
+  "date": "2026-11-25",
+  "hash": "3d6aed26658efcd8"
  },
  "/guides/best-months-for-a-week-long-break-2027/": {
   "date": "2026-11-25",
@@ -157,7 +161,7 @@
  },
  "/guides/digital-arrest-scam/": {
   "date": "2026-11-25",
-  "hash": "90f050764d21457f"
+  "hash": "8d1956abc24a7aa3"
  },
  "/guides/employer-nps-14-percent-new-regime/": {
   "date": "2026-11-25",
@@ -439,6 +443,10 @@
   "date": "2026-11-25",
   "hash": "2fda9362da09aadc"
  },
+ "/guides/rbi-stop-switch-trusted-person/": {
+  "date": "2026-11-25",
+  "hash": "59c5877b773756af"
+ },
  "/guides/rent-or-buy-by-age-and-moving-cities/": {
   "date": "2026-11-25",
   "hash": "e793f3943c762864"
@@ -593,7 +601,7 @@
  },
  "/income-tax-section-finder/": {
   "date": "2026-11-25",
-  "hash": "caa5515b1893362f"
+  "hash": "7fe822e656db75c7"
  },
  "/labour-codes-salary-calculator/": {
   "date": "2026-11-25",
@@ -641,7 +649,7 @@
  },
  "/stay-safe/": {
   "date": "2026-11-25",
-  "hash": "a999d62af85318a9"
+  "hash": "b5b47dd616008c39"
  },
  "/sukanya-samriddhi-calculator/": {
   "date": "2026-11-25",
@@ -649,7 +657,7 @@
  },
  "/tax-season/": {
   "date": "2026-11-25",
-  "hash": "be4f2bf3a2452e5a"
+  "hash": "fee903b3057e8ca6"
  },
  "/term-insurance-calculator/": {
   "date": "2026-11-25",
@@ -661,6 +669,6 @@
  },
  "/tools/": {
   "date": "2026-11-25",
-  "hash": "41138f3b6e861fbe"
+  "hash": "0750d538ed797889"
  }
 }
