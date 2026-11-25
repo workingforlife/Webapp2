@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A phone showing a wedding card that is really an app installer, with a warning sign">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5FE0"/><stop offset="1" stop-color="#0B2A6B"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".18"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="#FFFFFF" opacity=".08"><circle cx="190" cy="760" r="80"/><circle cx="1450" cy="740" r="64"/><circle cx="230" cy="160" r="46"/></g>
+
+<g transform="translate(600 110)">
+  <rect width="400" height="700" rx="54" fill="#0E1B3D"/><rect x="18" y="18" width="364" height="664" rx="40" fill="#1B2C57"/>
+  <rect x="160" y="34" width="80" height="12" rx="6" fill="#0E1B3D"/>
+  <g transform="translate(50 110)">
+    <rect width="300" height="380" rx="20" fill="#FFF6E5"/>
+    <rect x="16" y="16" width="268" height="348" rx="14" fill="none" stroke="#D9A93F" stroke-width="4" stroke-dasharray="10 8"/>
+    <g transform="translate(150 110)"><circle cx="-26" cy="0" r="34" fill="none" stroke="#E5484D" stroke-width="10"/><circle cx="26" cy="0" r="34" fill="none" stroke="#D9A93F" stroke-width="10"/></g>
+    <rect x="60" y="190" width="180" height="18" rx="9" fill="#D9A93F"/><rect x="85" y="222" width="130" height="12" rx="6" fill="#E8CF9B"/>
+    <rect x="70" y="250" width="160" height="12" rx="6" fill="#E8CF9B"/>
+    <g transform="translate(40 290)"><rect width="220" height="56" rx="14" fill="#E5484D"/>
+      <text x="110" y="38" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="30" fill="#FFFFFF">.apk</text></g>
+  </g>
+  <g transform="translate(50 520)"><rect width="300" height="64" rx="14" fill="#2A3F73"/><rect x="20" y="22" width="180" height="20" rx="10" fill="#5876B8"/>
+    <rect x="216" y="14" width="68" height="36" rx="10" fill="#5BC48C"/></g>
+  <rect x="140" y="620" width="120" height="12" rx="6" fill="#2A3F73"/>
+</g>
+<g transform="translate(1130 220)"><path d="M110 0 L220 190 L0 190 Z" fill="#FFD27A" stroke="#FFD27A" stroke-width="24" stroke-linejoin="round"/>
+  <rect x="98" y="52" width="24" height="84" rx="12" fill="#0B2A6B"/><circle cx="110" cy="164" r="14" fill="#0B2A6B"/></g>
+<g transform="translate(300 330)"><rect width="200" height="240" rx="22" fill="#FFFFFF"/>
+  <rect x="24" y="26" width="110" height="18" rx="9" fill="#5876B8"/>
+  <g fill="#CDD6E3"><rect x="24" y="70" width="152" height="14" rx="7"/><rect x="24" y="100" width="130" height="14" rx="7"/><rect x="24" y="130" width="142" height="14" rx="7"/></g>
+  <g transform="translate(100 190)"><circle r="26" fill="#5BC48C"/><path d="M-12 0 L-3 9 L13 -9" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="100" y="236" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="26" fill="#0B2A6B">PDF · JPG</text></g>
+</svg>
