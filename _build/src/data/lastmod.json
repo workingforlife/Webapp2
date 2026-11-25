@@ -1,7 +1,7 @@
 {
  "/": {
   "date": "2026-11-25",
-  "hash": "bcee3214cb47577f"
+  "hash": "d75ce3a3a13d599e"
  },
  "/about/": {
   "date": "2026-11-25",
@@ -25,7 +25,7 @@
  },
  "/car-ownership-cost/": {
   "date": "2026-11-25",
-  "hash": "e8a168037199953d"
+  "hash": "4ce66c95de7ea399"
  },
  "/changing-jobs/": {
   "date": "2026-11-25",
@@ -81,11 +81,15 @@
  },
  "/guides/": {
   "date": "2026-11-25",
-  "hash": "3dabfe60ca355e82"
+  "hash": "12cd3e000b836579"
  },
  "/guides/25x-rule-retirement-india/": {
   "date": "2026-11-25",
   "hash": "84e73e7ff5746004"
+ },
+ "/guides/advance-tax-15-december-salaried/": {
+  "date": "2026-11-25",
+  "hash": "ff76ae57bf6caa06"
  },
  "/guides/are-your-sips-on-track/": {
   "date": "2026-11-25",
@@ -118,6 +122,10 @@
  "/guides/budgeting-with-a-bonus/": {
   "date": "2026-11-25",
   "hash": "486b79bd155fab04"
+ },
+ "/guides/buy-car-december-or-january/": {
+  "date": "2026-11-25",
+  "hash": "43c8fcc2f1b68f62"
  },
  "/guides/car-lease-20-percent-slab-and-ev/": {
   "date": "2026-11-25",
@@ -601,7 +609,7 @@
  },
  "/income-tax-section-finder/": {
   "date": "2026-11-25",
-  "hash": "7fe822e656db75c7"
+  "hash": "14b42de26c264641"
  },
  "/labour-codes-salary-calculator/": {
   "date": "2026-11-25",
@@ -657,7 +665,7 @@
  },
  "/tax-season/": {
   "date": "2026-11-25",
-  "hash": "fee903b3057e8ca6"
+  "hash": "45d7fd463e80dbfd"
  },
  "/term-insurance-calculator/": {
   "date": "2026-11-25",
@@ -669,6 +677,6 @@
  },
  "/tools/": {
   "date": "2026-11-25",
-  "hash": "0750d538ed797889"
+  "hash": "6f12d9cd2638388d"
  }
 }

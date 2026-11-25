@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A calendar turning from December to January next to a car and a price tag">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5FE0"/><stop offset="1" stop-color="#0B2A6B"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".18"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="#FFFFFF" opacity=".08"><circle cx="190" cy="760" r="80"/><circle cx="1450" cy="740" r="64"/><circle cx="230" cy="160" r="46"/></g>
+<g transform="translate(300 230)"><rect width="300" height="320" rx="24" fill="#FFFFFF"/><path d="M0 24 A24 24 0 0 1 24 0 L276 0 A24 24 0 0 1 300 24 L300 90 L0 90 Z" fill="#5876B8"/>
+<rect x="64" y="-26" width="20" height="60" rx="10" fill="#0E1B3D"/><rect x="216" y="-26" width="20" height="60" rx="10" fill="#0E1B3D"/>
+<text x="150" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="34" fill="#fff">DEC 2026</text>
+<text x="150" y="250" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="130" fill="#0B2A6B">31</text></g><g transform="translate(560 260)"><rect width="300" height="320" rx="24" fill="#FFFFFF"/><path d="M0 24 A24 24 0 0 1 24 0 L276 0 A24 24 0 0 1 300 24 L300 90 L0 90 Z" fill="#E5484D"/>
+<rect x="64" y="-26" width="20" height="60" rx="10" fill="#0E1B3D"/><rect x="216" y="-26" width="20" height="60" rx="10" fill="#0E1B3D"/>
+<text x="150" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="34" fill="#fff">JAN 2027</text>
+<text x="150" y="250" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="130" fill="#0B2A6B">1</text></g>
+<path d="M520 640 C600 700 700 700 760 640" fill="none" stroke="#FFD27A" stroke-width="10" stroke-linecap="round"/><path d="M740 620 L765 645 L735 660" fill="none" stroke="#FFD27A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(960 470)"><path d="M20 120 L40 60 C50 36 70 24 96 24 L250 24 C276 24 294 36 306 60 L330 120 L340 120 C352 120 360 130 360 142 L360 180 L0 180 L0 142 C0 130 8 120 20 120 Z" fill="#E5484D"/>
+<path d="M66 110 L82 66 C86 56 94 50 104 50 L170 50 L170 110 Z" fill="#BFD3F2"/><path d="M186 110 L186 50 L242 50 C252 50 260 56 264 66 L280 110 Z" fill="#BFD3F2"/>
+<circle cx="80" cy="182" r="42" fill="#0E1B3D"/><circle cx="80" cy="182" r="18" fill="#9DB2DC"/><circle cx="280" cy="182" r="42" fill="#0E1B3D"/><circle cx="280" cy="182" r="18" fill="#9DB2DC"/></g>
+<g transform="translate(1180 300) rotate(12)"><path d="M0 0 L160 0 L200 40 L160 80 L0 80 Z" fill="#FFD27A"/><circle cx="168" cy="40" r="10" fill="#0B2A6B"/>
+<text x="76" y="54" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="36" fill="#5A2A00">−₹</text></g></svg>

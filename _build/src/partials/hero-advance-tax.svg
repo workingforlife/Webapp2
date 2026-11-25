@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A calendar with 15 December circled, a salary slip and a stack of coins">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5FE0"/><stop offset="1" stop-color="#0B2A6B"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".18"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="#FFFFFF" opacity=".08"><circle cx="190" cy="760" r="80"/><circle cx="1450" cy="740" r="64"/><circle cx="230" cy="160" r="46"/></g>
+<g transform="translate(460 260)"><rect width="300" height="320" rx="24" fill="#FFFFFF"/><path d="M0 24 A24 24 0 0 1 24 0 L276 0 A24 24 0 0 1 300 24 L300 90 L0 90 Z" fill="#E5484D"/>
+<rect x="64" y="-26" width="20" height="60" rx="10" fill="#0E1B3D"/><rect x="216" y="-26" width="20" height="60" rx="10" fill="#0E1B3D"/>
+<text x="150" y="62" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="34" fill="#fff">DECEMBER</text>
+<text x="150" y="250" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="130" fill="#0B2A6B">15</text></g>
+<circle cx="610" cy="470" r="105" fill="none" stroke="#E5484D" stroke-width="10"/>
+<g transform="translate(860 230)"><rect width="260" height="360" rx="18" fill="#F4F7FC"/><rect x="28" y="30" width="150" height="22" rx="11" fill="#5876B8"/>
+<g fill="#CDD6E3"><rect x="28" y="80" width="204" height="14" rx="7"/><rect x="28" y="110" width="170" height="14" rx="7"/><rect x="28" y="140" width="190" height="14" rx="7"/></g>
+<rect x="28" y="190" width="204" height="2" fill="#CDD6E3"/><text x="28" y="240" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="26" fill="#0B2A6B">TDS ✓</text>
+<text x="28" y="290" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="26" fill="#E5484D">FD, rent ?</text></g>
+<g transform="translate(1180 400)"><g fill="#FFD27A" stroke="#D9A93F" stroke-width="6"><ellipse cx="80" cy="200" rx="80" ry="24"/><rect x="0" y="160" width="160" height="40"/><ellipse cx="80" cy="160" rx="80" ry="24"/>
+<rect x="0" y="110" width="160" height="40"/><ellipse cx="80" cy="110" rx="80" ry="24"/></g>
+<text x="80" y="124" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="40" fill="#8A5A00">₹</text></g>
+</svg>
