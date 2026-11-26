@@ -58,6 +58,11 @@ HOLD = {
     "s4": ["/guides/voluntary-exit-offer-how-to-judge/", "/guides/whatsapp-web-safety-i4c-advisory/"],
     # Batch S5 (drafted 25 Nov, approved 25 Nov): trend guides: RBI draft stop switch and trusted person; belated ITR by 31 Dec.
     # Batch S6 (drafted 25 Nov, from the trend scout's A1 and A3): advance tax by 15 Dec; car in December or January.
+    # Batch T10 (N14, drafted 26 Nov): superannuation calculator; guides to follow after tool approval.
+    # Batch S7 (drafted 26 Nov from the 26 Nov morning trend scout: A1, A2, A4).
+    "s7": ["/guides/life-certificate-30-november-pension/", "/guides/motor-insurance-four-layer-15-december/", "/guides/garden-leave-pay-pf-joining/"],
+    "t10": ["/superannuation-calculator/", "/guides/superannuation-explained/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/move-superannuation-to-nps/",
+            "/guides/superannuation-at-retirement-commute-and-pension/", "/guides/superannuation-7-5-lakh-limit/"],
     "s6": ["/guides/advance-tax-15-december-salaried/", "/guides/buy-car-december-or-january/"],
     "s5": ["/guides/rbi-stop-switch-trusted-person/", "/guides/belated-itr-31-december/"],
     "s3": ["/guides/gta-6-scams-fake-downloads/", "/guides/gta-6-ps5-cost-emi-or-save/", "/guides/day-off-for-gta-6-leave-rules/"],
@@ -74,7 +79,7 @@ HOLD = {
     "t3": ["/fire-calculator/", "/guides/fire-number-india/", "/guides/retire-at-45-bridge-epf-nps/", "/guides/is-25x-enough-early-retirement/", "/guides/lean-fat-coast-fire/", "/guides/savings-rate-early-retirement/", "/guides/epf-nps-if-you-retire-early/", "/guides/wedding-invite-apk-scam/"],  # wedding-invite APK guide added 24 Nov (your call), source for YouTube video 3
     "t2": ["/best-day-to-resign/", "/guides/when-to-resign-best-last-day/", "/guides/resign-before-or-after-rsu-vesting/", "/guides/joining-bonus-clawback/", "/guides/when-to-hand-in-notice/", "/guides/use-or-encash-leave-before-resigning/", "/guides/wait-for-bonus-or-join-now/"],
 }
-RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2", "s3", "c1", "s4", "t3", "s5", "s6"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2, s3 22 Nov; c1 23 Nov, s4 24 Nov; t3, s5 25 Nov
+RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2", "s3", "c1", "s4", "t3", "s5", "s6", "s7"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2, s3 22 Nov; c1 23 Nov, s4 24 Nov; t3, s5, s6 25 Nov; s7 26 Nov
 # Review builds only: SALARIST_PREVIEW=t1 python3 build.py builds a held batch too (never push such a build).
 RELEASED |= {b for b in os.environ.get("SALARIST_PREVIEW", "").split(",") if b}
 HELD = {p for b, ps in HOLD.items() if b not in RELEASED for p in ps}
@@ -116,6 +121,8 @@ SO_LIVE = "t7" in RELEASED   # ESOP and RSU tax calculator: goes live with batch
 if SO_LIVE: LIVE_TOOLS.append(("/esop-rsu-tax-calculator/", "ESOP and RSU Tax Calculator"))
 RT_LIVE = "t9" in RELEASED   # back to office cost calculator (N7): goes live with batch T9
 if RT_LIVE: LIVE_TOOLS.append(("/return-to-office-cost-calculator/", "Back to Office Cost Calculator"))
+SA_LIVE = "t10" in RELEASED   # superannuation calculator (N14): goes live with batch T10
+if SA_LIVE: LIVE_TOOLS.append(("/superannuation-calculator/", "Superannuation Calculator"))
 HC_LIVE = "t8" in RELEASED   # health insurance cover calculator (N6): goes live with batch T8
 if HC_LIVE: LIVE_TOOLS.append(("/health-insurance-cover-calculator/", "Health Insurance Cover Calculator"))
 HV_LIVE = "t6" in RELEASED   # did your hike beat inflation?: goes live with batch T6
@@ -137,7 +144,7 @@ LC_LIVE = "t1" in RELEASED   # labour codes salary calculator: goes live with ba
 if LC_LIVE: LIVE_TOOLS.append(("/labour-codes-salary-calculator/", "Labour Codes Salary Calculator"))
 SSY_LIVE = True   # set False to build without the Sukanya Samriddhi calculator (in review)
 if SSY_LIVE: LIVE_TOOLS.append(("/sukanya-samriddhi-calculator/", "Sukanya Samriddhi Calculator"))
-QUICK_TOOLS = ["/emi-calculator/", "/sip-calculator/", "/fd-ppf-rd-calculator/", "/gratuity-calculator/", "/income-tax-section-finder/", "/car-ownership-cost/", "/nps-calculator/", "/epf-calculator/", "/eps-pension-calculator/", "/retirement-planner/", "/full-and-final-settlement/", "/term-insurance-calculator/", "/sukanya-samriddhi-calculator/", "/swp-calculator/", "/esop-rsu-tax-calculator/", "/health-insurance-cover-calculator/"]   # simple calculators: shown as chips, not big cards or menu items
+QUICK_TOOLS = ["/superannuation-calculator/", "/emi-calculator/", "/sip-calculator/", "/fd-ppf-rd-calculator/", "/gratuity-calculator/", "/income-tax-section-finder/", "/car-ownership-cost/", "/nps-calculator/", "/epf-calculator/", "/eps-pension-calculator/", "/retirement-planner/", "/full-and-final-settlement/", "/term-insurance-calculator/", "/sukanya-samriddhi-calculator/", "/swp-calculator/", "/esop-rsu-tax-calculator/", "/health-insurance-cover-calculator/"]   # simple calculators: shown as chips, not big cards or menu items
 MENU_EXTRA = []   # extra phone-menu tools for review builds
 NAV = [("/tools/", "Tools"), ("/guides/", "Guides"), ("/methodology/", "How we check")]
 
@@ -320,6 +327,14 @@ SEO = {
     "/guides/eps-pension-explained/": ("EPS Pension Explained: Job Changes, Transfer and Claims", "What EPS is, how the pension is worked out under EPS 2026, what happens when you change jobs, and how to claim it with Form 10C or 10D."),
     "/guides/how-much-epf-at-58/": ("How Much Will Your EPF Be at 58? A Worked Example", "What EPF could grow to by 58 at 8.25% interest, where it comes from, and what VPF, capped wages and the rate change. Plus the EPS pension."),
     "/guides/epf-wage-ceiling-25000/": ("EPF Wage Ceiling ₹25,000: What Changes for You", "The EPF wage ceiling rose to ₹25,000 from 17 Sep 2026. What it does to your PF deduction, take-home pay, EPF balance and EPS pension."),
+    "/guides/life-certificate-30-november-pension/": ("Life Certificate by 30 Nov: Keep Pension Coming", "Help a parent submit the pension life certificate by 30 November from home by face scan, check it was accepted, and avoid the fake update call."),
+    "/guides/motor-insurance-four-layer-15-december/": ("New Car Insurance Rules from 15 Dec: What to Buy", "From 15 December car and bike policies come in four covers, two compulsory. What each covers, what to pick, and renewing before or after."),
+    "/guides/garden-leave-pay-pf-joining/": ("On Garden Leave? Pay, PF and When You Can Join", "Put on garden leave? Your salary, PF and gratuity service continue to the last day. When you can join elsewhere, the tax, and what to ask HR."),
+    "/guides/superannuation-explained/": ("Superannuation Explained: What It Is and How It's Taxed", "Your employer's superannuation fund: what it is, what happens when you leave or retire, and the tax on each choice. Worked example with real numbers."),
+    "/guides/superannuation-on-resignation-withdraw-or-nps/": ("Resigning? Withdraw Superannuation, Move to NPS or Keep", "Leaving your job with a superannuation balance? Cash is taxed at your average rate; NPS and your new employer's fund aren't. How to choose, with numbers."),
+    "/guides/move-superannuation-to-nps/": ("Move Superannuation to NPS: Steps and Tax", "How to move your superannuation to NPS tax-free: the Tier I account, the request to the trust, what to check, and the NPS rules that then apply."),
+    "/guides/superannuation-at-retirement-commute-and-pension/": ("Superannuation at Retirement: Lump Sum and Pension", "At retirement you can usually take up to a third of your superannuation tax-free and turn the rest into a pension. How it works, with a worked example."),
+    "/guides/superannuation-7-5-lakh-limit/": ("Superannuation and the ₹7.5 Lakh Limit Explained", "Employer PF, NPS and superannuation together are tax-free only up to ₹7.5 lakh a year. Who crosses it, the extra tax, and what to ask HR."),
     "/guides/nps-new-exit-rules/": ("NPS Withdrawal Rules 2026: What You Get at 60", "NPS after PFRDA's December 2025 changes: up to 80% lump sum, only 60% tax-free, and what one salaried saver gets at 60."),
     "/guides/employer-nps-14-percent-new-regime/": ("Employer NPS 14% in the New Regime: Is It Worth It?", "How much employer NPS saves at 10%, 20% and 30% slabs under the new regime, the old-regime 10% limit and the ₹7.5 lakh cap."),
     "/guides/nps-80-percent-withdrawal-tax/": ("NPS 80% Lump Sum: Is It Tax-Free? The 60% Rule", "PFRDA allows 80% as a lump sum, but only 60% is tax-free. The tax on the extra 20% for ₹50 lakh to ₹2 crore corpuses."),
@@ -497,11 +512,13 @@ SITUATIONS = [
       ("Pick your last day and hand in notice", "Find the last working day that leaves you with the most, then count back your notice.",
        ["/best-day-to-resign/", "/guides/when-to-resign-best-last-day/", "/guides/when-to-hand-in-notice/", "/guides/notice-period-buyout/", "/guides/use-or-encash-leave-before-resigning/"]),
       ("Check your full and final settlement", "Last salary, leave encashment, gratuity and bonus, what's tax-free, and when it's due.",
-       ["/full-and-final-settlement/", "/guides/full-and-final-settlement-explained/", "/guides/leave-encashment-tax-on-resignation/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/"]),
+       ["/full-and-final-settlement/", "/guides/full-and-final-settlement-explained/", "/guides/leave-encashment-tax-on-resignation/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/", "/guides/garden-leave-pay-pf-joining/"]),
       ("Move your PF and sort out the tax", "Transfer your PF instead of withdrawing it, and avoid a tax surprise from two employers in one year.",
        ["/guides/transfer-pf-dont-withdraw/", "/guides/two-employers-one-year-tax/", "/guides/epf-withdrawal-rules-2026/", "/guides/startup-esop-tax-deferral/", "/guides/car-lease-job-change-buy-back-or-hand-back/"])]
      + ([("Count what the new office will cost you", "More office days, or a farther office, mean commute, parking, lunches and hours. See what they cost and the pay that covers them.",
        ["/return-to-office-cost-calculator/", "/guides/return-to-office-cost/", "/guides/move-closer-to-office-or-commute/"])] if RT_LIVE else [])
+     + ([("Decide what to do with your superannuation", "If your employer paid into a superannuation fund, taking it as cash is taxed; moving it to NPS isn't.",
+       ["/superannuation-calculator/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/move-superannuation-to-nps/"])] if SA_LIVE else [])
      + ([("Replace the health cover you lose", "Your employer's group health cover ends with the job. Check that your own policy is enough before your last day.",
        ["/health-insurance-cover-calculator/", "/guides/is-employer-health-insurance-enough/", "/guides/how-much-health-insurance-do-you-need/"])] if HC_LIVE else [])),
     ("/buying-a-home/", "Buying a home", "Buying a home? The money decisions, in order",
@@ -523,11 +540,11 @@ SITUATIONS = [
      [("Work out how much you need", "Today's spending, grown with inflation, for as many years as you'll live after you stop.",
        ["/retirement-planner/", "/guides/how-much-do-you-need-to-retire/", "/guides/25x-rule-retirement-india/", "/guides/retire-at-50-55-or-60/", "/guides/retirement-planning-in-your-40s/"]),
       ("See what EPF, EPS and NPS will give you", "Your provident fund at 58, your EPS pension, and your NPS lump sum and pension.",
-       ["/epf-calculator/", "/eps-pension-calculator/", "/nps-calculator/", "/guides/how-much-epf-at-58/", "/guides/eps-pension-explained/", "/guides/nps-new-exit-rules/", "/guides/nps-vs-ppf-vs-epf/", "/guides/vpf-worth-it/"]),
+       ["/epf-calculator/", "/eps-pension-calculator/", "/nps-calculator/", "/guides/how-much-epf-at-58/", "/guides/eps-pension-explained/", "/guides/nps-new-exit-rules/", "/guides/nps-vs-ppf-vs-epf/", "/guides/vpf-worth-it/", "/guides/life-certificate-30-november-pension/"]),
       ("Close the gap", "The SIP you need, stepping up each year, or how soon you could stop working.",
        ["/sip-calculator/", "/fire-calculator/", "/guides/how-much-sip-do-you-need/", "/guides/step-up-sip/", "/guides/fire-number-india/"]),
       ("Turn savings into a monthly income", "How much you can draw each month, and for how long, after tax.",
-       ["/swp-calculator/", "/guides/swp-monthly-income-explained/", "/guides/annuity-or-swp/", "/guides/how-long-will-retirement-savings-last/", "/guides/three-bucket-retirement-plan/", "/guides/epf-withdrawal-changes-november-2026/"])]),
+       (["/superannuation-calculator/", "/guides/superannuation-at-retirement-commute-and-pension/"] if SA_LIVE else []) + ["/swp-calculator/", "/guides/swp-monthly-income-explained/", "/guides/annuity-or-swp/", "/guides/how-long-will-retirement-savings-last/", "/guides/three-bucket-retirement-plan/", "/guides/epf-withdrawal-changes-november-2026/"])]),
     ("/got-a-bonus/", "Bonus or hike", "Got a bonus or a hike? What it's really worth, and the best use for it",
      "What's left after tax, whether your hike beat inflation, the basics to fix first, and whether to prepay a loan or invest.",
      "Got a Bonus or Hike? What It's Worth and the Best Use", "What your bonus or hike leaves after tax and inflation, the basics to fix first, and whether to prepay your home loan or invest.",
@@ -549,7 +566,7 @@ SITUATIONS = [
       ("Compare petrol, CNG and electric", "Price, fuel, insurance, servicing and resale, per month and per km.",
        ["/car-ownership-cost/", "/guides/petrol-cng-or-ev-cost-per-km/", "/guides/ev-worth-it-1000-km-a-month/", "/guides/government-ev-rule-should-you-switch/"]),
       ("Loan or cash, new or used", "What a car loan really costs against paying cash, and a new car against a 3-year-old one.",
-       ["/emi-calculator/", "/guides/car-loan-or-cash/", "/guides/new-or-used-car/", "/guides/part-pay-car-or-personal-loan/"])]),
+       ["/emi-calculator/", "/guides/car-loan-or-cash/", "/guides/new-or-used-car/", "/guides/part-pay-car-or-personal-loan/", "/guides/motor-insurance-four-layer-15-december/"])]),
     ("/tax-season/", "Tax season", "Tax season: proofs, Form 130 and the new section numbers",
      "The Income-tax Act, 2025 renumbered everything. Find your sections, check the tax on your salary, stock and savings, and avoid TDS surprises.",
      "Tax Season for Salaried India: Sections, Form 130, TDS", "New section numbers, Form 130, tax on salary, ESOPs and RSUs, gratuity, leave encashment, FD interest and mutual funds, for salaried people.",
@@ -1107,10 +1124,11 @@ RELATED = {
     "/best-day-to-resign/": ["/job-offer-comparator/", "/esop-rsu-tax-calculator/", "/full-and-final-settlement/", "/gratuity-calculator/", "/budget-planner/", "/labour-codes-salary-calculator/"],
     "/return-to-office-cost-calculator/": ["/job-offer-comparator/", "/budget-planner/", "/car-ownership-cost/", "/rent-vs-buy/"],
     "/labour-codes-salary-calculator/": ["/job-offer-comparator/", "/salary-hike-vs-inflation/", "/gratuity-calculator/", "/epf-calculator/", "/budget-planner/", "/full-and-final-settlement/"],
-    "/full-and-final-settlement/": ["/best-day-to-resign/", "/gratuity-calculator/", "/epf-calculator/", "/eps-pension-calculator/", "/budget-planner/"],
+    "/full-and-final-settlement/": ["/best-day-to-resign/", "/gratuity-calculator/", "/epf-calculator/", "/eps-pension-calculator/", "/superannuation-calculator/", "/budget-planner/"],
     "/income-tax-section-finder/": ["/nps-calculator/", "/gratuity-calculator/", "/fd-ppf-rd-calculator/", "/company-car-lease-vs-loan/"],
     "/car-ownership-cost/": ["/company-car-lease-vs-loan/", "/emi-calculator/", "/budget-planner/", "/return-to-office-cost-calculator/"],
-    "/nps-calculator/": ["/epf-calculator/", "/retirement-planner/", "/sip-calculator/", "/fd-ppf-rd-calculator/"],
+    "/nps-calculator/": ["/epf-calculator/", "/retirement-planner/", "/sip-calculator/", "/fd-ppf-rd-calculator/", "/superannuation-calculator/"],
+    "/superannuation-calculator/": ["/nps-calculator/", "/gratuity-calculator/", "/full-and-final-settlement/", "/best-day-to-resign/", "/retirement-planner/"],
     "/epf-calculator/": ["/eps-pension-calculator/", "/retirement-planner/", "/labour-codes-salary-calculator/", "/nps-calculator/"],
     "/eps-pension-calculator/": ["/epf-calculator/", "/retirement-planner/", "/full-and-final-settlement/", "/gratuity-calculator/"],
     "/retirement-planner/": ["/fire-calculator/", "/swp-calculator/", "/epf-calculator/", "/nps-calculator/", "/sip-calculator/", "/term-insurance-calculator/"],
@@ -1127,7 +1145,7 @@ def related(path):
     if path in idx: picks = RELATED.get(path, [])
     elif path in SAFETY_GUIDES: picks = list(SAFETY_RELATED)
     else:   # a guide: its own tool first, then that tool's related tools
-        own = next((p for p, (n, d, gl) in idx.items() if path in gl), None)
+        own = GUIDE_HOME.get(path) if GUIDE_HOME.get(path) in idx else next((p for p, (n, d, gl) in idx.items() if path in gl), None)
         picks = ([own] + RELATED.get(own, [])) if own else list(TOOL_CARDS)
     picks = [p for p in picks if p in idx and p != path][:4]
     cards = "".join(f'<a class="rel" href="{u}"><b>{idx[u][0]}</b><span>{idx[u][1]}</span></a>' for u in picks)
@@ -1181,6 +1199,9 @@ def check_links():
     for g in GUIDES:
         if g[0] in SAFETY_GUIDES: continue
         if not any(g[0] in gl for n, d, gl in idx.values()): bad.append(f"{g[0]}: guide not listed under any tool in catalog()")
+    for g in GUIDES:
+        homes = [p for p, (n, d, gl) in idx.items() if g[0] in gl]
+        if len(homes) > 1 and GUIDE_HOME.get(g[0]) not in homes: bad.append(f"{g[0]}: listed under {len(homes)} tools; set its home tool in GUIDE_HOME")
     if bad: raise SystemExit("Interlinking check failed:\n  " + "\n  ".join(bad))
 
 def rentbuy_page():
@@ -1451,6 +1472,10 @@ TIP_GUIDES = {
     ("rt", "pay rise"): ("/guides/pay-rise-to-cover-return-to-office/", "What pay rise covers going back to office?"),
     ("rt", "moving closer"): ("/guides/move-closer-to-office-or-commute/", "Move closer to office or keep commuting?"),
     ("rt", "what if"): ("/guides/cheapest-way-to-commute-to-office/", "The cheapest way to commute to office"),
+    ("sa", "leaving or retiring"): ("/guides/superannuation-on-resignation-withdraw-or-nps/", "Resigning? Withdraw, move to NPS or keep"),
+    ("sa", "income"): ("/guides/superannuation-explained/", "Superannuation explained"),
+    ("sa", "commutation"): ("/guides/superannuation-at-retirement-commute-and-pension/", "The tax-free third and the pension"),
+    ("sa", "NPS return"): ("/guides/move-superannuation-to-nps/", "Moving superannuation to NPS"),
     ("hc", "cover you need"): ("/guides/how-much-health-insurance-do-you-need/", "How much health insurance do you need?"),
     ("hc", "employer cover"): ("/guides/is-employer-health-insurance-enough/", "Is your employer's health insurance enough?"),
     ("hc", "parents"): ("/guides/health-insurance-for-parents/", "Health insurance for parents"),
@@ -2332,7 +2357,8 @@ def eps_page():
     <li><strong>Under 10 years:</strong> withdrawal benefit = Table-IV factor for your completed months of service × pensionable wages (your service-weighted capped wages).</li>
     <li><strong>Service:</strong> counted in years and months as you enter it. EPFO's own count of your service, and its sanctioned amount, decide.</li>
   </ul>
-  <h2 id="sources">Sources</h2>
+
+  {"<p class=\"g-callout\"><b>Parent on an EPS pension?</b> The life certificate is due 12 months after the last one; government pensioners by 30 November. Read <a href=\"/guides/life-certificate-30-november-pension/\">how to submit it from home</a>.</p>" if "s7" in RELEASED else ""}  <h2 id="sources">Sources</h2>
   <p>Employees' Pension Scheme, 2026 (G.S.R. 527(E), notified 29 June 2026): paragraph 12(2) (formula, pro rata for each wage-ceiling period), paragraphs 10–13 (service, added years, early and deferred pension, minimum pension, withdrawal benefit and Table-IV, scheme certificate). Wage ceiling of ₹25,000 from 17 September 2026 (Ministry of Labour and Employment, 16 September 2026); ₹15,000 from 1 September 2014 and ₹6,500 before. Read <a href="/methodology/">how we check our numbers</a>.</p>
   <h2>Frequently asked questions</h2>
   {faq_html(faqs)}
@@ -2479,7 +2505,9 @@ def fnf_page():
     <li><strong>Tax estimate:</strong> your slab plus 4% cess on the taxable part (salary, bonus, taxable leave encashment and gratuity). Your actual tax depends on your income for the whole year.</li>
     <li><strong>Due dates:</strong> 2 working days after your last day for wages and other dues (weekends skipped; holidays aren't known); 30 days for gratuity.</li>
   </ul>
-  <h2 id="sources">Sources</h2>
+  {"<p class=\"g-callout\"><b>Superannuation in your settlement?</b> Read <a href=\"/guides/superannuation-on-resignation-withdraw-or-nps/\">Withdraw, move to NPS or keep</a> before you tick an option.</p>" if SA_LIVE else ""}
+
+  {"<p class=\"g-callout\"><b>Put on garden leave?</b> Your pay, PF and gratuity service continue to the last day: <a href=\"/guides/garden-leave-pay-pf-joining/\">what it means for your settlement</a>.</p>" if "s7" in RELEASED else ""}  <h2 id="sources">Sources</h2>
   <p>Code on Wages, 2019, section 17(2) (in force from 21 November 2025): wages on resignation, removal, dismissal or retrenchment within two working days. Income-tax Act, 2025, section 19 (earlier section 10(10AA)): leave encashment exemption, ₹25 lakh limit for non-government employees (CBDT notification 31/2023). Code on Social Security, 2020: gratuity. Read <a href="/methodology/">how we check our numbers</a>.</p>
   <h2>Frequently asked questions</h2>
   {faq_html(faqs)}
@@ -2765,7 +2793,9 @@ def rd_page():
     <li><strong>Cost of waiting:</strong> the new job's extra pay a month, for each month after the earliest date.</li>
     <li>Amounts are before tax.</li>
   </ul>
-  <h2 id="sources">Sources</h2>
+  {"<p class=\"g-callout\"><b>Have superannuation?</b> Read <a href=\"/guides/superannuation-on-resignation-withdraw-or-nps/\">Withdraw, move to NPS or keep</a>: cash is taxed, NPS isn't.</p>" if SA_LIVE else ""}
+
+  {"<p class=\"g-callout\"><b>Put on garden leave?</b> Your last day still decides gratuity: <a href=\"/guides/garden-leave-pay-pf-joining/\">see how two weeks can be worth ₹2.9 lakh</a>.</p>" if "s7" in RELEASED else ""}  <h2 id="sources">Sources</h2>
   <p>Code on Social Security, 2020 (gratuity after 5 years' continuous service, 1 year for fixed-term employees; in force from 21 November 2025). Occupational Safety, Health and Working Conditions Code, 2020, section 32 (annual leave: carry forward up to 30 days, encashment). Income-tax Act, 2025, section 19 (gratuity and leave encashment exemptions). Bonus, stock and joining bonus terms are set by your employer's policy. Read <a href="/methodology/">how we check our numbers</a>.</p>
   <h2>Frequently asked questions</h2>
   {faq_html(faqs)}
@@ -3402,6 +3432,144 @@ SO_TIPS = [
      "Only on the rise above the value already taxed as salary. If the price fell, the loss can be set off against other capital gains this year or carried forward for 8 years."),
 ]
 
+def sa_page():
+    faqs = [
+        ("What is a superannuation fund?",
+         "A retirement fund some employers pay into for you, on top of PF and gratuity, often 15% of basic pay. It's usually run by a trust through an insurer such as LIC. You can't draw it while you work there; you get it when you leave or retire."),
+        ("Is superannuation taxable when I resign?",
+         "If you take it as cash before retirement, yes: the fund deducts tax at your average rate of tax over the last three years (Schedule XI, Part B of the Income-tax Act, 2025). If you move it to your NPS account or to your new employer's approved fund, or leave it until you retire, there's no tax then."),
+        ("Can I move my superannuation to NPS?",
+         "Yes, to your NPS Tier I account (the pension account; Tier II, the optional savings account, can't receive it). Ask your employer or the fund's trustees to transfer it. The transfer is tax-free under Schedule II (Sl. No. 8) of the 2025 Act, in both tax regimes. The money then follows NPS rules: at 60 you can take up to 80% as a lump sum, 60% of it tax-free."),
+        ("How is superannuation taxed at retirement?",
+         "Fund rules usually let you take up to one-third as a lump sum (commutation), which is tax-free. The rest buys a pension (annuity), which is taxed every year as salary at your slab."),
+        ("Why does the calculator ask for my income?",
+         "Because the tax on a withdrawal depends on it. The fund doesn't tax it at your top slab; it uses your average rate: the tax you paid divided by your income, over the last three years. Your income sets that rate. If you know the actual rate from your past Form 16s, enter it under 'Change the assumptions'."),
+        ("Why does the calculator ask for my age?",
+         "To count the years the money can grow before 60, when NPS lets you take most of it out, and to set when the fund would pay your pension. Without it, the calculator could show the tax today but not what each choice becomes."),
+        ("Why does it ask about my tax regime?",
+         "Slabs differ between the regimes, so your average rate on a withdrawal, and the tax on any pension, differ too."),
+        ("Does superannuation count towards the ₹7.5 lakh limit?",
+         "Yes. Your employer's contributions to PF, NPS and superannuation together are tax-free up to ₹7.5 lakh a year; anything above, and the returns on it, is taxed as a perquisite (section 17 of the 2025 Act). That matters while you're employed, not when you leave, so this calculator doesn't ask for it."),
+    ]
+    def num(k, label, hint="", lid=None, money=True, unit=""):
+        idattr = f' id="{lid}"' if lid else ""
+        box = f'<div class="numin"><span>₹</span><input id="sa-{k}" type="text" inputmode="numeric" autocomplete="off"></div>' if money else f'<div class="numin"><input id="sa-{k}" type="text" inputmode="decimal" autocomplete="off"><span>{unit}</span></div>'
+        return (f'<div class="fld"><div class="row1"><label for="sa-{k}"{idattr}>{label}</label><span class="w" id="sa-{k}-w"></span></div>{box}' + (f'<p class="hint">{hint}</p>' if hint else "") + "</div>")
+    def seg(key, label, lid, opts):
+        return f'<div class="fld"><div class="row1"><span class="lbl" id="{lid}">{label}</span></div><div class="seg row" role="group" aria-labelledby="{lid}">' + "".join(f'<button type="button" data-{key}="{v}">{t}</button>' for v, t in opts) + "</div></div>"
+    body = f"""<section class="tool-hero"><div class="wrap">
+  <p class="eyebrow">Your investments</p>
+  <h1>Superannuation calculator</h1>
+  <p class="lead">Leaving your job or retiring with money in your employer's superannuation fund? See the tax if you take it as cash, and what it becomes if you move it to NPS or keep it in the fund, side by side.</p>
+  {badges("Income-tax Act, 2025: Schedule II (Sl. No. 8) and Schedule XI, Part B · Tax year 2026-27 slabs")}
+</div></section>
+
+<section style="padding-top:0"><div class="wrap lp rb jox sax">
+  <div class="card lp-setup" aria-label="Your superannuation">
+    <h3 class="sub" style="border:0;padding-top:0;margin-top:0">Your superannuation</h3>
+    {seg("sit", "You are", "sa-sitLbl", [("resign", "Leaving the job"), ("retire", "Retiring")])}
+    {num("bal", "Superannuation balance", "From your fund statement or HR portal: the employer's contributions plus interest.", lid="sa-balLbl")}
+    <div class="two">{num("age", "Your age", money=False, unit="years", lid="sa-ageLbl")}{seg("regime", "Tax regime", "sa-regimeLbl", [("new", "New"), ("old", "Old")])}</div>
+    {num("income", "Your yearly income", "Salary plus other income, before the standard deduction: roughly the average of the last three years. It sets the tax on a withdrawal.", lid="sa-incomeLbl")}
+    <details class="adv"><summary>Change the assumptions</summary>
+      <div class="two">{num("rNps", "NPS return", money=False, unit="% a year", lid="sa-rNpsLbl")}{num("rFund", "Fund's return", money=False, unit="% a year", lid="sa-rFundLbl")}</div>
+      <div class="two"><div class="sa-resign">{num("rCash", "Return on cash you invest", money=False, unit="% a year", lid="sa-rCashLbl")}</div>{num("ann", "Annuity (pension) rate", money=False, unit="%", lid="sa-annLbl")}</div>
+      <div class="two">{num("commute", "Taken as a lump sum at retirement", money=False, unit="%", lid="sa-commuteLbl")}{num("infl", "Inflation", money=False, unit="% a year")}</div>
+      {num("avgOverride", "Your average tax rate, if you know it", "Leave at 0 to estimate it from your income.", money=False, unit="%", lid="sa-avgLbl")}
+    </details>
+  </div>
+
+  <div>
+    <div class="verdict" id="saVerdict" aria-live="polite"></div>
+    <div class="actions">
+      <button type="button" class="btn-sm pri" id="saPdf">Download PDF report</button>
+      <button type="button" class="btn-sm" id="saXlsx">Download Excel</button>
+      <button type="button" class="btn-sm btn-ghost" id="saShare">Copy share link</button>
+    </div>
+    <p class="status" id="saStatus" role="status"></p>
+    <div class="stats">
+      <div class="stat"><div class="l" id="saS1L">Cash in hand if you withdraw</div><div class="n" id="saS1">—</div><div class="h" id="saS1h"></div></div>
+      <div class="stat"><div class="l" id="saS2L">Your average tax rate</div><div class="n" id="saS2">—</div><div class="h" id="saS2h"></div></div>
+      <div class="stat"><div class="l" id="saS3L">In NPS at 60</div><div class="n" id="saS3">—</div><div class="h" id="saS3h"></div></div>
+      <div class="stat"><div class="l" id="saS4L">Superannuation pension a month</div><div class="n" id="saS4">—</div><div class="h" id="saS4h"></div></div>
+    </div>
+    <p class="g-callout" id="saRule"></p>
+    <div class="chartbox">
+      <h2 class="list-h" style="margin:0 0 4px">Your superannuation by age</h2>
+      <div id="saChart"></div>
+      <p class="hint" style="margin:6px 0 0">Blue: moved to NPS. Amber: kept in the superannuation fund.<span id="sa-cashLeg"> Green: taken as cash after tax and invested.</span></p>
+    </div>
+    <h2 class="list-h">What changes the answer</h2>
+    <p class="hint" style="margin:-4px 0 8px">Each box changes one thing.</p>
+    <div class="sens" id="saSens"></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Your choices side by side</h2>
+  <p class="hint" style="margin:-4px 0 12px">What your money becomes under each choice.</p>
+  <div id="saTbl"></div>
+  <h2>Before you decide</h2>
+  <div class="prose"><ol class="g-check">
+    <li><strong>Get your fund's rules in writing:</strong> whether you can leave the money in after you go, move it to a new employer's fund, or only withdraw or transfer it.</li>
+    <li><strong>Moving to NPS:</strong> you need an active NPS Tier I account, the pension account; Tier II can't receive it. Ask HR or the trustees to transfer it directly; don't withdraw and re-deposit, or it's taxed.</li>
+    <li><strong>Check the fund's statement:</strong> balance, interest credited each year, and whether any of it is your own contribution.</li>
+    <li><strong>At retirement:</strong> compare annuity quotes; the pension rate is fixed for life once you buy.</li>
+  </ol></div>
+</div></section>
+{related("/superannuation-calculator/")}
+<div class="wrap aff-slot" aria-label="Sponsored"></div>
+
+<section style="padding-top:0"><div class="wrap prose">
+  <h2>How the calculator works</h2>
+  <ul>
+    <li><strong>Taking it as cash before retirement:</strong> tax = balance × your average rate of tax, which is the tax on your income divided by your taxable income (after the standard deduction), under your regime's 2026-27 slabs, with 4% cess and surcharge above ₹50 lakh. The fund uses your actual last three years; this is an estimate. Most superannuation is the employer's money only; if part of yours is your own contribution, that part isn't taxed again.</li>
+    <li><strong>Moving it to NPS:</strong> no tax now. It grows at the NPS return you set until 60 (or now, if you're older). Then up to 80% as a lump sum, 60% of the corpus tax-free and the next 20% taxed at your slab; the rest buys a pension at the annuity rate.</li>
+    <li><strong>Keeping it in the fund:</strong> grows at the fund's return until you retire (60 if you're leaving now). Then the share you set (one-third by default) is commuted tax-free and the rest buys a pension, taxed as salary each year.</li>
+    <li><strong>Cash invested:</strong> what's left after tax, invested at the return you set and taxed each year at your slab, so it can be compared with NPS.</li>
+    <li><strong>Why we ask what we ask:</strong> your income sets the tax on a withdrawal, your age sets how long the money grows and when it pays out, and your regime sets the slabs. Nothing else is needed, and nothing leaves your browser.</li>
+  </ul>
+  <p class="g-callout"><b>Read more:</b> <a href="/guides/superannuation-explained/">Superannuation explained</a> · <a href="/guides/superannuation-on-resignation-withdraw-or-nps/">Resigning? Withdraw, move to NPS or keep</a> · <a href="/guides/move-superannuation-to-nps/">Moving it to NPS: the steps</a> · <a href="/guides/superannuation-at-retirement-commute-and-pension/">The tax-free third and the pension</a> · <a href="/guides/superannuation-7-5-lakh-limit/">The ₹7.5 lakh limit</a>.</p>
+  <h2 id="sources">Sources</h2>
+  <p>Income-tax Act, 2025: Schedule II, Table, Sl. No. 8 (payments from an approved superannuation fund on retirement, death or incapacity, commutation, and transfer to NPS, exempt; earlier section 10(13)); Schedule XI, Part B, para 7 and section 392 (tax at the average rate of the previous three years on payments during service); section 2(16) (average rate of income-tax); section 17 (₹7.5 lakh limit). PFRDA: transfer from an approved superannuation fund to NPS. NPS exit rules: PFRDA (Exits and Withdrawals under NPS) (Amendment) Regulations, 2025. Checked on 26 November 2026.</p>
+  <h2>Frequently asked questions</h2>
+  {faq_html(faqs)}
+</div></section>
+<div class="rb-bar" id="saBar" hidden><span id="saBarT"></span><button type="button" class="btn-sm pri" id="saBarBtn">See the result</button></div>
+"""
+    graph = [{"@type": "WebApplication", "name": "Superannuation Calculator", "url": SITE + "/superannuation-calculator/", "applicationCategory": "FinanceApplication",
+              "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": True, "inLanguage": "en-IN",
+              "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}, "dateModified": VERIFIED,
+              "description": "Superannuation on leaving or retiring: the tax if you withdraw, and what it becomes if you move it to NPS or keep it in the fund.", "publisher": {"@id": SITE + "/#org"}},
+             faq_ld(faqs)]
+    body = add_tips(body, "sa", SA_TIPS)
+    return layout("/superannuation-calculator/", "Superannuation Calculator: Withdraw, NPS or Keep?",
+                  "Leaving or retiring? The tax if you withdraw your superannuation, and what it becomes if you move it to NPS tax-free or keep it in the fund.",
+                  body, crumbs=[("/", "Home"), ("/superannuation-calculator/", "Superannuation Calculator")], graph=graph,
+                  css=("tool.css",), js=("superannuation.js",), og="og-superannuation-calculator.png", og_title="Superannuation: withdraw, move to NPS or keep?")
+
+SA_TIPS = [
+    ("""<span class="lbl" id="sa-sitLbl">You are</span>""", "leaving or retiring",
+     "The choices and the tax differ. Leaving before retirement, cash is taxed; at retirement, a lump sum of up to one-third is usually tax-free and the rest becomes a pension."),
+    ("""<label for="sa-bal" id="sa-balLbl">Superannuation balance</label>""", "balance",
+     "The total in your account with the fund: your employer's contributions plus the interest credited. Your fund statement or HR portal shows it."),
+    ("""<label for="sa-age" id="sa-ageLbl">Your age</label>""", "age",
+     "It sets how many years the money can grow before 60, when NPS lets you take most of it out, and when the fund would start your pension. That's all it's used for."),
+    ("""<span class="lbl" id="sa-regimeLbl">Tax regime</span>""", "tax regime",
+     "Slabs differ between the regimes, so the tax on a withdrawal and on any pension differ too."),
+    ("""<label for="sa-income" id="sa-incomeLbl">Your yearly income</label>""", "income",
+     "A withdrawal before retirement isn't taxed at your top slab. The fund deducts tax at your average rate over the last three years: the tax you paid ÷ your income. Your income is how we estimate that rate. You can enter the actual rate instead, under the assumptions."),
+    ("""<label for="sa-rNps" id="sa-rNpsLbl">NPS return</label>""", "NPS return",
+     "A long-run assumption for a mix of equity and bonds. Pick lower for a safer mix, higher for more equity."),
+    ("""<label for="sa-rFund" id="sa-rFundLbl">Fund's return</label>""", "fund's return",
+     "The interest your superannuation fund declares each year; check your statement. Insurer-run funds are usually close to bond yields."),
+    ("""<label for="sa-ann" id="sa-annLbl">Annuity (pension) rate</label>""", "annuity rate",
+     "The pension a year per ₹100 you use to buy it, for life. It depends on your age and the option you pick; get quotes before you buy."),
+    ("""<label for="sa-commute" id="sa-commuteLbl">Taken as a lump sum at retirement</label>""", "commutation",
+     "Most fund rules let you take up to one-third as a lump sum at retirement. That part is tax-free; the rest buys a pension."),
+    ("""<label for="sa-avgOverride" id="sa-avgLbl">Your average tax rate, if you know it</label>""", "average tax rate",
+     "Your total tax ÷ your total income, from your Form 16 or tax returns, averaged over the last three years. The fund uses this rate on a withdrawal."),
+]
 def hc_page():
     faqs = [
         ("How much health insurance cover do I need?",
@@ -4236,6 +4404,7 @@ def nps_page():
     <li><strong>Pension:</strong> the annuity amount × the annuity rate you set ÷ 12. Actual rates depend on the insurer and plan.</li>
     <li><strong>Employer NPS check:</strong> part of your pay moves into employer NPS with your CTC unchanged. The amount within the limit (14% of basic + DA under the new regime or for government employers, 10% for private employers under the old regime) isn't taxed, so you save tax at your slab rate. Employer PF + NPS + superannuation above ₹7.5 lakh a year is taxed.</li>
   </ul>
+  {"<p class=\"g-callout\"><b>Have superannuation from an employer?</b> You can move it into NPS tax-free: read <a href=\"/guides/move-superannuation-to-nps/\">Moving your superannuation to NPS</a>.</p>" if SA_LIVE else ""}
   <h2 id="sources">Sources</h2>
   <p>Exit rules: PFRDA (Exits and Withdrawals under the National Pension System) (Amendment) Regulations, 2025, notified in December 2025. Tax: section 124, section 17, section 156 and Schedule II (S. No. 6) of the Income-tax Act, 2025, checked on the <a href="https://www.incometaxindia.gov.in/" rel="noopener">Income Tax Department's website</a>. Read <a href="/methodology/">how we check our numbers</a>.</p>
   <h2>Frequently asked questions</h2>
@@ -4382,7 +4551,8 @@ def car_own_page():
     <li><strong>Resale:</strong> the value falls by the same share each year, reaching your estimate at the end. Real cars lose more in the first year or two, so "cost if sold" in early years is a little low.</li>
     <li><strong>Break-even distance:</strong> only fuel or charging grows with distance, so total cost rises in a straight line with km. Where two lines cross is the break-even.</li>
   </ul>
-  <h2 id="sources">Sources</h2>
+
+  {"<p class=\"g-callout\"><b>Buying or renewing from 15 December?</b> Car insurance comes in four covers, two compulsory: <a href=\"/guides/motor-insurance-four-layer-15-december/\">what to pick</a>.</p>" if "s7" in RELEASED else ""}  <h2 id="sources">Sources</h2>
   <p>Fuel prices: Delhi retail prices on 14 November 2026, petrol ₹102.12 and diesel ₹95.20 a litre (oil marketing companies' daily rates), CNG ₹86.98 a kg (Indraprastha Gas, from 29 August 2026). Tax: section 132 of the Income-tax Act, 2025, checked on the <a href="https://www.incometaxindia.gov.in/" rel="noopener">Income Tax Department's website</a>. Read <a href="/methodology/">how we check our numbers</a>.</p>
   <h2>Frequently asked questions</h2>
   {faq_html(faqs)}
@@ -4584,6 +4754,7 @@ def gratuity_page():
     <li><strong>Tax-free limit available:</strong> ₹20 lakh, less the gratuity you received earlier. This payout is tax-free up to that amount.</li>
     <li><strong>Stay longer:</strong> the next date your counted years go up, and what that adds.</li>
   </ul>
+  {"<p class=\"g-callout\"><b>Also have a superannuation fund?</b> Read <a href=\"/guides/superannuation-explained/\">Superannuation explained</a> for the tax when you leave.</p>" if SA_LIVE else ""}
   <h2 id="sources">Sources</h2>
   <p>Gratuity: section 53 of the <a href="https://labour.gov.in/" rel="noopener">Code on Social Security, 2020</a>, in force from 21 November 2025. Tax: section 19 of the <a href="https://www.incometaxindia.gov.in/" rel="noopener">Income-tax Act, 2025</a> (Table: S. No. 3 for government employees, S. No. 5 for employees covered by gratuity law, S. No. 6 for others), which replaces section 10(10) of the 1961 Act. Checked for tax year {TAX_YEAR}. Read <a href="/methodology/">how we check our numbers</a>.</p>
   <h2>Frequently asked questions</h2>
@@ -5372,6 +5543,30 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
     ("/guides/epf-wage-ceiling-25000/", "The ₹25,000 EPF wage ceiling: what it changes for your PF, pension and take-home",
      "From 17 September 2026 the EPF wage ceiling is ₹25,000. Who it covers, what it does to contributions, take-home pay and your EPS pension.",
      "2026-11-14", "guide-wage-ceiling", "Your investments"),
+    ("/guides/life-certificate-30-november-pension/", "Parent's pension: submit the life certificate by 30 November",
+     "Face scan at home, a postman at the door or the bank: how to keep a parent's pension coming, check it was accepted, and spot the fake update call.",
+     "2026-11-26", "guide-life-certificate", "Your money"),
+    ("/guides/motor-insurance-four-layer-15-december/", "Car or bike insurance: the new four-cover format from 15 December",
+     "Third party and owner accident cover compulsory, passengers and own damage your choice: what each covers, what to pick, and renewals.",
+     "2026-11-26", "guide-motor-insurance-layers", "Your car"),
+    ("/guides/garden-leave-pay-pf-joining/", "Put on garden leave? Your pay, PF and when you can join elsewhere",
+     "You're still employed until the last day: salary, PF and gratuity service continue. When you can join a new job, the tax, and what to ask for.",
+     "2026-11-26", "guide-garden-leave", "Your pay"),
+    ("/guides/superannuation-explained/", "Superannuation explained: what it is and how it's taxed",
+     "Your employer's superannuation fund in plain words: what happens to it when you leave or retire, the tax on each choice, and one worked example.",
+     "2026-11-26", "guide-superannuation", "Your investments"),
+    ("/guides/superannuation-on-resignation-withdraw-or-nps/", "Resigning? Withdraw your superannuation, move it to NPS or keep it",
+     "Taking it as cash costs tax at your average rate; moving it to NPS or your new employer's fund costs nothing. How to pick, with rupee numbers.",
+     "2026-11-26", "guide-superannuation-resign", "Your investments"),
+    ("/guides/move-superannuation-to-nps/", "Moving your superannuation to NPS: the steps",
+     "How to move superannuation to your NPS Tier I account without tax: what to open, whom to ask, what to check, and what the money becomes.",
+     "2026-11-26", "guide-superannuation-to-nps", "Your investments"),
+    ("/guides/superannuation-at-retirement-commute-and-pension/", "Superannuation at retirement: the tax-free third and the pension",
+     "Up to a third as a tax-free lump sum, the rest as a pension taxed as salary. How the split works, early retirement, and a worked example.",
+     "2026-11-26", "guide-superannuation-retirement", "Your investments"),
+    ("/guides/superannuation-7-5-lakh-limit/", "Superannuation and the ₹7.5 lakh limit on employer contributions",
+     "Employer PF, NPS and superannuation are tax-free together only up to ₹7.5 lakh a year. Who crosses it, the extra tax, and what to ask HR.",
+     "2026-11-26", "guide-superannuation-limit", "Your investments"),
     ("/guides/nps-new-exit-rules/", "NPS under the new exit rules: what salaried people get at 60",
      "How NPS works for salaried people after PFRDA's December 2025 changes: up to 80% lump sum, the tax-free 60%, and one saver's numbers at 60.",
      "2026-11-14", "guide-nps-main", "Your investments"),
@@ -6547,9 +6742,9 @@ def _catalog():
                       ("/salary-hike-calculator/", "Salary Hike Calculator", "What your hike really adds to your monthly take-home after tax and PF, and how two offers compare.", False, "After the 1 Feb 2027 Budget", []),
                       ("/return-to-office-cost-calculator/", "Back to Office: What It Costs You", "Office five days a week? The commute, parking and lunches a month, hours on the road, the pay rise to break even, and moving closer.", L("/return-to-office-cost-calculator/"), "Coming soon", ["/guides/return-to-office-cost/", "/guides/cheapest-way-to-commute-to-office/", "/guides/move-closer-to-office-or-commute/", "/guides/what-is-your-commute-time-worth/", "/guides/pay-rise-to-cover-return-to-office/", "/guides/meal-card-tax-free-200-per-meal/"]),
                       ("/job-offer-comparator/", "Job Offer Comparator", "Is the new offer really worth more? Take-home, PF, gratuity, bonus, stock and commute, side by side.", L("/job-offer-comparator/"), "Coming soon", ["/guides/compare-job-offers-worked-example/", "/guides/higher-ctc-less-in-hand/", "/guides/switch-jobs-before-5-years-gratuity/", "/guides/value-variable-pay-job-offer/", "/guides/office-days-commute-cost/", "/guides/joining-bonus-stock-job-offer/"]),
-                      ("/best-day-to-resign/", "Best Day to Resign", "The last working day that leaves you with the most: gratuity, bonus, RSUs and leave, against the new job's pay.", L("/best-day-to-resign/"), "Coming soon", ["/guides/when-to-resign-best-last-day/", "/guides/resign-before-or-after-rsu-vesting/", "/guides/joining-bonus-clawback/", "/guides/when-to-hand-in-notice/", "/guides/use-or-encash-leave-before-resigning/", "/guides/wait-for-bonus-or-join-now/", "/guides/voluntary-exit-offer-how-to-judge/"]),
-                      ("/full-and-final-settlement/", "Full and Final Settlement", "What you get when you leave: last salary, leave encashment, gratuity, notice recovery and when it's due.", L("/full-and-final-settlement/"), "Coming soon", ["/guides/full-and-final-settlement-explained/", "/guides/transfer-pf-dont-withdraw/", "/guides/leave-encashment-tax-on-resignation/", "/guides/notice-period-buyout/", "/guides/two-employers-one-year-tax/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/"]),
-                      ("/gratuity-calculator/", "Gratuity Calculator", "Your gratuity under the new labour codes, how much is tax-free, and what staying longer adds.", L("/gratuity-calculator/"), "Coming soon", ["/guides/gratuity-new-labour-codes/", "/guides/gratuity-six-month-rule-when-to-resign/", "/guides/gratuity-fixed-term-employees/", "/guides/is-gratuity-taxable-20-lakh-limit/", "/guides/low-basic-salary-gratuity/"])]),
+                      ("/best-day-to-resign/", "Best Day to Resign", "The last working day that leaves you with the most: gratuity, bonus, RSUs and leave, against the new job's pay.", L("/best-day-to-resign/"), "Coming soon", ["/guides/when-to-resign-best-last-day/", "/guides/resign-before-or-after-rsu-vesting/", "/guides/joining-bonus-clawback/", "/guides/when-to-hand-in-notice/", "/guides/use-or-encash-leave-before-resigning/", "/guides/wait-for-bonus-or-join-now/", "/guides/voluntary-exit-offer-how-to-judge/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/garden-leave-pay-pf-joining/"]),
+                      ("/full-and-final-settlement/", "Full and Final Settlement", "What you get when you leave: last salary, leave encashment, gratuity, notice recovery and when it's due.", L("/full-and-final-settlement/"), "Coming soon", ["/guides/full-and-final-settlement-explained/", "/guides/transfer-pf-dont-withdraw/", "/guides/leave-encashment-tax-on-resignation/", "/guides/notice-period-buyout/", "/guides/two-employers-one-year-tax/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/garden-leave-pay-pf-joining/"]),
+                      ("/gratuity-calculator/", "Gratuity Calculator", "Your gratuity under the new labour codes, how much is tax-free, and what staying longer adds.", L("/gratuity-calculator/"), "Coming soon", ["/guides/gratuity-new-labour-codes/", "/guides/gratuity-six-month-rule-when-to-resign/", "/guides/gratuity-fixed-term-employees/", "/guides/is-gratuity-taxable-20-lakh-limit/", "/guides/low-basic-salary-gratuity/", "/guides/superannuation-explained/"])]),
         ("Your tax", [("/esop-rsu-tax-calculator/", "ESOP and RSU Tax Calculator", "Tax on your ESOPs or RSUs when they vest or you exercise, and when you sell: what you actually keep.", L("/esop-rsu-tax-calculator/"), "Coming soon", ["/guides/rsu-tax-india-worked-example/", "/guides/esop-tax-exercise-and-sale/", "/guides/sell-rsus-at-vest-or-hold/", "/guides/startup-esop-tax-deferral/", "/guides/foreign-rsu-schedule-fa-tax-credit/", "/guides/rsu-esop-price-falls-after-vesting/"]),
                       ("/income-tax-section-finder/", "Income Tax Section Finder", "Old section numbers like 80C, HRA and 24(b), and where they are in the Income-tax Act, 2025.", L("/income-tax-section-finder/"), "Coming soon", ["/guides/new-income-tax-section-numbers/", "/guides/tax-year-explained/", "/guides/payslip-form-130-new-section-numbers/", "/guides/belated-itr-31-december/", "/guides/advance-tax-15-december-salaried/"])]),
         ("Your loans", [("/prepay-vs-invest/", "Prepay or Invest", "Should extra money go into your home loan or into investments? After tax.", True, "", ["/guides/prepay-home-loan-or-invest/", "/guides/prepay-home-loan-early-or-later/", "/guides/prepay-with-bonus-or-invest/"]),
@@ -6559,9 +6754,10 @@ def _catalog():
                               ("/sip-calculator/", "SIP Calculator", "What your SIP could grow to, or the SIP you need for a goal. With step-up and your existing portfolio.", L("/sip-calculator/"), "Coming soon", ["/guides/how-much-sip-do-you-need/", "/guides/step-up-sip/", "/guides/are-your-sips-on-track/", "/guides/how-mutual-fund-gains-are-taxed/", "/guides/sip-or-lump-sum-bonus/", "/guides/sip-lower-return/", "/guides/first-sip-on-first-salary/"]),
                               ("/fd-ppf-rd-calculator/", "FD, PPF and RD Calculator", "What your FD, RD or PPF grows to after tax, whether TDS applies, and all three compared.", L("/fd-ppf-rd-calculator/"), "Coming soon", ["/guides/fd-rd-or-ppf/", "/guides/fd-interest-tax-below-50000/", "/guides/ppf-deposit-by-5-april/", "/guides/form-121-stop-tds-fd-interest/", "/guides/cumulative-fd-or-monthly-payout/", "/guides/ppf-after-15-years/", "/guides/fd-for-senior-citizens-tds-and-tax/"]),
                               ("/sukanya-samriddhi-calculator/", "Sukanya Samriddhi Calculator", "What your daughter's account grows to at 8.2%, tax-free, with an education withdrawal and PPF compared.", L("/sukanya-samriddhi-calculator/"), "Coming soon", ["/guides/sukanya-samriddhi-explained/", "/guides/sukanya-samriddhi-or-sip/", "/guides/sukanya-samriddhi-at-maturity/", "/guides/open-sukanya-samriddhi-account/", "/guides/sukanya-samriddhi-two-daughters/", "/guides/revive-sukanya-samriddhi-account/"]),
-                              ("/nps-calculator/", "NPS Calculator", "Your NPS at 60 under the new exit rules: lump sum, the taxed part and your pension. Plus employer NPS tax saving.", L("/nps-calculator/"), "Coming soon", ["/guides/nps-new-exit-rules/", "/guides/employer-nps-14-percent-new-regime/", "/guides/nps-80-percent-withdrawal-tax/", "/guides/nps-vs-ppf-vs-epf/"]),
+                              ("/nps-calculator/", "NPS Calculator", "Your NPS at 60 under the new exit rules: lump sum, the taxed part and your pension. Plus employer NPS tax saving.", L("/nps-calculator/"), "Coming soon", ["/guides/nps-new-exit-rules/", "/guides/employer-nps-14-percent-new-regime/", "/guides/nps-80-percent-withdrawal-tax/", "/guides/nps-vs-ppf-vs-epf/", "/guides/move-superannuation-to-nps/"]),
                               ("/epf-calculator/", "EPF Calculator", "Your PF at retirement, what you and your employer put in, and your EPS pension, with the ₹25,000 wage ceiling.", L("/epf-calculator/"), "Coming soon", ["/guides/how-much-epf-at-58/", "/guides/eps-pension-explained/", "/guides/epf-wage-ceiling-25000/", "/guides/transfer-pf-dont-withdraw/", "/guides/vpf-worth-it/", "/guides/nps-vs-ppf-vs-epf/", "/guides/epf-withdrawal-rules-2026/", "/guides/epf-withdrawal-changes-november-2026/"]),
-                              ("/eps-pension-calculator/", "EPS Pension Calculator", "Your EPS pension for each wage-ceiling period, at any age from 50 to 60, or your withdrawal benefit under 10 years.", L("/eps-pension-calculator/"), "Coming soon", ["/guides/eps-pension-calculation-example/", "/guides/eps-pension-explained/", "/guides/eps-withdrawal-benefit-or-scheme-certificate/", "/guides/transfer-pf-dont-withdraw/", "/guides/epf-wage-ceiling-25000/", "/guides/eps-pension-50-58-or-60/", "/guides/eps-higher-pension/", "/guides/why-eps-pension-is-low/", "/guides/eps-family-pension/"]),
+                              ("/eps-pension-calculator/", "EPS Pension Calculator", "Your EPS pension for each wage-ceiling period, at any age from 50 to 60, or your withdrawal benefit under 10 years.", L("/eps-pension-calculator/"), "Coming soon", ["/guides/eps-pension-calculation-example/", "/guides/eps-pension-explained/", "/guides/eps-withdrawal-benefit-or-scheme-certificate/", "/guides/transfer-pf-dont-withdraw/", "/guides/epf-wage-ceiling-25000/", "/guides/eps-pension-50-58-or-60/", "/guides/eps-higher-pension/", "/guides/why-eps-pension-is-low/", "/guides/eps-family-pension/", "/guides/life-certificate-30-november-pension/"]),
+                              ("/superannuation-calculator/", "Superannuation Calculator", "Leaving or retiring? Withdraw your superannuation, move it to NPS tax-free, or keep it: the tax and what each becomes.", L("/superannuation-calculator/"), "Coming soon", ["/guides/superannuation-explained/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/move-superannuation-to-nps/", "/guides/superannuation-at-retirement-commute-and-pension/", "/guides/superannuation-7-5-lakh-limit/"]),
                               ("/retirement-planner/", "Retirement Planner", "How much you need to retire, what your EPF, NPS, SIPs and FDs add up to, and the extra SIP to close the gap.", L("/retirement-planner/"), "Coming soon", ["/guides/how-much-do-you-need-to-retire/", "/guides/25x-rule-retirement-india/", "/guides/nps-vs-ppf-vs-epf/", "/guides/retire-at-50-55-or-60/", "/guides/how-long-will-retirement-savings-last/", "/guides/retirement-planning-in-your-40s/", "/guides/three-bucket-retirement-plan/"])]),
         ("Your home", [("/rent-vs-buy/", "Rent or Buy", "Owning against renting and investing the difference, after stamp duty and tax.", True, "",
                         ["/guides/rent-vs-buy/", "/guides/is-rent-really-dead-money/", "/guides/under-construction-vs-ready-to-move/", "/guides/hra-vs-home-loan-tax-benefits/", "/guides/home-loan-down-payment/", "/guides/rent-or-buy-by-age-and-moving-cities/", "/guides/keep-or-sell-your-home/"])]),
@@ -6571,7 +6767,7 @@ def _catalog():
                         ("/health-insurance-cover-calculator/", "Health Insurance Cover Calculator", "How much health cover your family and parents need, with medical inflation: base policy plus super top-up.", L("/health-insurance-cover-calculator/"), "Coming soon", ["/guides/how-much-health-insurance-do-you-need/", "/guides/super-top-up-health-insurance/", "/guides/is-employer-health-insurance-enough/", "/guides/health-insurance-for-parents/", "/guides/medical-inflation-health-cover/", "/guides/health-insurance-checklist-before-you-buy/", "/guides/health-insurance-opd-maternity-cataract/"])]),
         ("Your car", [("/company-car-lease-vs-loan/", "Car Lease vs Car Loan", "Lease a car through your company or buy it on a loan? After tax, running costs and resale.", L("/company-car-lease-vs-loan/"), "Coming soon",
                        ["/guides/company-car-lease-vs-car-loan/", "/guides/company-car-lease-policy/", "/guides/company-car-perquisite-value-2026/", "/guides/car-lease-new-tax-regime/", "/guides/car-lease-20-percent-slab-and-ev/", "/guides/car-lease-job-change-buy-back-or-hand-back/"]),
-                      ("/car-ownership-cost/", "Car Ownership Cost", "What a petrol, diesel, CNG or electric car really costs per month and per km, after resale. Compare two.", L("/car-ownership-cost/"), "Coming soon", ["/guides/petrol-cng-or-ev-cost-per-km/", "/guides/ev-worth-it-1000-km-a-month/", "/guides/car-loan-or-cash/", "/guides/new-or-used-car/", "/guides/government-ev-rule-should-you-switch/", "/guides/buy-car-december-or-january/"])]),
+                      ("/car-ownership-cost/", "Car Ownership Cost", "What a petrol, diesel, CNG or electric car really costs per month and per km, after resale. Compare two.", L("/car-ownership-cost/"), "Coming soon", ["/guides/petrol-cng-or-ev-cost-per-km/", "/guides/ev-worth-it-1000-km-a-month/", "/guides/car-loan-or-cash/", "/guides/new-or-used-car/", "/guides/government-ev-rule-should-you-switch/", "/guides/buy-car-december-or-january/", "/guides/motor-insurance-four-layer-15-december/"])]),
     ]
 QUICK_SOON = (["SIP calculator"] if not SIP_LIVE else []) + (["FD, PPF and RD"] if not DEPOSITS_LIVE else []) + (["Gratuity"] if not GRATUITY_LIVE else []) + ["Old vs new regime", "HRA exemption"] + (["Vehicle ownership cost"] if not CAROWN_LIVE else []) + (["Old-to-new section finder"] if not SECTIONS_LIVE else [])
 
@@ -8437,10 +8633,11 @@ def guide_vpf():
 
 <h2 id="catch">The catch: access</h2>
 <ul>
-  <li>VPF is part of your EPF, so the same withdrawal rules apply. Under the EPF Scheme, 2026, partial withdrawals are allowed only for set purposes, and 25% of the balance must stay in the account.</li>
-  <li>The full balance is available only after 12 months without a job, or at retirement.</li>
+  <li>VPF is part of your EPF, so the same withdrawal rules apply. Under the EPF Scheme, 2026, partial withdrawals are allowed only for set purposes, and 25% of the balance must stay in the account (10% once the change approved on 19 November 2026 is notified).</li>
+  <li>The full balance is available only after 12 months without a job (2 months once notified), or at retirement.</li>
   <li>So keep your emergency fund elsewhere, and use VPF for money you won't need until you retire.</li>
 </ul>
+<p class="g-callout"><b>Coming: deposits without going through payroll.</b> On 19 November 2026, EPFO's board (CBT) approved a way to pay voluntary contributions straight into your EPF account through your UAN, outside your employer's payroll, with no matching employer share. It isn't available yet: EPFO says the EPF Scheme will be amended and notified after the Labour Ministry approves, and the tax treatment needs an Income-tax Act change that's with the Finance Ministry. Until then, VPF through payroll is the only way to put in more. The same meeting approved the lower minimum balance and the shorter wait above: <a href="/guides/epf-withdrawal-changes-november-2026/">what the November decisions mean for you</a>.</p>
 <p>Read also <a href="/guides/how-much-epf-at-58/">How much will your EPF be at 58?</a> and <a href="/guides/fd-rd-or-ppf/">FD, RD or PPF</a>.</p>
 
 <h2 id="method">How these numbers were worked out</h2>
@@ -13273,6 +13470,7 @@ def guide_car_december():
 
 <h2 id="insurance">Insurance: no penalty</h2>
 <p>Your insured value (IDV) depends on how old the car is from when you bought it, not on the calendar year: 5% off for the first six months, 15% up to one year, then 20%, 30%, 40% and 50% for each year up to five ({L("https://idv.gicouncil.in/", "General Insurance Council")}). A December car and a January car get the same treatment at the same age.</p>
+<p><strong>New from 15 December 2026:</strong> every car and two-wheeler policy issued from that date, new or renewed, comes in a four-cover format: third-party and the owner's accident cover are compulsory, cover for passengers and for damage to your own car are optional, each priced separately on a signed option form. Take delivery on or after the 15th and the dealer's policy will come this way, so check what's been ticked{(': see <a href="/guides/motor-insurance-four-layer-15-december/">the new four-cover format</a>' if "s7" in RELEASED else '')}.</p>
 
 <h2 id="when">When December wins, and when it doesn't</h2>
 <ul>
@@ -13297,6 +13495,536 @@ def guide_car_december():
 {related(path)}
 """
     return article(path, "x", "Car in December or January", body, "Car in December")
+
+
+SA_SRC_IT = "https://www.incometaxindia.gov.in/w/section-17-218"
+SA_SRC_R308 = "https://www.incometaxindia.gov.in/w/rule-308"
+SA_SRC_PFRDA = "https://www.pfrda.org.in/web/pfrda/schemes/national-pension-system/superannuation-funds"
+
+def _sa_L(u, t): return f'<a href="{u}" rel="noopener">{t}</a>'
+
+def _sa_sources(extra=""):
+    L = _sa_L
+    return (f"""<h2 id="method">Sources and assumptions</h2>
+<p>Income-tax Act, 2025: Schedule II, Table, Sl. No. 8 (payments from an approved superannuation fund on retirement, death or incapacity, commutation of the annuity, and transfer to NPS, exempt; earlier section 10(13)); Schedule XI, Part B, para 7 and section 392 (tax at the average rate of the previous three years when the fund pays you while you're still in service or on leaving); section 2(16) (average rate = tax ÷ total income); {L(SA_SRC_IT, "section 17(1)(h) and (i)")} (₹7.5 lakh limit and the accretion on the excess). Income-tax Rules, 2026: {L(SA_SRC_R308, "rule 308")} (commutation of the annuity). PFRDA: {L(SA_SRC_PFRDA, "transfer from an approved superannuation fund to NPS")} (circular of 6 March 2017). Tax year 2026-27 slabs, 4% cess. {extra}Your fund's trust deed and rules decide which choices you get; this guide explains the tax law around them. Read <a href="/methodology/">how we check our numbers</a>. Verified on 26 November 2026.</p>""")
+
+SA_ROHAN = """<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col">Rohan's choice</th><th scope="col">Tax now</th><th scope="col">What it becomes</th></tr></thead><tbody>
+<tr><th scope="row">Take it as cash</th><td data-l="Tax now">₹1,50,968</td><td data-l="What it becomes">₹10.49 lakh in hand; about ₹26 lakh at 60 if invested at 7% and taxed each year</td></tr>
+<tr><th scope="row">Move it to NPS</th><td data-l="Tax now">Nil</td><td data-l="What it becomes">About ₹56.6 lakh at 60 at 9% (₹19.8 lakh in today's money)</td></tr>
+<tr><th scope="row">Keep it in the fund</th><td data-l="Tax now">Nil</td><td data-l="What it becomes">About ₹40.6 lakh at 60 at 7%: ₹13.5 lakh tax-free, plus about ₹14,646 a month</td></tr>
+</tbody></table></div>"""
+
+def guide_sa_main():
+    path = "/guides/superannuation-explained/"
+    toc = [("short-answer", "The short answer"), ("what", "What superannuation is"), ("choices", "Your choices when you leave or retire"), ("tax", "How each choice is taxed"),
+           ("example", "One worked example"), ("inputs", "Why the calculator asks what it asks"), ("while-working", "While you work: the ₹7.5 lakh limit"), ("checks", "What to check with HR"), ("method", "Sources and assumptions")]
+    body = guide_head(path, "If your payslip or CTC letter mentions superannuation, your employer has been putting money into a retirement fund for you, often 15% of your basic pay. Most people only think about it when they resign. Here's what it is, what you can do with it, and the tax on each choice.",
+                      "A jar marked Super with arrows to cash, NPS and a pension").replace("TYPE_LINE", "<span>Superannuation Calculator</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026.</b> Income-tax Act, 2025 and tax year 2026-27 slabs.</p>
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>Superannuation is tax-free when it stays a retirement benefit, and taxed when you take it as cash before you retire.</strong> Leaving a job, you can usually take the cash (the fund deducts tax at your average rate of the last three years), move it to your NPS account or your new employer's fund (no tax), or leave it until you retire, if your fund allows. At retirement, up to a third is usually tax-free as a lump sum and the rest becomes a pension, taxed as salary. Work out your own numbers with the <a href="/superannuation-calculator/">superannuation calculator</a>.</p>
+
+<h2 id="what">What superannuation is</h2>
+<ul>
+  <li><strong>A retirement fund your employer pays into,</strong> on top of PF and gratuity. It's often 15% of basic pay, and is usually counted in your CTC.</li>
+  <li><strong>Run by a trust,</strong> usually through an insurer such as LIC or a private life insurer. It's an "approved superannuation fund" under the Income-tax Act.</li>
+  <li><strong>The money grows at the rate the fund declares,</strong> close to bond yields. Your statement or HR portal shows the balance.</li>
+  <li><strong>You can't draw it while you work there.</strong> You get it when you leave or retire. If you can no longer work because of illness or injury, or if you die (then it's paid to your family), it's tax-free.</li>
+</ul>
+
+<h2 id="choices">Your choices when you leave or retire</h2>
+<ul>
+  <li><strong>Leaving before retirement:</strong> take it as cash; move it to your NPS Tier I account (the pension account, <a href="/guides/move-superannuation-to-nps/#tier-1">not Tier II</a>); move it to your new employer's approved fund, if it has one; or leave it in the fund until you retire, if the fund's rules allow. Some funds also let you buy a pension straight away.</li>
+  <li><strong>Retiring</strong> (at or after the retirement age in your fund's rules): take up to a third as a lump sum and use the rest to buy a pension (annuity), or move it to NPS.</li>
+</ul>
+<p>Which of these you actually get depends on your fund's rules. Ask HR or the trustees for them in writing.</p>
+
+<h2 id="tax">How each choice is taxed</h2>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">What you do</th><th scope="col">Tax</th></tr></thead><tbody>
+<tr><th scope="row">Take cash on leaving, before retirement</th><td data-l="Tax">Taxed. The fund deducts tax at your average rate of the last three years (Schedule XI, Part B)</td></tr>
+<tr><th scope="row">Move it to NPS (Tier I only)</th><td data-l="Tax">Tax-free, in both regimes (Schedule II, Sl. No. 8)</td></tr>
+<tr><th scope="row">Move it to a new employer's approved fund</th><td data-l="Tax">No tax: the money stays in an approved fund</td></tr>
+<tr><th scope="row">Lump sum at retirement, up to the limit (usually a third)</th><td data-l="Tax">Tax-free (Schedule II, Sl. No. 8)</td></tr>
+<tr><th scope="row">Pension from the rest</th><td data-l="Tax">Taxed every year as salary, at your slab</td></tr>
+<tr><th scope="row">Paid to your family on your death</th><td data-l="Tax">Tax-free</td></tr>
+</tbody></table></div>
+<p><strong>The average rate isn't your top slab.</strong> It's your total tax divided by your taxable income (section 2(16)). For most people it's far lower than the slab their last rupee falls in.</p>
+
+<h2 id="example">One worked example</h2>
+<p>Rohan, 42, in Pune, is leaving his job with ₹12 lakh in superannuation. His income has been about ₹24 lakh a year, and he's in the new regime.</p>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">His average tax rate</th><th scope="col">Amount</th></tr></thead><tbody>
+<tr><th scope="row">Income</th><td data-l="Amount">₹24,00,000</td></tr>
+<tr><th scope="row">Less standard deduction</th><td data-l="Amount">−₹75,000</td></tr>
+<tr><th scope="row">Taxable income</th><td data-l="Amount">₹23,25,000</td></tr>
+<tr><th scope="row">Tax, with 4% cess</th><td data-l="Amount">₹2,92,500</td></tr>
+<tr><th scope="row"><strong>Average rate</strong></th><td data-l="Amount"><strong>12.58%</strong> (₹2,92,500 ÷ ₹23,25,000)</td></tr>
+</tbody></table></div>
+<p>So taking the ₹12 lakh as cash costs him about ₹1,50,968 in tax, not the ₹3.74 lakh his 31.2% top rate would suggest. Here's what each choice becomes:</p>
+{SA_ROHAN}
+<p>Moving it to NPS keeps the whole ₹12 lakh working, tax-free, so at these assumptions it ends up the largest. At 60 he can take up to 80% of it as a lump sum, 60% of the corpus tax-free (see <a href="/guides/nps-new-exit-rules/">NPS under the new exit rules</a>). The cash is only better if he needs the money now. The returns are assumptions; NPS isn't guaranteed.</p>
+
+<h2 id="inputs">Why the calculator asks what it asks</h2>
+<ul>
+  <li><strong>Your income:</strong> a withdrawal is taxed at your average rate, and your income is how the calculator estimates it. If you know your actual rate from your Form 16s, enter it instead. The fund works it out from your real tax in the last three years (or your years in the fund, if fewer). Older years had higher new-regime slabs, so your real rate may be a little higher than the estimate.</li>
+  <li><strong>Your age:</strong> it sets how many years the money can grow before 60, when NPS lets you take most of it out, and when the fund would start your pension. That's all it's used for.</li>
+  <li><strong>Your tax regime:</strong> the slabs differ, so the average rate and the tax on any pension differ too.</li>
+  <li><strong>Leaving or retiring:</strong> the choices and the tax are different, as the table above shows.</li>
+</ul>
+<p>Nothing else is needed, and nothing you enter leaves your browser.</p>
+
+<h2 id="while-working">While you work: the ₹7.5 lakh limit</h2>
+<p>Your employer's contributions to PF, NPS and superannuation together are tax-free only up to ₹7.5 lakh a year. Above that, the excess and the returns on it are taxed as a perquisite (section 17). It mostly affects people with a high basic pay. Read <a href="/guides/superannuation-7-5-lakh-limit/">Superannuation and the ₹7.5 lakh limit</a>.</p>
+
+<h2 id="checks">What to check with HR</h2>
+<ol class="g-check">
+  <li><strong>The fund's rules in writing:</strong> can you leave the money in after you go, move it to NPS or a new fund, or only withdraw?</li>
+  <li><strong>The balance and the yearly interest,</strong> and whether any part is your own contribution (that part isn't taxed again).</li>
+  <li><strong>The fund's retirement age:</strong> leaving at or after it counts as retiring, which is tax-free up to the commutation limit.</li>
+  <li><strong>Nominee details:</strong> they decide who gets it if something happens to you.</li>
+</ol>
+<p>Next: <a href="/guides/superannuation-on-resignation-withdraw-or-nps/">Resigning? Withdraw, move to NPS or keep</a> · <a href="/guides/move-superannuation-to-nps/">Moving it to NPS: the steps</a> · <a href="/guides/superannuation-at-retirement-commute-and-pension/">At retirement: the tax-free third and the pension</a>.</p>
+
+{_sa_sources("Rohan is an illustration. NPS at 9%, the fund at 7%, cash invested at 7% before tax, inflation 6%, annuity rate 6.5%: all assumptions you can change in the calculator. ")}
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Superannuation explained", body, "Superannuation explained")
+
+def guide_sa_resign():
+    path = "/guides/superannuation-on-resignation-withdraw-or-nps/"
+    toc = [("short-answer", "The short answer"), ("options", "Your four options"), ("numbers", "What each costs: Rohan's numbers"), ("higher", "If your income is higher"),
+           ("when-cash", "When taking the cash makes sense"), ("early", "Leaving close to retirement"), ("checks", "Before your last day"), ("method", "Sources and assumptions")]
+    body = guide_head(path, "Your full and final settlement may include a line for superannuation, or a form from the fund asking what you want to do with it. The choice you tick decides whether you pay tax on it now. Here's how to pick.",
+                      "An open office door, a superannuation jar and two paths: cash with a tax cut, or NPS tax-free").replace("TYPE_LINE", "<span>Superannuation Calculator</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026.</b></p>
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>Unless you need the money now, move it to NPS or your new employer's fund.</strong> Both are tax-free and keep the whole balance growing. Taking it as cash costs tax at your average rate of the last three years, and the money stops growing tax-free. Check your own numbers with the <a href="/superannuation-calculator/">superannuation calculator</a>.</p>
+
+<h2 id="options">Your four options</h2>
+<ol>
+  <li><strong>Take the cash.</strong> The fund deducts tax at your average rate and pays the rest. It's added to your income for the year, with credit for that tax.</li>
+  <li><strong>Move it to your NPS Tier I account.</strong> Tax-free in both regimes. It must be Tier I, the pension account, not the optional Tier II savings account (<a href="/guides/move-superannuation-to-nps/#tier-1">why</a>). It then follows NPS rules: mostly locked until 60. See <a href="/guides/move-superannuation-to-nps/">the steps</a>.</li>
+  <li><strong>Move it to your new employer's approved superannuation fund,</strong> if it has one and both funds allow the transfer. No tax.</li>
+  <li><strong>Leave it where it is</strong> until you retire, if your fund's rules allow members who have left to stay. You get the retirement treatment later: up to a third tax-free, the rest as a pension.</li>
+</ol>
+<p>Some funds also let you buy a pension immediately or from a later date with the balance. The pension is then taxed as salary each year.</p>
+
+<h2 id="numbers">What each costs: Rohan's numbers</h2>
+<p>Rohan, 42, is leaving with ₹12 lakh in superannuation. His income is about ₹24 lakh a year, new regime, so his average tax rate is about 12.58% (worked out in <a href="/guides/superannuation-explained/#example">Superannuation explained</a>).</p>
+{SA_ROHAN}
+<p>The cash route loses twice: ₹1.5 lakh in tax now, then the returns on what's left are taxed every year. That's why it ends up at less than half the NPS figure by 60.</p>
+
+<h2 id="higher">If your income is higher</h2>
+<p>The average rate climbs with income. On ₹50 lakh a year in the new regime, it's about 22.3%, so the same ₹12 lakh would cost about ₹2.68 lakh in tax as cash. In the old regime the rate depends on your deductions; the calculator works it out for either regime.</p>
+
+<h2 id="when-cash">When taking the cash makes sense</h2>
+<ul>
+  <li><strong>You need the money</strong> for something you'd otherwise borrow for at a high rate, such as clearing a personal loan.</li>
+  <li><strong>Your average rate is low</strong>, for example after a few years of modest income or a career break. The tax is then small.</li>
+  <li><strong>You don't want it locked until 60.</strong> NPS lets you take only limited withdrawals before then (see <a href="/guides/nps-new-exit-rules/">the NPS exit rules</a>).</li>
+</ul>
+
+<h2 id="early">Leaving close to retirement</h2>
+<p>If you leave at or after the retirement age in your fund's rules, it counts as retirement, and a lump sum of up to a third is tax-free. Leave a few months before that age and the cash is taxed as an early withdrawal. If you're close, ask HR what age the rules use, and see <a href="/guides/superannuation-at-retirement-commute-and-pension/">superannuation at retirement</a>.</p>
+
+<h2 id="checks">Before your last day</h2>
+<ol class="g-check">
+  <li><strong>Ask for the fund's options in writing</strong>, with the balance and the form you need to fill.</li>
+  <li><strong>Open or find your NPS Tier I account</strong> (your PRAN) if you'll move it there. Tier II won't do (<a href="/guides/move-superannuation-to-nps/#tier-1">here's why</a>).</li>
+  <li><strong>Don't withdraw and re-invest.</strong> Only a direct transfer from the fund to NPS is tax-free.</li>
+  <li><strong>Check your settlement</strong> with the <a href="/full-and-final-settlement/">full and final settlement calculator</a>, and your PF: <a href="/guides/transfer-pf-dont-withdraw/">transfer it, don't withdraw it</a>.</li>
+</ol>
+
+{_sa_sources("Rohan is an illustration; returns, inflation and the annuity rate are assumptions. The ₹50 lakh figure uses 2026-27 slabs and 4% cess. ")}
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Superannuation on resigning", body, "Superannuation on resigning")
+
+def guide_sa_nps():
+    path = "/guides/move-superannuation-to-nps/"
+    toc = [("short-answer", "The short answer"), ("tier-1", "Why it must be Tier I"), ("steps", "The steps"), ("tax", "Why it's tax-free"), ("after", "What the money becomes"), ("pitfalls", "Mistakes to avoid"), ("method", "Sources and assumptions")]
+    body = guide_head(path, "Moving superannuation into NPS keeps it a retirement benefit, so no tax is due on the move. It takes a request to the fund and an NPS account to receive it. Here's the process, step by step.",
+                      "A superannuation jar with an arrow moving the money into an NPS Tier I account").replace("TYPE_LINE", "<span>Superannuation Calculator</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026.</b></p>
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>Open an NPS Tier I account, then ask your superannuation fund's trust, through your employer, to transfer your balance to it.</strong> The trust sends the money straight to NPS. The transfer is tax-free in both regimes. Never withdraw the money yourself and deposit it: that makes it a taxable payout. See what the move is worth with the <a href="/superannuation-calculator/">superannuation calculator</a>.</p>
+
+<h2 id="tier-1">Why it must be Tier I</h2>
+<p>NPS has two kinds of account, and only one of them can take your superannuation.</p>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col"></th><th scope="col">Tier I</th><th scope="col">Tier II</th></tr></thead><tbody>
+<tr><th scope="row">What it is</th><td data-l="Tier I">Your pension account</td><td data-l="Tier II">An optional savings account added on top of Tier I</td></tr>
+<tr><th scope="row">Taking money out</th><td data-l="Tier I">Mostly at 60; only limited withdrawals before</td><td data-l="Tier II">Any time</td></tr>
+<tr><th scope="row">Retirement tax rules</th><td data-l="Tier I">Yes: the 60% tax-free lump sum at exit</td><td data-l="Tier II">No; for most people Tier II has no tax benefits (central government staff have a separate tax-saver version)</td></tr>
+<tr><th scope="row">Can receive superannuation</th><td data-l="Tier I"><strong>Yes</strong></td><td data-l="Tier II"><strong>No</strong></td></tr>
+</tbody></table></div>
+<ul>
+  <li><strong>The tax law asks for the pension account.</strong> The exemption covers a transfer to your account under the NPS pension scheme (section 124 of the 2025 Act; section 80CCD earlier). In NPS, that's Tier I, the account your employer's NPS contributions and your tax-deductible ones go into.</li>
+  <li><strong>PFRDA's process names Tier I.</strong> Its transfer process starts with "an active NPS Tier I account", and the money is credited there.</li>
+  <li><strong>Tier II would defeat the point.</strong> Money in Tier II can be withdrawn at any time, so a tax-free move into it would let retirement money out early without the tax that taking cash costs. That's why the exemption is tied to the pension account. Tier II can't be opened without a Tier I account anyway.</li>
+  <li><strong>The move is one way.</strong> Once in Tier I, the money stays under pension rules; it can't be shifted to Tier II.</li>
+</ul>
+<p>If you already have an NPS account from a previous employer or opened on your own, that PRAN's Tier I is the one to use; you don't need a new account.</p>
+
+<h2 id="steps">The steps</h2>
+<ol class="g-check">
+  <li><strong>Have an active NPS Tier I account</strong> (<a href="#tier-1">why Tier I</a>). Open one through your employer (if it offers NPS), a bank or other point of presence, or online through eNPS. Note your PRAN.</li>
+  <li><strong>Ask for the transfer.</strong> Give your request to the superannuation fund's trust through your current employer, or your former employer if you've left. Ask HR for the fund's form.</li>
+  <li><strong>The trust transfers the money</strong> to your NPS Tier I account under its trust deed, and the amount is credited to your PRAN. Keep the letter or statement showing the amount transferred.</li>
+  <li><strong>Check the credit</strong> in your NPS statement: it should show in Tier I, recorded as a transfer, not your own contribution.</li>
+</ol>
+<p>This is the process in PFRDA's circular of 6 March 2017, still listed on {_sa_L(SA_SRC_PFRDA, "PFRDA's superannuation page")}. Employers can also move a whole fund to NPS in bulk; then you'll just see the credit.</p>
+
+<h2 id="tax">Why it's tax-free</h2>
+<p>Schedule II of the Income-tax Act, 2025 (Table, Sl. No. 8) exempts a payment from an approved superannuation fund that's transferred to the employee's NPS pension account (Tier I). It works in the new regime too. The transfer isn't a new contribution, so there's no deduction for it either, and it doesn't count towards the <a href="/guides/superannuation-7-5-lakh-limit/">₹7.5 lakh limit</a>.</p>
+
+<h2 id="after">What the money becomes</h2>
+<ul>
+  <li><strong>It's invested in NPS</strong> in the mix you choose: equity, corporate bonds and government bonds. Returns aren't guaranteed.</li>
+  <li><strong>At 60,</strong> you can take up to 80% as a lump sum, 60% of the corpus tax-free, and the rest buys a pension (see <a href="/guides/nps-new-exit-rules/">NPS under the new exit rules</a> and <a href="/guides/nps-80-percent-withdrawal-tax/">the tax on the 80%</a>).</li>
+  <li><strong>Before 60,</strong> only limited withdrawals are allowed, so treat it as locked.</li>
+</ul>
+<p>Example: Rohan moves ₹12 lakh at 42. At 9% a year it's about ₹56.6 lakh at 60. Taken as cash instead, he'd have paid about ₹1.5 lakh in tax and had about ₹26 lakh by 60 from investing the rest (<a href="/guides/superannuation-on-resignation-withdraw-or-nps/#numbers">the full comparison</a>).</p>
+
+<h2 id="pitfalls">Mistakes to avoid</h2>
+<ul>
+  <li><strong>Taking the cash to "put it in NPS later".</strong> That's a taxable withdrawal followed by a fresh contribution.</li>
+  <li><strong>Giving a Tier II account, or only a PRAN without an active Tier I.</strong> The transfer can't be credited; check your Tier I is active before you send the form.</li>
+  <li><strong>Assuming the fund will wait.</strong> Fund rules may set a deadline or a default option for members who leave. Ask what yours are, and send your request before or soon after your last day.</li>
+  <li><strong>Moving it close to retirement without checking.</strong> At or after the fund's retirement age, taking a third tax-free and a pension may suit you better. Compare both in the calculator.</li>
+</ul>
+
+{_sa_sources("Rohan is an illustration; NPS at 9% and cash invested at 7% are assumptions. ")}
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Move superannuation to NPS", body, "Superannuation to NPS")
+
+def guide_sa_retire():
+    path = "/guides/superannuation-at-retirement-commute-and-pension/"
+    toc = [("short-answer", "The short answer"), ("how", "How the split works"), ("example", "Meera's numbers"), ("pension-tax", "How the pension is taxed"),
+           ("options", "Picking the pension"), ("nps", "Or move it to NPS"), ("early", "Retiring early"), ("method", "Sources and assumptions")]
+    body = guide_head(path, "When you retire, your superannuation fund will ask how much you want as a lump sum and how you want your pension paid. Here's what's tax-free, what's taxed, and how to compare the options.",
+                      "A pie split into one-third taken as a tax-free lump sum and two-thirds turned into a monthly pension").replace("TYPE_LINE", "<span>Superannuation Calculator</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026.</b></p>
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>At retirement you can usually take up to a third of your superannuation as a tax-free lump sum ("commuting" part of the pension), and the rest buys a pension for life.</strong> The pension is taxed every year as salary. Or you can move the whole balance to NPS, tax-free. Compare both with the <a href="/superannuation-calculator/">superannuation calculator</a> (choose "Retiring").</p>
+
+<h2 id="how">How the split works</h2>
+<ul>
+  <li><strong>The limit:</strong> the Income-tax Rules allow a commuted lump sum of up to a third of the pension if you also get gratuity, and up to half if you don't ({_sa_L(SA_SRC_R308, "rule 308")}). Most fund rules allow a third.</li>
+  <li><strong>Tax-free:</strong> that lump sum is exempt (Schedule II, Sl. No. 8).</li>
+  <li><strong>The rest</strong> buys an annuity from an insurer, usually the one running the fund. It pays a fixed amount for life.</li>
+  <li><strong>You don't have to commute.</strong> Taking no lump sum gives a bigger pension.</li>
+</ul>
+
+<h2 id="example">Meera's numbers</h2>
+<p>Meera, 58, retires with ₹40 lakh in superannuation. She's getting gratuity, so she can commute up to a third. The annuity rate she's quoted is 6.5% a year.</p>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col"></th><th scope="col">Commute a third</th><th scope="col">No lump sum</th></tr></thead><tbody>
+<tr><th scope="row">Tax-free lump sum</th><td data-l="Commute a third">₹13,33,333</td><td data-l="No lump sum">Nil</td></tr>
+<tr><th scope="row">Used to buy the pension</th><td data-l="Commute a third">₹26,66,667</td><td data-l="No lump sum">₹40,00,000</td></tr>
+<tr><th scope="row">Pension a year</th><td data-l="Commute a third">₹1,73,333</td><td data-l="No lump sum">₹2,60,000</td></tr>
+<tr><th scope="row"><strong>Pension a month</strong></th><td data-l="Commute a third"><strong>₹14,444</strong></td><td data-l="No lump sum"><strong>₹21,667</strong></td></tr>
+</tbody></table></div>
+<p>The lump sum gives her flexibility: she could invest it and draw from it (see <a href="/guides/annuity-or-swp/">annuity or SWP</a>), keep it for health costs, or pay off a loan. The pension is fixed for life, however long she lives.</p>
+
+<h2 id="pension-tax">How the pension is taxed</h2>
+<p>The pension counts as salary, so the standard deduction applies (₹75,000 in the new regime). If it's Meera's only income, she pays nothing: ₹1.73 lakh is far below the ₹12 lakh rebate limit. If she also has rent, FD interest or another pension, it's added to that income and taxed at her slab.</p>
+
+<h2 id="options">Picking the pension</h2>
+<ul>
+  <li><strong>Life annuity:</strong> the highest payout, which stops when you die.</li>
+  <li><strong>Life with return of the purchase price:</strong> a lower payout, but your nominee gets the amount back.</li>
+  <li><strong>Joint life:</strong> continues for your spouse after you.</li>
+</ul>
+<p>Rates depend on your age and the option. Get quotes in writing and compare; once you buy, the rate is fixed for life.</p>
+
+<h2 id="nps">Or move it to NPS</h2>
+<p>You can also transfer the balance to your NPS Tier I account, tax-free (<a href="/guides/move-superannuation-to-nps/">the steps</a>, and <a href="/guides/move-superannuation-to-nps/#tier-1">why it must be Tier I</a>). At 58 that leaves two years of growth before you can exit: at 9% Meera's ₹40 lakh would be about ₹47.5 lakh at 60. She could then take up to 80% as a lump sum (60% of the corpus tax-free) and use the rest for a pension. That gives more as a lump sum, with market risk until 60. See <a href="/guides/nps-new-exit-rules/">NPS under the new exit rules</a>.</p>
+
+<h2 id="early">Retiring early</h2>
+<p>The tax-free lump sum needs retirement at or after the age in your fund's rules, or retirement due to incapacity. Leave earlier and the payout is treated like a resignation: cash is taxed at your average rate (<a href="/guides/superannuation-on-resignation-withdraw-or-nps/">how that works</a>). Ask HR what age the rules use before you set your last day.</p>
+
+{_sa_sources("Meera is an illustration; the 6.5% annuity rate and 9% NPS return are assumptions. ")}
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Superannuation at retirement", body, "Superannuation at retirement")
+
+def guide_sa_limit():
+    path = "/guides/superannuation-7-5-lakh-limit/"
+    toc = [("short-answer", "The short answer"), ("rule", "The rule"), ("example", "Priya's numbers"), ("who", "Who crosses it"), ("options", "What to ask HR"), ("method", "Sources and assumptions")]
+    body = guide_head(path, "Your employer's contributions to your retirement funds aren't taxed as you earn them, up to a point. Add up PF, NPS and superannuation, and above ₹7.5 lakh a year the excess becomes taxable salary.",
+                      "Employer PF, NPS and superannuation stacked up past a red ₹7.5 lakh line").replace("TYPE_LINE", "<span>Superannuation Calculator</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026.</b></p>
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>Your employer's contributions to PF, NPS and an approved superannuation fund are tax-free together up to ₹7.5 lakh a year.</strong> Anything above is taxed as a perquisite, and so are the returns earned on that excess, every year. It applies in both regimes, and mostly to people with a basic pay above about ₹18–20 lakh a year who get all three.</p>
+
+<h2 id="rule">The rule</h2>
+<ul>
+  <li>{_sa_L(SA_SRC_IT, "Section 17(1)(h)")} of the Income-tax Act, 2025 treats as a perquisite the total of your employer's contributions to a recognised PF, NPS (section 124(1)) and an approved superannuation fund, above ₹7.5 lakh in a tax year.</li>
+  <li>Section 17(1)(i) adds the yearly interest, dividend or similar return on that excess.</li>
+  <li>Only <strong>employer</strong> contributions count. Your own PF, VPF and NPS contributions don't.</li>
+</ul>
+
+<h2 id="example">Priya's numbers</h2>
+<p>Priya's basic pay is ₹24 lakh a year. Her employer pays PF on her full basic, 14% to NPS and 15% to superannuation. She's in the new regime, in the 30% slab.</p>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">Employer contribution</th><th scope="col">A year</th></tr></thead><tbody>
+<tr><th scope="row">PF, 12% of basic</th><td data-l="A year">₹2,88,000</td></tr>
+<tr><th scope="row">NPS, 14% of basic</th><td data-l="A year">₹3,36,000</td></tr>
+<tr><th scope="row">Superannuation, 15% of basic</th><td data-l="A year">₹3,60,000</td></tr>
+<tr><th scope="row"><strong>Total</strong></th><td data-l="A year"><strong>₹9,84,000</strong></td></tr>
+<tr><th scope="row">Above ₹7.5 lakh, taxable</th><td data-l="A year">₹2,34,000</td></tr>
+<tr><th scope="row">Extra tax at 31.2% (30% + cess, before any surcharge)</th><td data-l="A year">₹73,008</td></tr>
+</tbody></table></div>
+<p>On top of that, the returns earned on the ₹2.34 lakh excess are taxed each year. Her employer should include the perquisite in her salary and deduct tax on it; check it shows in Form 130 (earlier Form 16).</p>
+
+<h2 id="who">Who crosses it</h2>
+<ul>
+  <li><strong>High basic pay with all three benefits.</strong> With PF on full basic, 14% NPS and 15% superannuation, the line is crossed at a basic of about ₹18.3 lakh a year.</li>
+  <li><strong>PF capped at the wage ceiling</strong> (₹25,000 a month) leaves much more room: PF is then only ₹36,000 a year.</li>
+  <li><strong>No superannuation:</strong> PF and 14% NPS alone cross it only at a basic of about ₹28.8 lakh.</li>
+</ul>
+
+<h2 id="options">What to ask HR</h2>
+<ol class="g-check">
+  <li><strong>Whether you can change the mix:</strong> some employers let you reduce the superannuation or NPS share, or take it as taxable salary instead. Compare which costs you less.</li>
+  <li><strong>How they report the perquisite and the accretion</strong> in your payslip and Form 130.</li>
+  <li><strong>Whether employer NPS at 14% still makes sense</strong> for you: see <a href="/guides/employer-nps-14-percent-new-regime/">employer NPS at 14% in the new regime</a>.</li>
+</ol>
+<p>When you leave or retire, the limit no longer matters; what counts then is how you take the balance (<a href="/guides/superannuation-explained/">superannuation explained</a>).</p>
+
+{_sa_sources("Priya is an illustration; contribution rates vary by employer. ")}
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "₹7.5 lakh limit", body, "₹7.5 lakh limit")
+
+
+def guide_life_certificate():
+    path = "/guides/life-certificate-30-november-pension/"
+    def L(u, t): return f'<a href="{u}" rel="noopener">{t}</a>'
+    toc = [("short-answer", "The short answer"), ("who", "Who must submit by 30 November"), ("ways", "Three ways to do it"), ("face", "Face scan at home: the steps"),
+           ("check", "Check it was accepted"), ("missed", "If it's rejected or you miss the date"), ("safe", "The fake 'update your life certificate' call"), ("method", "Sources")]
+    body = guide_head(path, "If your father or mother draws a pension, it needs a life certificate every year. For most government and bank-paid pensioners the deadline is 30 November. Miss it and the December pension can stop. You can do it from home with a phone in about ten minutes.",
+                      "A phone scanning a pensioner's face for the life certificate, next to a calendar showing 30 November").replace("TYPE_LINE", "<span>EPS Pension Calculator</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026.</b> Deadline: <b>Monday, 30 November 2026</b>.</p>
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>Central and state government pensioners must submit their life certificate by 30 November, or the pension may pause from December.</strong> The quickest way is a face scan on an Android phone with two free apps, Jeevan Pramaan and AadhaarFaceRD. You can also ask a postman or a bank's doorstep service to come home, or go to the bank. <strong>EPS-95 (EPFO) pensioners are different:</strong> their certificate is valid for 12 months from the last one, whenever that was. And no official ever calls to "update" a life certificate: anyone who asks for an OTP is a fraudster.</p>
+
+<h2 id="who">Who must submit by 30 November</h2>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">Pensioner</th><th scope="col">When</th></tr></thead><tbody>
+<tr><th scope="row">Central government pensioners and family pensioners</th><td data-l="When">1–30 November; from 1 October if aged 80 or more</td></tr>
+<tr><th scope="row">State government and bank-paid pensioners</th><td data-l="When">In November, by the 30th, as your treasury or bank asks</td></tr>
+<tr><th scope="row">EPS-95 pensioners (EPFO pension)</th><td data-l="When">Any time; valid for 12 months from the last submission. Check the date of the last one</td></tr>
+</tbody></table></div>
+<p>The 80-plus window opened on 1 October 2026 and everyone else's on 1 November; both close on 30 November. For EPS pensioners, EPFO's rule is that the certificate stays valid for one year from the date it was submitted, so a parent who submitted in March is due again in March, not November. If you're not sure when your parent last submitted, do it now: an extra certificate does no harm.</p>
+
+<h2 id="ways">Three ways to do it</h2>
+<ol>
+  <li><strong>Face scan at home</strong> on an Android phone (yours is fine), with the pensioner's Aadhaar. Free. Steps below.</li>
+  <li><strong>At the doorstep.</strong> Book the India Post Payments Bank (IPPB) service through its app, website or the local post office, and a postman comes home with a fingerprint device. For central and state pensioners it costs ₹70 including GST; for EPS-95 pensioners it's free, because EPFO pays. Public sector banks also run a doorstep banking service.</li>
+  <li><strong>At the bank or office</strong>: the pension-paying bank branch, an EPFO office for EPS pensioners, or a Common Service Centre. A paper certificate at the branch still works for central pensioners.</li>
+</ol>
+
+<h2 id="face">Face scan at home: the steps</h2>
+<ol class="g-check">
+  <li><strong>Install two apps</strong> from the Play Store: <em>AadhaarFaceRD</em> (from UIDAI) and <em>Jeevan Pramaan Face App</em>. Only from the Play Store, never from a link someone sends.</li>
+  <li><strong>Keep handy:</strong> the pensioner's Aadhaar number, the mobile number registered for the pension, PPO number, bank name and account number. Aadhaar must already be linked with the pension account at the bank or office.</li>
+  <li><strong>Register the operator</strong> (you, the son or daughter) with your own Aadhaar and face, once.</li>
+  <li><strong>Enter the pensioner's details</strong>, then scan their face: good light, plain background, glasses off, blink when asked.</li>
+  <li><strong>Note the Pramaan ID</strong> that appears, and the SMS that follows. That's the proof.</li>
+</ol>
+<p>Problems are usually Aadhaar not seeded with the pension account, a different mobile number, or poor light. Fix the first two at the bank before trying again.</p>
+
+<h2 id="check">Check it was accepted</h2>
+<ul>
+  <li>Download the certificate from {L("https://jeevanpramaan.gov.in/", "jeevanpramaan.gov.in")} with the Pramaan ID and an OTP.</li>
+  <li>It reaches the pension-paying bank or office in a few days. Look for the bank's acknowledgement by SMS, or ask the branch a week later.</li>
+  <li>If the bank says it isn't on record, submit again or take the downloaded certificate to the branch. Don't wait for the December pension to find out.</li>
+</ul>
+
+<h2 id="missed">If it's rejected or you miss the date</h2>
+<ul>
+  <li><strong>The pension is paused, not lost.</strong> Payments may stop from December until a certificate is recorded. There's no penalty.</li>
+  <li><strong>Submit as soon as you can</strong> by any of the three ways. Once it's updated, the held pension is paid with arrears in the next cycle.</li>
+  <li><strong>If it's rejected</strong>, check the reason on the SMS or at the bank (usually Aadhaar or account details), correct it, and submit again.</li>
+</ul>
+<p>Parents relying on that pension for monthly costs may need a buffer if December is delayed: see <a href="/guides/fd-for-senior-citizens-tds-and-tax/">FDs for senior citizens</a>.</p>
+
+<h2 id="safe">The fake "update your life certificate" call</h2>
+<p class="g-callout"><b>Stay safe.</b> Every November, fraudsters call pensioners claiming to be from the pension office or the bank, offering to "update" the life certificate online, and ask for the OTP. The OTP gives them the bank account. The Central Pension Accounting Office has said that neither it, nor banks, nor any government agency calls for the life certificate or asks for an OTP. Also beware of social media ads offering a "life certificate at home". Use only the official apps, IPPB or the bank. If money has gone, call <b>1930</b> at once and report at cybercrime.gov.in; report the number on Chakshu at sancharsaathi.gov.in. Read how a similar call works in <a href="/guides/digital-arrest-scam/">the digital arrest scam</a>, and more in <a href="/stay-safe/">Stay safe</a>.</p>
+
+<h2>For EPS-95 parents</h2>
+<p>If your parent's pension comes from EPFO, it's worth checking whether it's correct while you're at it: read <a href="/guides/eps-pension-explained/">EPS pension explained</a>, <a href="/guides/why-eps-pension-is-low/">why the EPS pension is so low</a>, or work it out with the <a href="/eps-pension-calculator/">EPS pension calculator</a>.</p>
+
+<h2 id="method">Sources</h2>
+<p>Department of Pension and Pensioners' Welfare: Nationwide Digital Life Certificate Campaign 5.0, 1–30 November 2026; UIDAI's Digital Life Certificate FAQs (November submission, 80-plus window from 1 October, Pramaan ID). EPFO: EPS-95 life certificate valid for one year from submission (press release of 16 November 2020) and free doorstep service through IPPB (EPFO–IPPB MoU, 2025). IPPB: ₹70 fee per successful certificate. CPAO advisory on fake life certificate calls (October 2026). News reports of November 2026 (PTI, Business Today, Upstox) for the 2026 dates and the arrears after late submission. Read <a href="/methodology/">how we check our facts</a>. Verified on 26 November 2026.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Life certificate by 30 November", body, "Life certificate")
+
+
+def guide_motor_insurance():
+    path = "/guides/motor-insurance-four-layer-15-december/"
+    toc = [("short-answer", "The short answer"), ("layers", "The four covers"), ("example", "Choosing for a family car"), ("renew", "Renew before or after 15 December?"),
+           ("buying", "Buying a car this December"), ("checks", "Before you pay"), ("method", "Sources")]
+    body = guide_head(path, "From 15 December, every car and two-wheeler policy in India comes in the same four-part format, with a price against each part. Two parts are compulsory; you choose the rest. Here's what each covers and how to pick.",
+                      "A car next to four stacked insurance covers: third party and owner accident cover must-have, passengers and own damage optional").replace("TYPE_LINE", "<span>Car Ownership Cost</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026.</b> Applies to private cars and two-wheelers, for policies issued from <b>15 December 2026</b>.</p>
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>Motor policies will be split into four covers: third-party liability and the owner's personal accident cover are compulsory; cover for passengers and for damage to your own vehicle are optional.</strong> You tick what you want on a signed customer option form, and the schedule shows the premium for each cover. It applies to every policy issued from 15 December 2026, new or renewed. A running policy stays as it is. The main new decision is whether to add the passenger cover.</p>
+
+<h2 id="layers">The four covers</h2>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col">Cover</th><th scope="col">What it pays for</th><th scope="col">Must you take it?</th></tr></thead><tbody>
+<tr><th scope="row">I. Third-party liability</th><td data-l="What it pays for">Injury, death or property damage you cause to others</td><td data-l="Must you take it?">Yes, by law</td></tr>
+<tr><th scope="row">II. Legal liability to occupants</th><td data-l="What it pays for">Claims by passengers, a pillion rider or your driver who are hurt or killed, up to the seating capacity. Not your spouse, children or parents</td><td data-l="Must you take it?">Optional</td></tr>
+<tr><th scope="row">III. Personal accident</th><td data-l="What it pays for">Owner: the full sum for death or permanent total disability, half for loss of one limb or eye. Passengers and other drivers: optional add-on</td><td data-l="Must you take it?">Owner's cover: yes (unless you already have accident cover from another policy). Passengers: optional</td></tr>
+<tr><th scope="row">IV. Own damage</th><td data-l="What it pays for">Damage to or theft of your vehicle</td><td data-l="Must you take it?">Optional</td></tr>
+</tbody></table></div>
+<p>Family members travelling with you aren't covered under Section II; personal accident cover for passengers (Section III) is the way to cover them. The owner's accident cover is only for individual owners and only on one vehicle if you own several.</p>
+
+<h2 id="example">Choosing for a family car</h2>
+<p>Neha, 34, is buying a ₹10 lakh hatchback in December on a car loan. She drives her husband and parents around most weekends; a part-time driver takes her father to the doctor twice a week.</p>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col">Cover</th><th scope="col">Neha's choice</th><th scope="col">Why</th></tr></thead><tbody>
+<tr><th scope="row">I. Third-party</th><td data-l="Neha's choice">Yes</td><td data-l="Why">Compulsory</td></tr>
+<tr><th scope="row">II. Occupants</th><td data-l="Neha's choice">Yes</td><td data-l="Why">Covers the paid driver and any friend she gives a lift to</td></tr>
+<tr><th scope="row">III. Owner's accident cover</th><td data-l="Neha's choice">Yes</td><td data-l="Why">Compulsory; she has no other accident cover</td></tr>
+<tr><th scope="row">III. Passenger accident cover</th><td data-l="Neha's choice">Yes</td><td data-l="Why">The only way to cover her family in the car</td></tr>
+<tr><th scope="row">IV. Own damage</th><td data-l="Neha's choice">Yes</td><td data-l="Why">A new car on a loan: lenders usually insist on it, and a repair bill would hurt</td></tr>
+</tbody></table></div>
+<p>Her cousin rides a 9-year-old scooter worth about ₹20,000 and always rides alone. For him, the two compulsory covers may be enough: own-damage cover on a vehicle worth so little may not be worth its premium. Each person ticks what fits; the form makes the choice visible.</p>
+
+<h2 id="renew">Renew before or after 15 December?</h2>
+<ul>
+  <li><strong>Policy running?</strong> Nothing to do. You don't need to cancel it. If you want passenger liability cover (Section II) before renewal, you can add it mid-term for an extra premium, from the insurer that issued your third-party cover.</li>
+  <li><strong>Renewal due in December?</strong> Renew on time, before or after the 15th. Don't let it lapse to wait for the new format: driving without third-party cover is an offence. A renewal from 15 December will come in the new format with the option form.</li>
+  <li><strong>Price:</strong> the circular lets insurers price own-damage cover freely, so compare quotes; seeing each cover's premium separately makes that easier.</li>
+</ul>
+
+<h2 id="buying">Buying a car this December</h2>
+<p>If the car is delivered on or after 15 December, the dealer's policy will come with the option form. Read it before you sign, and check that only the covers you want are ticked. You can buy from another insurer if the dealer's quote is high, as long as the policy is in place before the car is registered. Weighing a December purchase at all? Read <a href="/guides/buy-car-december-or-january/">Buy a car in December or wait for January?</a> and see the full cost with the <a href="/car-ownership-cost/">car ownership cost calculator</a>.</p>
+
+<h2 id="checks">Before you pay</h2>
+<ol class="g-check">
+  <li><strong>The option form:</strong> every cover ticked or unticked as you meant, signed (or OTP-approved online). No policy can be issued without it.</li>
+  <li><strong>The Customer Information Sheet:</strong> what's covered and excluded, in plain words.</li>
+  <li><strong>Premium per cover</strong> on the schedule, and the insured declared value (IDV) for own damage.</li>
+  <li><strong>Owner's accident cover:</strong> skip it only if you have accident cover from another policy, and keep proof.</li>
+</ol>
+<p>Paying for the car too: compare <a href="/guides/car-loan-or-cash/">car loan or cash</a> and <a href="/guides/new-or-used-car/">new or used</a>.</p>
+
+<h2 id="method">Sources</h2>
+<p>IRDAI circular IRDAI/CIR/MOT/10/2026, "Four Layer Structure – Motor Insurance Policy", 2 November 2026, issued after the Supreme Court's judgment in National Insurance Co. Ltd. v. Thungala Dhana Laxmi (4 August 2026); summarised by Cafemutual, Moneylife, TaxGuru and Business Standard (November 2026). Motor Vehicles Act, 1988 (compulsory third-party cover). Read <a href="/methodology/">how we check our facts</a>. Verified on 26 November 2026.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Motor insurance from 15 December", body, "Motor insurance")
+
+
+def guide_garden_leave():
+    path = "/guides/garden-leave-pay-pf-joining/"
+    toc = [("short-answer", "The short answer"), ("what", "What garden leave is"), ("counts", "What still counts"), ("example", "Karan's numbers"),
+           ("join", "Can you join a new job early?"), ("tax", "How the money is taxed"), ("ask", "What to ask for"), ("method", "Sources")]
+    body = guide_head(path, "Some companies cutting jobs tell people to stop working at once but keep paying them until the notice period ends. That's garden leave. You're still an employee until your last day, and that one fact decides your pay, your PF, your gratuity and when you can start somewhere else.",
+                      "A closed office door, a potted plant and a notice-period calendar with a rupee coin: paid time at home before you leave").replace("TYPE_LINE", "<span>Full and Final Settlement</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026.</b> General information, not legal advice: your contract and offer letter decide the details.</p>
+{toc_html(toc)}
+<h2 id="short-answer">The short answer</h2>
+<p><strong>On garden leave you're still employed: you get your salary, PF keeps going in, and the time counts towards gratuity, until the last working day.</strong> You can't join another employer before that day unless the company releases you early, and an early release can cost you gratuity if you're near 5 years. After your last day, a clause stopping you from working for a competitor generally isn't enforceable in India. Severance is taxed at your slab; gratuity up to ₹20 lakh is tax-free.</p>
+
+<h2 id="what">What garden leave is</h2>
+<ul>
+  <li><strong>Paid notice, at home.</strong> You stay on the payroll for the notice period but aren't given work, and usually lose system access.</li>
+  <li><strong>It comes from your contract,</strong> not from a law. Check the notice and garden leave clauses in your appointment letter.</li>
+  <li><strong>You're still bound by your contract:</strong> confidentiality, no working for anyone else, and returning laptops and data.</li>
+  <li><strong>It can't run past your notice period.</strong> Severance, if offered, is a separate payment on top.</li>
+</ul>
+
+<h2 id="counts">What still counts</h2>
+<div class="g-scroll"><table class="g-tbl"><thead><tr><th scope="col">Item</th><th scope="col">During garden leave</th></tr></thead><tbody>
+<tr><th scope="row">Salary</th><td data-l="During garden leave">Paid as usual, with TDS</td></tr>
+<tr><th scope="row">PF</th><td data-l="During garden leave">Your 12% and the employer's share continue, since wages are paid</td></tr>
+<tr><th scope="row">Gratuity service</th><td data-l="During garden leave">Counts, up to the last working day. 5 years of continuous service are needed</td></tr>
+<tr><th scope="row">Leave</th><td data-l="During garden leave">Usually keeps accruing; check the policy. Encashment in the settlement</td></tr>
+<tr><th scope="row">Group health cover</th><td data-l="During garden leave">Usually continues to the last day, then ends</td></tr>
+<tr><th scope="row">Bonus and stock</th><td data-l="During garden leave">Depends on the bonus policy and the stock plan's definition of your leaving date</td></tr>
+</tbody></table></div>
+
+<h2 id="example">Karan's numbers</h2>
+<p>Karan, 34, in Bengaluru, joined on 15 February 2022. His fixed pay is ₹20 lakh a year (₹1,66,667 a month) and his basic is ₹1 lakh a month. On 1 December 2026, 4 years and 9½ months in, he's told his role is gone: garden leave to 31 January 2027, plus severance of 3 months' fixed pay.</p>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col"></th><th scope="col">Last day 31 Jan 2027 (offered)</th><th scope="col">Last day 16 Feb 2027 (asked for)</th></tr></thead><tbody>
+<tr><th scope="row">Service</th><td data-l="Last day 31 Jan">4 years 11½ months</td><td data-l="Last day 16 Feb">5 years</td></tr>
+<tr><th scope="row">Garden leave pay</th><td data-l="Last day 31 Jan">₹3,33,333 (2 months)</td><td data-l="Last day 16 Feb">About ₹4.17 lakh (2½ months)</td></tr>
+<tr><th scope="row">Severance (3 months)</th><td data-l="Last day 31 Jan">₹5,00,000</td><td data-l="Last day 16 Feb">₹5,00,000</td></tr>
+<tr><th scope="row"><strong>Gratuity</strong></th><td data-l="Last day 31 Jan"><strong>Nil</strong></td><td data-l="Last day 16 Feb"><strong>₹2,88,462, tax-free</strong></td></tr>
+</tbody></table></div>
+<p>Gratuity = 15/26 × ₹1,00,000 × 5 years = ₹2,88,462. Two weeks more on the payroll are worth almost ₹3 lakh, so it's worth asking HR for the later date in writing. Check your own dates with the <a href="/gratuity-calculator/">gratuity calculator</a> and <a href="/guides/gratuity-six-month-rule-when-to-resign/">the six-month rule</a>.</p>
+
+<h2 id="join">Can you join a new job early?</h2>
+<ul>
+  <li><strong>Not while you're on garden leave.</strong> You're still employed; joining elsewhere breaks your contract, and your PF account would show two employers paying at once.</li>
+  <li><strong>Ask for an early release.</strong> Employers sometimes agree, with a relieving letter dated earlier. Pay for the remaining garden leave then usually stops, and check the date against the 5-year mark first.</li>
+  <li><strong>After your last day,</strong> a clause stopping you from joining a competitor is generally void under section 27 of the Indian Contract Act, 1872. The Supreme Court has upheld restraints during employment (Niranjan Shankar Golikari, 1967), and courts have struck down post-employment non-competes. Confidentiality and non-solicitation clauses can still be enforced.</li>
+</ul>
+<p>Leaving by choice rather than being let go? Compare <a href="/guides/notice-period-buyout/">buying out your notice</a>.</p>
+
+<h2 id="tax">How the money is taxed</h2>
+<ul>
+  <li><strong>Garden leave pay:</strong> ordinary salary, with TDS as usual.</li>
+  <li><strong>Severance or ex gratia:</strong> "profits in lieu of salary" under section 18 of the Income-tax Act, 2025, taxed at your slab in the year you receive it. Karan's ₹5 lakh, on top of ₹16.67 lakh of salary this tax year, adds about ₹1.08 lakh of tax in the new regime.</li>
+  <li><strong>Gratuity:</strong> tax-free up to ₹20 lakh for private-sector employees.</li>
+  <li><strong>Leave encashment:</strong> tax-free within limits, at most ₹25 lakh over your career (see <a href="/guides/leave-encashment-tax-on-resignation/">leave encashment tax</a>).</li>
+</ul>
+<p>Judging a package as a whole? Read <a href="/guides/voluntary-exit-offer-how-to-judge/">how to judge an exit or severance offer</a>, and check the settlement with the <a href="/full-and-final-settlement/">full and final settlement calculator</a>.</p>
+
+<h2 id="ask">What to ask for</h2>
+<ol class="g-check">
+  <li><strong>Your last working day in writing,</strong> and whether it can move past your 5-year date if you're close.</li>
+  <li><strong>Bonus:</strong> whether a pro-rata bonus for the year is paid (see <a href="/guides/bonus-when-you-resign/">bonus when you leave</a>).</li>
+  <li><strong>Stock:</strong> which date the plan treats as your leaving date, and whether grants vesting during garden leave will vest (see <a href="/guides/resign-before-or-after-rsu-vesting/">RSUs and your last day</a>).</li>
+  <li><strong>Health cover:</strong> until when, and whether you can port it to an individual policy.</li>
+  <li><strong>Settlement timeline:</strong> final wages are due within 2 working days of your last day under the Code on Wages; read <a href="/guides/full-and-final-settlement-explained/">full and final settlement explained</a>.</li>
+</ol>
+
+<h2 id="method">Sources</h2>
+<p>Garden leave is contractual in India; no statute governs it. Indian Contract Act, 1872, section 27; Niranjan Shankar Golikari v. Century Spinning and Mfg. Co. (Supreme Court, 1967); later High Court rulings striking down post-employment non-competes. Code on Social Security, 2020, section 53 (gratuity after 5 years of continuous service; 15 days' wages per year). Code on Wages, 2019, section 17(2). Income-tax Act, 2025: section 18 (profits in lieu of salary); gratuity and leave encashment exemptions. Reporting on November 2026 tech layoffs with garden leave (Business Today, 19 November 2026). Karan's tax uses tax year 2026-27 new-regime slabs and 4% cess. Read <a href="/methodology/">how we check our numbers</a>. Verified on 26 November 2026.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Garden leave", body, "Garden leave")
 
 def stay_safe_page():
     gmap = {g[0]: g for g in GUIDES}
@@ -14955,12 +15683,16 @@ def guide_mf_tax():
     return article(path, "x", "Tax on SIP and mutual funds", body, "SIP and mutual fund tax")
 
 TOPICS = [("retire", "Retirement and pension"), ("invest", "Investing"), ("home", "Home and loans"), ("tax", "Tax"), ("car", "Car"), ("money", "Pay, budget, insurance and leave")] + ([("safe", "Scams and safety")] if S2_LIVE else [])
-TOOL_TOPIC = {"/return-to-office-cost-calculator/": "pay", "/health-insurance-cover-calculator/": "money", "/esop-rsu-tax-calculator/": "tax", "/salary-hike-vs-inflation/": "money", "/epf-calculator/": "retire", "/eps-pension-calculator/": "retire", "/nps-calculator/": "retire", "/retirement-planner/": "retire", "/gratuity-calculator/": "retire",
+TOOL_TOPIC = {"/superannuation-calculator/": "retire", "/return-to-office-cost-calculator/": "pay", "/health-insurance-cover-calculator/": "money", "/esop-rsu-tax-calculator/": "tax", "/salary-hike-vs-inflation/": "money", "/epf-calculator/": "retire", "/eps-pension-calculator/": "retire", "/nps-calculator/": "retire", "/retirement-planner/": "retire", "/gratuity-calculator/": "retire",
               "/sip-calculator/": "invest", "/fd-ppf-rd-calculator/": "invest", "/rent-vs-buy/": "home", "/prepay-vs-invest/": "home", "/emi-calculator/": "home",
               "/income-tax-section-finder/": "tax", "/company-car-lease-vs-loan/": "car", "/car-ownership-cost/": "car", "/budget-planner/": "money", "/leave-planner-2027/": "money", "/full-and-final-settlement/": "money", "/labour-codes-salary-calculator/": "money", "/best-day-to-resign/": "money", "/fire-calculator/": "invest", "/swp-calculator/": "invest", "/job-offer-comparator/": "money", "/term-insurance-calculator/": "money", "/sukanya-samriddhi-calculator/": "invest"}
 # Guides listed under more than one tool appear once on /guides/, under the tool they belong to most.
 GUIDE_HOME = {"/guides/nps-vs-ppf-vs-epf/": "/nps-calculator/", "/guides/eps-pension-explained/": "/eps-pension-calculator/",
-              "/guides/epf-wage-ceiling-25000/": "/epf-calculator/", "/guides/transfer-pf-dont-withdraw/": "/epf-calculator/"}
+              "/guides/epf-wage-ceiling-25000/": "/epf-calculator/", "/guides/transfer-pf-dont-withdraw/": "/epf-calculator/",
+              "/guides/superannuation-explained/": "/superannuation-calculator/", "/guides/superannuation-on-resignation-withdraw-or-nps/": "/superannuation-calculator/",
+              "/guides/move-superannuation-to-nps/": "/superannuation-calculator/", "/guides/garden-leave-pay-pf-joining/": "/full-and-final-settlement/"}
+# Used by /guides/ and by related(): a guide's Related tools start with this home tool (26 Nov fix: related() had ignored it).
+# check_links() stops the build if a guide sits under 2+ live tools without an entry here.
 TAX_WORDS = ("tax", "tds", "regime", "section", "perquisite", "hra", "80c")
 
 # Guides page default view: newest first (agreed 19 Nov; ships with batch T1). "By tool" and "Start-here guides only" stay in the menu.
@@ -15159,6 +15891,12 @@ def main():
     if HV_LIVE: write("/salary-hike-vs-inflation/", hv_page())
     if SO_LIVE: write("/esop-rsu-tax-calculator/", so_page())
     if HC_LIVE: write("/health-insurance-cover-calculator/", hc_page())
+    if SA_LIVE: write("/superannuation-calculator/", sa_page())
+    for _p, _f in [("/guides/superannuation-explained/", guide_sa_main), ("/guides/superannuation-on-resignation-withdraw-or-nps/", guide_sa_resign), ("/guides/move-superannuation-to-nps/", guide_sa_nps),
+                   ("/guides/superannuation-at-retirement-commute-and-pension/", guide_sa_retire), ("/guides/superannuation-7-5-lakh-limit/", guide_sa_limit)]:
+        if _p not in HELD: write(_p, _f())
+    for _p, _f in [("/guides/life-certificate-30-november-pension/", guide_life_certificate), ("/guides/motor-insurance-four-layer-15-december/", guide_motor_insurance), ("/guides/garden-leave-pay-pf-joining/", guide_garden_leave)]:
+        if _p not in HELD: write(_p, _f())
     if RT_LIVE: write("/return-to-office-cost-calculator/", rt_page())
     write("/guides/return-to-office-cost/", guide_rt_main())
     write("/guides/cheapest-way-to-commute-to-office/", guide_rt_modes())
@@ -15337,7 +16075,7 @@ def main():
     write("/guides/prepay-home-loan-early-or-later/", guide_prepay_timing())
     for p, (name, title, desc, h1, b) in PAGES.items(): write(p, text_page(p, name, title, desc, h1, b))
     write("/404.html", page_404())
-    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/gta-6-scams-fake-downloads/", "0.7"), ("/guides/gta-6-ps5-cost-emi-or-save/", "0.7"), ("/guides/day-off-for-gta-6-leave-rules/", "0.6"), ("/guides/advance-tax-15-december-salaried/", "0.8"), ("/guides/buy-car-december-or-january/", "0.7"), ("/guides/voluntary-exit-offer-how-to-judge/", "0.8"), ("/guides/whatsapp-web-safety-i4c-advisory/", "0.7"), ("/guides/wedding-invite-apk-scam/", "0.8"), ("/guides/rbi-stop-switch-trusted-person/", "0.8"), ("/guides/belated-itr-31-december/", "0.8"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
+    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/gta-6-scams-fake-downloads/", "0.7"), ("/guides/gta-6-ps5-cost-emi-or-save/", "0.7"), ("/guides/day-off-for-gta-6-leave-rules/", "0.6"), ("/guides/advance-tax-15-december-salaried/", "0.8"), ("/guides/buy-car-december-or-january/", "0.7"), ("/guides/voluntary-exit-offer-how-to-judge/", "0.8"), ("/guides/whatsapp-web-safety-i4c-advisory/", "0.7"), ("/guides/wedding-invite-apk-scam/", "0.8"), ("/guides/rbi-stop-switch-trusted-person/", "0.8"), ("/guides/belated-itr-31-december/", "0.8"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7"), ("/guides/superannuation-explained/", "0.8"), ("/guides/superannuation-on-resignation-withdraw-or-nps/", "0.7"), ("/guides/move-superannuation-to-nps/", "0.7"), ("/guides/superannuation-at-retirement-commute-and-pension/", "0.7"), ("/guides/superannuation-7-5-lakh-limit/", "0.7"), ("/guides/life-certificate-30-november-pension/", "0.7"), ("/guides/motor-insurance-four-layer-15-december/", "0.7"), ("/guides/garden-leave-pay-pf-joining/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/superannuation-calculator/", "0.9")] if SA_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
     # lastmod: the date each page's content last changed. A page's date moves only when its HTML changes
     # (ignoring the ?v= cache-busting hashes), tracked in src/data/lastmod.json.
     import hashlib, datetime

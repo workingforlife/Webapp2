@@ -451,3 +451,15 @@ button.sf-reg{cursor:pointer;font:600 12px var(--ff);line-height:1.4}
 .mrow.mhead span:first-child{text-align:left}
 .rtx [aria-labelledby="rt-daysNowLbl"],.rtx [aria-labelledby="rt-daysNewLbl"]{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
 .rtx [aria-labelledby="rt-daysNowLbl"] button,.rtx [aria-labelledby="rt-daysNewLbl"] button{min-width:0;padding-left:0;padding-right:0}
+
+/* superannuation */
+.chartbox .ln.cash{stroke:var(--gain)}
+.sa-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sa-opt{background:var(--s1);border:1px solid var(--line);border-radius:16px;padding:16px 18px;border-top:4px solid var(--brand)}
+.sa-opt.fund{border-top-color:var(--leave)}.sa-opt.cash{border-top-color:var(--gain)}
+.sa-opt h3{margin:0 0 2px;font-size:16px}
+.sa-opt .tx{margin:0 0 10px;font-size:13px;color:var(--muted);font-weight:600}
+.sa-opt .n{margin:0 0 6px;font-family:var(--fn);font-weight:800;font-size:24px}
+.sa-opt .n span{font-family:var(--ff);font-size:13px;font-weight:600;color:var(--muted)}
+.sa-opt .d{margin:0;font-size:14px;line-height:1.5}
+@media (max-width:760px){.sa-opts{grid-template-columns:1fr}}

@@ -1,35 +1,35 @@
 {
  "/": {
-  "date": "2026-11-25",
-  "hash": "d75ce3a3a13d599e"
+  "date": "2026-11-26",
+  "hash": "517697b642d5541c"
  },
  "/about/": {
   "date": "2026-11-25",
   "hash": "021d9c0fd82ed08a"
  },
  "/best-day-to-resign/": {
-  "date": "2026-11-25",
-  "hash": "9b9090f4bae55421"
+  "date": "2026-11-26",
+  "hash": "098a91b8391d1e7b"
  },
  "/budget-planner/": {
   "date": "2026-11-25",
   "hash": "31610316ac8567f2"
  },
  "/buying-a-car/": {
-  "date": "2026-11-25",
-  "hash": "c3e52ccd3323f0e7"
+  "date": "2026-11-26",
+  "hash": "d7a529f918384c04"
  },
  "/buying-a-home/": {
   "date": "2026-11-25",
   "hash": "98f0d8b4ab7d0d6e"
  },
  "/car-ownership-cost/": {
-  "date": "2026-11-25",
-  "hash": "4ce66c95de7ea399"
+  "date": "2026-11-26",
+  "hash": "3bd64e85a8898cd8"
  },
  "/changing-jobs/": {
-  "date": "2026-11-25",
-  "hash": "fc20c1b3cfef92c1"
+  "date": "2026-11-26",
+  "hash": "0d6cbf0d341e50a6"
  },
  "/company-car-lease-vs-loan/": {
   "date": "2026-11-25",
@@ -52,8 +52,8 @@
   "hash": "f7862ef774b4a9d9"
  },
  "/eps-pension-calculator/": {
-  "date": "2026-11-25",
-  "hash": "541594255a4c42b6"
+  "date": "2026-11-26",
+  "hash": "4c4b4b0b720c143e"
  },
  "/esop-rsu-tax-calculator/": {
   "date": "2026-11-20",
@@ -68,20 +68,20 @@
   "hash": "20269133d248ff12"
  },
  "/full-and-final-settlement/": {
-  "date": "2026-11-25",
-  "hash": "9b96617037b6b1a6"
+  "date": "2026-11-26",
+  "hash": "cf5fffdface36521"
  },
  "/got-a-bonus/": {
   "date": "2026-11-25",
   "hash": "0d547ccf305ccf40"
  },
  "/gratuity-calculator/": {
-  "date": "2026-11-25",
-  "hash": "42465c3121fbd9c7"
+  "date": "2026-11-26",
+  "hash": "ddca8baa0af6fef8"
  },
  "/guides/": {
-  "date": "2026-11-25",
-  "hash": "12cd3e000b836579"
+  "date": "2026-11-26",
+  "hash": "d93dbaff7188ffa3"
  },
  "/guides/25x-rule-retirement-india/": {
   "date": "2026-11-25",
@@ -124,8 +124,8 @@
   "hash": "486b79bd155fab04"
  },
  "/guides/buy-car-december-or-january/": {
-  "date": "2026-11-25",
-  "hash": "43c8fcc2f1b68f62"
+  "date": "2026-11-26",
+  "hash": "c36bbf5c45c81c12"
  },
  "/guides/car-lease-20-percent-slab-and-ev/": {
   "date": "2026-11-25",
@@ -204,8 +204,8 @@
   "hash": "201ffa1a24709b59"
  },
  "/guides/eps-pension-explained/": {
-  "date": "2026-11-25",
-  "hash": "a8ee123ca0d572ea"
+  "date": "2026-11-26",
+  "hash": "904d41b2b7be6519"
  },
  "/guides/eps-withdrawal-benefit-or-scheme-certificate/": {
   "date": "2026-11-25",
@@ -258,6 +258,10 @@
  "/guides/full-and-final-settlement-explained/": {
   "date": "2026-11-25",
   "hash": "9adf3005d20bb8fa"
+ },
+ "/guides/garden-leave-pay-pf-joining/": {
+  "date": "2026-11-26",
+  "hash": "f2b2fe77814a1f0d"
  },
  "/guides/government-ev-rule-should-you-switch/": {
   "date": "2026-11-25",
@@ -359,6 +363,10 @@
   "date": "2026-11-25",
   "hash": "713a8514c0655a12"
  },
+ "/guides/life-certificate-30-november-pension/": {
+  "date": "2026-11-26",
+  "hash": "b9df7bfe33e8693b"
+ },
  "/guides/long-weekends-2027-six-day-week/": {
   "date": "2026-11-25",
   "hash": "cb2208787e1e5ab4"
@@ -378,6 +386,10 @@
  "/guides/monthly-budget/": {
   "date": "2026-11-25",
   "hash": "4d19f54d9857c35f"
+ },
+ "/guides/motor-insurance-four-layer-15-december/": {
+  "date": "2026-11-26",
+  "hash": "16ddf2adf8846802"
  },
  "/guides/move-closer-to-office-or-commute/": {
   "date": "2026-11-21",
@@ -552,8 +564,8 @@
   "hash": "9af77793de6ec471"
  },
  "/guides/transfer-pf-dont-withdraw/": {
-  "date": "2026-11-25",
-  "hash": "7d65466c1c28cd2f"
+  "date": "2026-11-26",
+  "hash": "48802b8a3ddda548"
  },
  "/guides/two-employers-one-year-tax/": {
   "date": "2026-11-25",
@@ -572,8 +584,8 @@
   "hash": "d0f39276579871ff"
  },
  "/guides/vpf-worth-it/": {
-  "date": "2026-11-25",
-  "hash": "b9e6ea5ac35749ce"
+  "date": "2026-11-26",
+  "hash": "4c0b8effb64bed9e"
  },
  "/guides/wait-for-bonus-or-join-now/": {
   "date": "2026-11-25",
@@ -624,12 +636,12 @@
   "hash": "d511138f94d66190"
  },
  "/nps-calculator/": {
-  "date": "2026-11-25",
-  "hash": "744ce72e3899229c"
+  "date": "2026-11-26",
+  "hash": "a9075f1685a9273f"
  },
  "/planning-retirement/": {
-  "date": "2026-11-25",
-  "hash": "b015aab02ba7dae1"
+  "date": "2026-11-26",
+  "hash": "11f73c94f6021679"
  },
  "/prepay-vs-invest/": {
   "date": "2026-11-25",
@@ -676,7 +688,7 @@
   "hash": "8e04d7227d35f66c"
  },
  "/tools/": {
-  "date": "2026-11-25",
-  "hash": "6f12d9cd2638388d"
+  "date": "2026-11-26",
+  "hash": "af9463428d858d1a"
  }
 }

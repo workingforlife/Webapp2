@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Employer PF, NPS and superannuation stacked up past a red ₹7.5 lakh line">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5FE0"/><stop offset="1" stop-color="#0B2A6B"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".18"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="#FFFFFF" opacity=".08"><circle cx="190" cy="760" r="80"/><circle cx="1450" cy="740" r="64"/><circle cx="230" cy="160" r="46"/></g>
+<g transform="translate(470 180)"><rect x="0" y="420" width="560" height="140" rx="14" fill="#EAF1FF"/><text x="280" y="505" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="36" fill="#0B2A6B">PF</text><rect x="0" y="270" width="560" height="140" rx="14" fill="#FFD27A"/><text x="280" y="355" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="36" fill="#8A5A00">NPS</text><rect x="0" y="80" width="560" height="180" rx="14" fill="#7FB0FF"/><text x="280" y="220" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="36" fill="#0B2A6B">Superannuation</text><rect x="-60" y="125" width="680" height="10" rx="5" fill="#E5484D"/><g transform="translate(640 95)"><rect width="250" height="70" rx="35" fill="#E5484D"/><text x="125" y="47" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="34" fill="#fff">₹7.5 lakh</text></g></g>
+</svg>
