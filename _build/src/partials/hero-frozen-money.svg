@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="A frozen fraud account with an arrow returning the money to the victim's wallet, and a calendar showing 12 December">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5FE0"/><stop offset="1" stop-color="#0B2A6B"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".18"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g fill="#FFFFFF" opacity=".08"><circle cx="190" cy="760" r="80"/><circle cx="1450" cy="740" r="64"/><circle cx="230" cy="160" r="46"/></g><g id="art" transform="translate(110 -10)"><g transform="translate(250 260)"><rect width="330" height="210" rx="22" fill="#EAF1FF"/><rect y="40" width="330" height="40" fill="#5876B8"/>
+<text x="24" y="150" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="30" fill="#0B2A6B">FRAUD ACCOUNT</text><rect x="24" y="168" width="150" height="16" rx="8" fill="#B8C7E6"/>
+<g transform="translate(270 0)" stroke="#7FD4FF" stroke-width="12" stroke-linecap="round"><line x1="0" y1="-70" x2="0" y2="70"/><line x1="-60" y1="-35" x2="60" y2="35"/><line x1="-60" y1="35" x2="60" y2="-35"/></g>
+<rect x="60" y="230" width="210" height="56" rx="28" fill="#7FD4FF"/><text x="165" y="268" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="28" fill="#0B2A6B">FROZEN</text></g><line x1="650" y1="400" x2="784" y2="400" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/><path d="M810 400 L780 382 L780 418 Z" fill="#FFFFFF"/><g transform="translate(830 300)"><rect width="300" height="200" rx="26" fill="#0B7F5A"/><rect x="190" y="70" width="110" height="60" rx="14" fill="#3DBE8B"/><circle cx="222" cy="100" r="12" fill="#fff"/>
+<text x="95" y="120" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="70" fill="#fff">₹</text><text x="150" y="250" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="30" fill="#fff">BACK TO YOU</text></g><g transform="translate(560 560)"><rect width="230" height="170" rx="20" fill="#FFFFFF"/><path d="M0 20 A20 20 0 0 1 20 0 L210 0 A20 20 0 0 1 230 20 L230 60 L0 60 Z" fill="#E5484D"/>
+<text x="115" y="44" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="30" fill="#fff">DEC</text><text x="115" y="148" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="78" fill="#0B2A6B">12</text></g></g>
+</svg>
