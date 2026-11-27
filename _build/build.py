@@ -69,7 +69,7 @@ HOLD = {
     # Batch T9 (20 Nov): back to office cost calculator (N7, hero) with its guides, released together.
     "t9": ["/return-to-office-cost-calculator/", "/guides/return-to-office-cost/", "/guides/cheapest-way-to-commute-to-office/", "/guides/move-closer-to-office-or-commute/", "/guides/what-is-your-commute-time-worth/", "/guides/pay-rise-to-cover-return-to-office/", "/guides/meal-card-tax-free-200-per-meal/"],
     # Batch T8 (20 Nov): health insurance cover calculator (N6, quick) with its guides, released together.
-    "t8": ["/health-insurance-cover-calculator/", "/guides/how-much-health-insurance-do-you-need/", "/guides/super-top-up-health-insurance/", "/guides/is-employer-health-insurance-enough/", "/guides/health-insurance-for-parents/", "/guides/medical-inflation-health-cover/", "/guides/health-insurance-checklist-before-you-buy/", "/guides/health-insurance-opd-maternity-cataract/"],
+    "t8": ["/health-insurance-cover-calculator/", "/guides/how-much-health-insurance-do-you-need/", "/guides/super-top-up-health-insurance/", "/guides/is-employer-health-insurance-enough/", "/guides/health-insurance-for-parents/", "/guides/medical-inflation-health-cover/", "/guides/health-insurance-checklist-before-you-buy/", "/guides/health-insurance-opd-maternity-cataract/", "/guides/keep-health-cover-after-leaving-job/"],
     # Batch T7 (20 Nov): ESOP and RSU tax calculator (N5, quick) with its guides, released together.
     "t7": ["/esop-rsu-tax-calculator/", "/guides/rsu-tax-india-worked-example/", "/guides/esop-tax-exercise-and-sale/", "/guides/sell-rsus-at-vest-or-hold/", "/guides/startup-esop-tax-deferral/", "/guides/foreign-rsu-schedule-fa-tax-credit/", "/guides/rsu-esop-price-falls-after-vesting/"],
     # Batch T6 (19 Nov): did your hike beat inflation? (N9) with its guides, released together.
@@ -79,7 +79,7 @@ HOLD = {
     "t3": ["/fire-calculator/", "/guides/fire-number-india/", "/guides/retire-at-45-bridge-epf-nps/", "/guides/is-25x-enough-early-retirement/", "/guides/lean-fat-coast-fire/", "/guides/savings-rate-early-retirement/", "/guides/epf-nps-if-you-retire-early/", "/guides/wedding-invite-apk-scam/"],  # wedding-invite APK guide added 24 Nov (your call), source for YouTube video 3
     "t2": ["/best-day-to-resign/", "/guides/when-to-resign-best-last-day/", "/guides/resign-before-or-after-rsu-vesting/", "/guides/joining-bonus-clawback/", "/guides/when-to-hand-in-notice/", "/guides/use-or-encash-leave-before-resigning/", "/guides/wait-for-bonus-or-join-now/"],
 }
-RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2", "s3", "c1", "s4", "t3", "s5", "s6", "s7"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2, s3 22 Nov; c1 23 Nov, s4 24 Nov; t3, s5, s6 25 Nov; s7 26 Nov
+RELEASED = {"b1", "t1", "e1", "t2", "s1", "b2", "s2", "s3", "c1", "s4", "t3", "s5", "s6", "s7", "c2"}   # b1, t1 and e1 released 19 Nov; t2, s1 20 Nov; b2 21 Nov; s2, s3 22 Nov; c1 23 Nov, s4 24 Nov; t3, s5, s6 25 Nov; s7 26 Nov; c2 27 Nov
 # Review builds only: SALARIST_PREVIEW=t1 python3 build.py builds a held batch too (never push such a build).
 RELEASED |= {b for b in os.environ.get("SALARIST_PREVIEW", "").split(",") if b}
 HELD = {p for b, ps in HOLD.items() if b not in RELEASED for p in ps}
@@ -327,6 +327,7 @@ SEO = {
     "/guides/eps-pension-explained/": ("EPS Pension Explained: Job Changes, Transfer and Claims", "What EPS is, how the pension is worked out under EPS 2026, what happens when you change jobs, and how to claim it with Form 10C or 10D."),
     "/guides/how-much-epf-at-58/": ("How Much Will Your EPF Be at 58? A Worked Example", "What EPF could grow to by 58 at 8.25% interest, where it comes from, and what VPF, capped wages and the rate change. Plus the EPS pension."),
     "/guides/epf-wage-ceiling-25000/": ("EPF Wage Ceiling ₹25,000: What Changes for You", "The EPF wage ceiling rose to ₹25,000 from 17 Sep 2026. What it does to your PF deduction, take-home pay, EPF balance and EPS pension."),
+    "/guides/keep-health-cover-after-leaving-job/": ("Leaving Your Job? How to Keep Your Health Cover", "Office health cover usually ends on your last day. How migration and portability keep your waiting periods, when to ask, and mistakes to avoid."),
     "/guides/life-certificate-30-november-pension/": ("Life Certificate by 30 Nov: Keep Pension Coming", "Help a parent submit the pension life certificate by 30 November from home by face scan, check it was accepted, and avoid the fake update call."),
     "/guides/motor-insurance-four-layer-15-december/": ("New Car Insurance Rules from 15 Dec: What to Buy", "From 15 December car and bike policies come in four covers, two compulsory. What each covers, what to pick, and renewing before or after."),
     "/guides/garden-leave-pay-pf-joining/": ("On Garden Leave? Pay, PF and When You Can Join", "Put on garden leave? Your salary, PF and gratuity service continue to the last day. When you can join elsewhere, the tax, and what to ask HR."),
@@ -512,7 +513,7 @@ SITUATIONS = [
       ("Pick your last day and hand in notice", "Find the last working day that leaves you with the most, then count back your notice.",
        ["/best-day-to-resign/", "/guides/when-to-resign-best-last-day/", "/guides/when-to-hand-in-notice/", "/guides/notice-period-buyout/", "/guides/use-or-encash-leave-before-resigning/"]),
       ("Check your full and final settlement", "Last salary, leave encashment, gratuity and bonus, what's tax-free, and when it's due.",
-       ["/full-and-final-settlement/", "/guides/full-and-final-settlement-explained/", "/guides/leave-encashment-tax-on-resignation/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/", "/guides/garden-leave-pay-pf-joining/"]),
+       ["/full-and-final-settlement/", "/guides/full-and-final-settlement-explained/", "/guides/leave-encashment-tax-on-resignation/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/", "/guides/garden-leave-pay-pf-joining/", "/guides/keep-health-cover-after-leaving-job/"]),
       ("Move your PF and sort out the tax", "Transfer your PF instead of withdrawing it, and avoid a tax surprise from two employers in one year.",
        ["/guides/transfer-pf-dont-withdraw/", "/guides/two-employers-one-year-tax/", "/guides/epf-withdrawal-rules-2026/", "/guides/startup-esop-tax-deferral/", "/guides/car-lease-job-change-buy-back-or-hand-back/"])]
      + ([("Count what the new office will cost you", "More office days, or a farther office, mean commute, parking, lunches and hours. See what they cost and the pay that covers them.",
@@ -520,7 +521,7 @@ SITUATIONS = [
      + ([("Decide what to do with your superannuation", "If your employer paid into a superannuation fund, taking it as cash is taxed; moving it to NPS isn't.",
        ["/superannuation-calculator/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/move-superannuation-to-nps/"])] if SA_LIVE else [])
      + ([("Replace the health cover you lose", "Your employer's group health cover ends with the job. Check that your own policy is enough before your last day.",
-       ["/health-insurance-cover-calculator/", "/guides/is-employer-health-insurance-enough/", "/guides/how-much-health-insurance-do-you-need/"])] if HC_LIVE else [])),
+       ["/health-insurance-cover-calculator/", "/guides/keep-health-cover-after-leaving-job/", "/guides/is-employer-health-insurance-enough/", "/guides/how-much-health-insurance-do-you-need/"])] if HC_LIVE else [])),
     ("/buying-a-home/", "Buying a home", "Buying a home? The money decisions, in order",
      "Whether to buy at all, how much to put down, how to protect the loan and how to pay it off faster: one decision at a time.",
      "Buying a Home in India: The Money Decisions, in Order", "Rent or buy, down payment, EMI, home loan insurance, prepaying or investing and the tax breaks: the home-buying decisions, in order.",
@@ -2507,6 +2508,7 @@ def fnf_page():
   </ul>
   {"<p class=\"g-callout\"><b>Superannuation in your settlement?</b> Read <a href=\"/guides/superannuation-on-resignation-withdraw-or-nps/\">Withdraw, move to NPS or keep</a> before you tick an option.</p>" if SA_LIVE else ""}
 
+  {"<p class=\"g-callout\"><b>Leaving the company\u2019s health cover behind?</b> It usually ends on your last day: <a href=\"/guides/keep-health-cover-after-leaving-job/\">how to keep it, and your waiting periods</a>.</p>" if "t8" in RELEASED else ""}
   {"<p class=\"g-callout\"><b>Put on garden leave?</b> Your pay, PF and gratuity service continue to the last day: <a href=\"/guides/garden-leave-pay-pf-joining/\">what it means for your settlement</a>.</p>" if "s7" in RELEASED else ""}  <h2 id="sources">Sources</h2>
   <p>Code on Wages, 2019, section 17(2) (in force from 21 November 2025): wages on resignation, removal, dismissal or retrenchment within two working days. Income-tax Act, 2025, section 19 (earlier section 10(10AA)): leave encashment exemption, ₹25 lakh limit for non-government employees (CBDT notification 31/2023). Code on Social Security, 2020: gratuity. Read <a href="/methodology/">how we check our numbers</a>.</p>
   <h2>Frequently asked questions</h2>
@@ -2795,6 +2797,7 @@ def rd_page():
   </ul>
   {"<p class=\"g-callout\"><b>Have superannuation?</b> Read <a href=\"/guides/superannuation-on-resignation-withdraw-or-nps/\">Withdraw, move to NPS or keep</a>: cash is taxed, NPS isn't.</p>" if SA_LIVE else ""}
 
+  {"<p class=\"g-callout\"><b>Your office health cover ends with your last day.</b> Ask the insurer to migrate you before then: <a href=\"/guides/keep-health-cover-after-leaving-job/\">how to keep your health cover</a>.</p>" if "t8" in RELEASED else ""}
   {"<p class=\"g-callout\"><b>Put on garden leave?</b> Your last day still decides gratuity: <a href=\"/guides/garden-leave-pay-pf-joining/\">see how two weeks can be worth ₹2.9 lakh</a>.</p>" if "s7" in RELEASED else ""}  <h2 id="sources">Sources</h2>
   <p>Code on Social Security, 2020 (gratuity after 5 years' continuous service, 1 year for fixed-term employees; in force from 21 November 2025). Occupational Safety, Health and Working Conditions Code, 2020, section 32 (annual leave: carry forward up to 30 days, encashment). Income-tax Act, 2025, section 19 (gratuity and leave encashment exemptions). Bonus, stock and joining bonus terms are set by your employer's policy. Read <a href="/methodology/">how we check our numbers</a>.</p>
   <h2>Frequently asked questions</h2>
@@ -5317,7 +5320,7 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
      "2026-11-19", "guide-work-hours", "Your pay"),
     ("/guides/eps-family-pension/", "EPS family pension: what your spouse and children get",
      "What EPS pays a member's family under EPS 2026: the spouse's pension, children's and orphan pensions, one family's numbers, and how to claim.",
-     "2026-11-19", "guide-eps-family", "Your investments"),
+     "2026-11-27", "guide-eps-family", "Your investments"),
     ("/guides/budgeting-with-a-bonus/", "How to budget when part of your pay is a bonus",
      "Budget on fixed pay, know what a bonus is worth after tax, and a simple plan for using it: goals, investing and something to enjoy.",
      "2026-11-21", "guide-bonus-budget", "Your money"),
@@ -5326,16 +5329,16 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
      "2026-11-21", "guide-prepay-bonus", "Your home"),
     ("/guides/laddering-term-insurance/", "Should you split your term insurance into two policies?",
      "Two term policies ending at different ages: when laddering saves on premiums, why the bigger policy must run longer, and cover past 60.",
-     "2026-11-19", "guide-ladder", "Your money"),
+     "2026-11-27", "guide-ladder", "Your money"),
     ("/guides/rent-or-buy-by-age-and-moving-cities/", "Rent or buy a home? Why how long you'll stay matters more than your age",
      "Whether buying beats renting depends on how long you'll stay: how fast prices must rise for buying to win, what that means in your 20s, 30s and 40s, and if you might move.",
      "2026-11-21", "guide-rent-age", "Your home"),
     ("/guides/keep-or-sell-your-home/", "Keep or sell your home when you move: what each costs",
      "Moving cities with a home and a loan: selling vs keeping and renting it out, 10 years later, with tax on each choice and section 82 reinvestment.",
-     "2026-11-17", "guide-keep-sell", "Your home"),
+     "2026-11-27", "guide-keep-sell", "Your home"),
     ("/guides/double-income-family-budget/", "A double-income family budget: splitting costs and saving more",
      "Budgeting with two incomes: splitting shared costs in proportion, living on one income, emergency fund, insurance for both, and tax for two.",
-     "2026-11-17", "guide-dual-income", "Your money"),
+     "2026-11-27", "guide-dual-income", "Your money"),
     ("/guides/car-lease-20-percent-slab-and-ev/", "Is a company car lease worth it in the 20% tax slab?",
      "Company car lease vs loan by tax slab (30%, 20%, 5%), the break-even rental, and why an EV lease saves more under Rule 15.",
      "2026-11-21", "guide-lease-slab", "Your car"),
@@ -5344,10 +5347,10 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
      "2026-11-23", "guide-lease-exit", "Your car"),
     ("/guides/sukanya-samriddhi-two-daughters/", "Two daughters: Sukanya Samriddhi limits and the family cap",
      "Sukanya Samriddhi for two daughters: two accounts per family, ₹1.5 lakh each a year, the shared ₹1.5 lakh tax deduction, and what each account grows to.",
-     "2026-11-17", "guide-ssy-two", "Your investments"),
+     "2026-11-27", "guide-ssy-two", "Your investments"),
     ("/guides/revive-sukanya-samriddhi-account/", "Missed a Sukanya Samriddhi deposit? Reviving the account",
      "How to revive a Sukanya Samriddhi account in default (₹250 plus ₹50 a year), the 15-year deadline, and what missed deposits really cost.",
-     "2026-11-17", "guide-ssy-revive", "Your investments"),
+     "2026-11-27", "guide-ssy-revive", "Your investments"),
     ("/guides/first-salary-budget/", "Your first salary: how to set up a budget",
      "A first-salary budget on ₹40,000 a month: the 50/30/20 split, what to do in your first three months, common traps, and tax on your first salary.",
      "2026-11-21", "guide-first-budget", "Your money"),
@@ -5356,13 +5359,13 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
      "2026-11-19", "guide-hli", "Your money"),
     ("/guides/three-bucket-retirement-plan/", "Where to keep money after you retire: a three-bucket plan",
      "Split retirement money into three buckets by when you'll need it: ₹2 crore worked through, how to refill the buckets, and what happens in a market fall.",
-     "2026-11-17", "guide-three-bucket", "Your investments"),
+     "2026-11-27", "guide-three-bucket", "Your investments"),
     ("/guides/government-ev-rule-should-you-switch/", "The government will pay twice as much for an EV. Would it pay off for you?",
      "The 10 November 2026 order making EVs the default for government staff cars, and what a ₹20 lakh EV vs a ₹10 lakh petrol car costs you over 7 and 10 years.",
      "2026-11-15", "guide-govt-ev", "Your car"),
     ("/guides/open-sukanya-samriddhi-account/", "How to open a Sukanya Samriddhi account for your daughter",
      "Who can open a Sukanya Samriddhi account, the documents needed, where to open it (post office or bank), and what to do once it's open.",
-     "2026-11-15", "guide-ssy-open", "Your investments"),
+     "2026-11-27", "guide-ssy-open", "Your investments"),
     ("/guides/why-eps-pension-is-low/", "Why your EPS pension is so low, and what can raise it",
      "How the EPS wage ceilings shrink your pension, one employee's numbers after 32 years, and the few things that raise it: the ₹25,000 ceiling, waiting to 60, continuous service.",
      "2026-11-15", "guide-eps-low", "Your investments"),
@@ -5422,7 +5425,7 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
      "2026-11-15", "guide-savings-last", "Your investments"),
     ("/guides/retirement-planning-in-your-40s/", "Started late? Retirement planning in your 40s",
      "Retirement planning from 42: one person's numbers, what closes the gap (SIP step-up, NPS, retiring later, spending less), and five steps.",
-     "2026-11-15", "guide-late-40s", "Your investments"),
+     "2026-11-27", "guide-late-40s", "Your investments"),
     ("/guides/home-loan-rate-rise-emi-or-tenure/", "What a 0.5% rate rise does to your home loan EMI and tenure",
      "When your home loan rate rises, banks usually stretch the tenure. What a 0.5% rise costs on ₹50 lakh, and how to undo it.",
      "2026-11-15", "guide-rate-rise", "Your loans"),
@@ -5543,6 +5546,9 @@ GUIDES = [  # (path, title, short description, published, image base name, secti
     ("/guides/epf-wage-ceiling-25000/", "The ₹25,000 EPF wage ceiling: what it changes for your PF, pension and take-home",
      "From 17 September 2026 the EPF wage ceiling is ₹25,000. Who it covers, what it does to contributions, take-home pay and your EPS pension.",
      "2026-11-14", "guide-wage-ceiling", "Your investments"),
+    ("/guides/keep-health-cover-after-leaving-job/", "Laid off or leaving your job? How to keep your health cover",
+     "Your office cover usually ends on your last day. Migrate to the same insurer's policy before then and keep the waiting periods you've served.",
+     "2026-11-26", "guide-keep-health-cover", "Your pay"),
     ("/guides/life-certificate-30-november-pension/", "Parent's pension: submit the life certificate by 30 November",
      "Face scan at home, a postman at the door or the bank: how to keep a parent's pension coming, check it was accepted, and spot the fake update call.",
      "2026-11-26", "guide-life-certificate", "Your money"),
@@ -6743,7 +6749,7 @@ def _catalog():
                       ("/return-to-office-cost-calculator/", "Back to Office: What It Costs You", "Office five days a week? The commute, parking and lunches a month, hours on the road, the pay rise to break even, and moving closer.", L("/return-to-office-cost-calculator/"), "Coming soon", ["/guides/return-to-office-cost/", "/guides/cheapest-way-to-commute-to-office/", "/guides/move-closer-to-office-or-commute/", "/guides/what-is-your-commute-time-worth/", "/guides/pay-rise-to-cover-return-to-office/", "/guides/meal-card-tax-free-200-per-meal/"]),
                       ("/job-offer-comparator/", "Job Offer Comparator", "Is the new offer really worth more? Take-home, PF, gratuity, bonus, stock and commute, side by side.", L("/job-offer-comparator/"), "Coming soon", ["/guides/compare-job-offers-worked-example/", "/guides/higher-ctc-less-in-hand/", "/guides/switch-jobs-before-5-years-gratuity/", "/guides/value-variable-pay-job-offer/", "/guides/office-days-commute-cost/", "/guides/joining-bonus-stock-job-offer/"]),
                       ("/best-day-to-resign/", "Best Day to Resign", "The last working day that leaves you with the most: gratuity, bonus, RSUs and leave, against the new job's pay.", L("/best-day-to-resign/"), "Coming soon", ["/guides/when-to-resign-best-last-day/", "/guides/resign-before-or-after-rsu-vesting/", "/guides/joining-bonus-clawback/", "/guides/when-to-hand-in-notice/", "/guides/use-or-encash-leave-before-resigning/", "/guides/wait-for-bonus-or-join-now/", "/guides/voluntary-exit-offer-how-to-judge/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/garden-leave-pay-pf-joining/"]),
-                      ("/full-and-final-settlement/", "Full and Final Settlement", "What you get when you leave: last salary, leave encashment, gratuity, notice recovery and when it's due.", L("/full-and-final-settlement/"), "Coming soon", ["/guides/full-and-final-settlement-explained/", "/guides/transfer-pf-dont-withdraw/", "/guides/leave-encashment-tax-on-resignation/", "/guides/notice-period-buyout/", "/guides/two-employers-one-year-tax/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/garden-leave-pay-pf-joining/"]),
+                      ("/full-and-final-settlement/", "Full and Final Settlement", "What you get when you leave: last salary, leave encashment, gratuity, notice recovery and when it's due.", L("/full-and-final-settlement/"), "Coming soon", ["/guides/full-and-final-settlement-explained/", "/guides/transfer-pf-dont-withdraw/", "/guides/leave-encashment-tax-on-resignation/", "/guides/notice-period-buyout/", "/guides/two-employers-one-year-tax/", "/guides/bonus-when-you-resign/", "/guides/settlement-not-paid-on-time/", "/guides/superannuation-on-resignation-withdraw-or-nps/", "/guides/garden-leave-pay-pf-joining/", "/guides/keep-health-cover-after-leaving-job/"]),
                       ("/gratuity-calculator/", "Gratuity Calculator", "Your gratuity under the new labour codes, how much is tax-free, and what staying longer adds.", L("/gratuity-calculator/"), "Coming soon", ["/guides/gratuity-new-labour-codes/", "/guides/gratuity-six-month-rule-when-to-resign/", "/guides/gratuity-fixed-term-employees/", "/guides/is-gratuity-taxable-20-lakh-limit/", "/guides/low-basic-salary-gratuity/", "/guides/superannuation-explained/"])]),
         ("Your tax", [("/esop-rsu-tax-calculator/", "ESOP and RSU Tax Calculator", "Tax on your ESOPs or RSUs when they vest or you exercise, and when you sell: what you actually keep.", L("/esop-rsu-tax-calculator/"), "Coming soon", ["/guides/rsu-tax-india-worked-example/", "/guides/esop-tax-exercise-and-sale/", "/guides/sell-rsus-at-vest-or-hold/", "/guides/startup-esop-tax-deferral/", "/guides/foreign-rsu-schedule-fa-tax-credit/", "/guides/rsu-esop-price-falls-after-vesting/"]),
                       ("/income-tax-section-finder/", "Income Tax Section Finder", "Old section numbers like 80C, HRA and 24(b), and where they are in the Income-tax Act, 2025.", L("/income-tax-section-finder/"), "Coming soon", ["/guides/new-income-tax-section-numbers/", "/guides/tax-year-explained/", "/guides/payslip-form-130-new-section-numbers/", "/guides/belated-itr-31-december/", "/guides/advance-tax-15-december-salaried/"])]),
@@ -8713,6 +8719,7 @@ def guide_fnf_main():
   <li>Return assets against an acknowledgement.</li>
   <li>Ask for your settlement statement, relieving and experience letters, and Form 16 (Form 130 under the new Act).</li>
   <li>Transfer your PF: read <a href="/guides/transfer-pf-dont-withdraw/">Changed jobs? Transfer your PF</a>.</li>
+  {'<li>Keep your health cover: your office policy usually ends on your last day. Ask the insurer to migrate you before then: <a href="/guides/keep-health-cover-after-leaving-job/">how to keep your health cover</a>.</li>' if "t8" in RELEASED else ''}
 </ol>
 
 <h2 id="method">Sources</h2>
@@ -9172,6 +9179,7 @@ def guide_group_cover():
   <li><strong>Don't count group cover</strong> in the calculator unless it continues after you leave.</li>
   <li><strong>Check your nominee</strong> on the group policy with HR.</li>
   <li><strong>Before a job change,</strong> make sure your own cover is already in place.</li>
+  {'<li><strong>Health cover is separate:</strong> your group health policy also ends with the job. See <a href="/guides/keep-health-cover-after-leaving-job/">How to keep your health cover</a>.</li>' if "t8" in RELEASED else ''}
 </ol>
 <p>Read also <a href="/guides/how-much-term-insurance-do-you-need/">How much term insurance do you need?</a></p>
 
@@ -10186,6 +10194,7 @@ def guide_notice_buyout():
   <li>Ask for the shortfall amount in writing, with how it was worked out.</li>
   <li>Ask whether leave balance can be set off, or the notice shortened.</li>
   <li>If the new employer is paying, get it in the offer letter, with any clawback terms.</li>
+  {'<li>Leaving early ends your office health cover early too. Ask the insurer to migrate you before the new last day, and check when the new employer starts covering you. See <a href="/guides/keep-health-cover-after-leaving-job/">How to keep your health cover</a>.</li>' if "t8" in RELEASED else ''}
   <li>Check your settlement still includes leave encashment, bonus and gratuity due. See <a href="/guides/leave-encashment-tax-on-resignation/">Leave encashment tax when you resign</a>.</li>
 </ol>
 
@@ -11845,6 +11854,7 @@ def guide_rd_main():
   <li><strong>Turn them into last-day targets:</strong> each needs your last working day on or after it. For a bonus paid only if you're not serving notice, your resignation date has to be after it. See <a href="/guides/when-to-hand-in-notice/">When to hand in your notice</a>.</li>
   <li><strong>Price the wait:</strong> the new job's extra pay for each month. See <a href="/guides/wait-for-bonus-or-join-now/">Wait for the bonus or join now?</a></li>
   <li><strong>Plan your leave:</strong> use it or encash it? See <a href="/guides/use-or-encash-leave-before-resigning/">Leave balance before you resign</a>.</li>
+  {'<li><strong>Keep your health cover:</strong> office cover usually ends on your last day. Ask the insurer to migrate you before then. See <a href="/guides/keep-health-cover-after-leaving-job/">How to keep your health cover</a>.</li>' if "t8" in RELEASED else ''}
   <li><strong>Then work out your settlement</strong> in the <a href="/full-and-final-settlement/">full and final settlement calculator</a>.</li>
 </ol>
 
@@ -11991,6 +12001,7 @@ def guide_rd_notice():
   <li><strong>Confirm your joining date</strong> in HR records; gratuity counts from it.</li>
   <li><strong>State your proposed last working day</strong> in the resignation email.</li>
   <li><strong>Get the accepted last day in writing.</strong></li>
+  {'<li><strong>Note the date your health cover ends</strong> (usually the last day) and ask the insurer about migration well before it. See <a href="/guides/keep-health-cover-after-leaving-job/">How to keep your health cover</a>.</li>' if "t8" in RELEASED else ''}
   <li><strong>Plan your leave:</strong> many companies don't let you use leave to shorten notice. See <a href="/guides/use-or-encash-leave-before-resigning/">Leave balance before you resign</a>.</li>
 </ol>
 
@@ -12998,7 +13009,7 @@ def guide_exit_offer():
 <ol class="g-check">
   <li>Get the full offer in writing: amount, what it's called, exit date, and how notice, bonus, leave and RSUs are handled.</li>
   <li>Work out the net cash and the months of expenses it covers, as above, using your own budget in the <a href="/budget-planner/">budget planner</a>.</li>
-  <li>Arrange health cover for your family before the last day.</li>
+  <li>Arrange health cover for your family before the last day{(': ask the insurer to migrate you to a personal policy, so you keep your waiting periods. See <a href="/guides/keep-health-cover-after-leaving-job/">How to keep your health cover</a>' if "t8" in RELEASED else '')}.</li>
   <li>Move your PF to the next employer instead of withdrawing it: see <a href="/guides/transfer-pf-dont-withdraw/">transfer your PF, don't withdraw it</a>.</li>
   <li>Check the relieving letter, any non-compete clause, and the full and final settlement date with the <a href="/full-and-final-settlement/">settlement calculator</a>.</li>
   <li>Park the lump sum somewhere safe and liquid until you know your next step. Don't lock it up or rush into investments.</li>
@@ -13640,6 +13651,7 @@ def guide_sa_resign():
   <li><strong>Open or find your NPS Tier I account</strong> (your PRAN) if you'll move it there. Tier II won't do (<a href="/guides/move-superannuation-to-nps/#tier-1">here's why</a>).</li>
   <li><strong>Don't withdraw and re-invest.</strong> Only a direct transfer from the fund to NPS is tax-free.</li>
   <li><strong>Check your settlement</strong> with the <a href="/full-and-final-settlement/">full and final settlement calculator</a>, and your PF: <a href="/guides/transfer-pf-dont-withdraw/">transfer it, don't withdraw it</a>.</li>
+  {'<li><strong>Keep your health cover:</strong> ask the group insurer to migrate you before your last day. See <a href="/guides/keep-health-cover-after-leaving-job/">How to keep your health cover</a>.</li>' if "t8" in RELEASED else ''}
 </ol>
 
 {_sa_sources("Rohan is an illustration; returns, inflation and the annuity rate are assumptions. The ₹50 lakh figure uses 2026-27 slabs and 4% cess. ")}
@@ -14014,7 +14026,7 @@ def guide_garden_leave():
   <li><strong>Your last working day in writing,</strong> and whether it can move past your 5-year date if you're close.</li>
   <li><strong>Bonus:</strong> whether a pro-rata bonus for the year is paid (see <a href="/guides/bonus-when-you-resign/">bonus when you leave</a>).</li>
   <li><strong>Stock:</strong> which date the plan treats as your leaving date, and whether grants vesting during garden leave will vest (see <a href="/guides/resign-before-or-after-rsu-vesting/">RSUs and your last day</a>).</li>
-  <li><strong>Health cover:</strong> until when, and whether you can port it to an individual policy.</li>
+  <li><strong>Health cover:</strong> until when, and ask the insurer to migrate you to an individual policy before it ends{(' (see <a href="/guides/keep-health-cover-after-leaving-job/">how to keep your health cover</a>)' if "t8" in RELEASED else '')}.</li>
   <li><strong>Settlement timeline:</strong> final wages are due within 2 working days of your last day under the Code on Wages; read <a href="/guides/full-and-final-settlement-explained/">full and final settlement explained</a>.</li>
 </ol>
 
@@ -14025,6 +14037,103 @@ def guide_garden_leave():
 {related(path)}
 """
     return article(path, "x", "Garden leave", body, "Garden leave")
+
+
+IRDAI_HEALTH_MC = "https://irdai.gov.in/health-dept"
+
+def guide_keep_health_cover():
+    path = "/guides/keep-health-cover-after-leaving-job/"
+    def L(u, t): return f'<a href="{u}" rel="noopener">{t}</a>'
+    toc = [("short-answer", "The short answer"), ("ends", "When your office cover ends"), ("example", "Priya and Ramesh"), ("migration", "Option 1: migration, same insurer"),
+           ("portability", "Option 2: portability, another insurer"), ("new-policy", "Option 3: a brand-new policy"), ("which", "Which one, when"),
+           ("checklist", "Checklist before your last day"), ("mistakes", "Common mistakes"), ("method", "Sources")]
+    body = guide_head(path, "Your employer's group health insurance covers you, and often your family and parents, only while you work there. Leave, by choice or in a layoff, and it usually stops on your last working day. There's a way to keep the waiting periods you've already served, but you have to ask for it before the cover ends.",
+                      "An office ID badge handing a health shield to a family card: moving group health cover to your own policy").replace("TYPE_LINE", "<span>Full and Final Settlement</span>")
+    body += f"""
+<div class="wrap g-body prose">
+<p class="hint" style="margin:0 0 12px"><b>Verified on 26 November 2026</b> against IRDAI's Master Circular on Health Insurance Business (29 May 2024, the current version). For information, not insurance advice. Check your own policy wording.</p>
+{toc_html(toc)}
+<div class="g-callout" id="short-answer"><p style="margin:0 0 8px"><b>The short answer</b></p>
+<p style="margin:0">Your office health cover usually ends on your last working day. Before that day, ask the group policy's insurer to <strong>migrate</strong> you, and the family members on it, to an individual or family policy with the same insurer. The waiting periods you've already served carry over, up to the sum insured you had, so you don't start again. You'll pay the premium yourself, at individual rates. You can also <strong>port</strong> to another insurer, or buy a <strong>new policy</strong>, but a new policy restarts every waiting period: up to 3 years for illnesses you already have.</p></div>
+
+<h2 id="ends">When your office cover ends</h2>
+<ul>
+  <li><strong>Usually on your last working day</strong>, for you and everyone the group policy covers: spouse, children and, often, parents.</li>
+  <li><strong>It depends on the group policy.</strong> Ask HR for the exact end date in writing, and for the policy number and your member or certificate ID.</li>
+  <li><strong>Notice period and garden leave:</strong> you're still an employee, so cover usually continues until the last day (see <a href="/guides/garden-leave-pay-pf-joining/">garden leave</a>).</li>
+  <li><strong>A new job's cover may not start on day one.</strong> Some employers add you from joining, others only after HR enrols you. Ask the new employer before you count on it.</li>
+</ul>
+
+<h2 id="example">Priya and Ramesh</h2>
+<p><em>Made-up example, with an example premium.</em> Priya and Ramesh are laid off from the same company on the same day. Both had the company's group health cover, which included their parents.</p>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col"></th><th scope="col">Priya</th><th scope="col">Ramesh</th></tr></thead><tbody>
+<tr><th scope="row">Before the last day</th><td data-l="Priya">Calls the group insurer and asks to migrate to a family policy</td><td data-l="Ramesh">Does nothing; plans to "sort it out after the new job"</td></tr>
+<tr><th scope="row">Cost</th><td data-l="Priya">About ₹28,000 a year (an example premium; yours depends on ages, city and cover)</td><td data-l="Ramesh">Nil</td></tr>
+<tr><th scope="row">Waiting periods</th><td data-l="Priya">Carried over from the group cover, up to the old sum insured</td><td data-l="Ramesh">Gone</td></tr>
+<tr><th scope="row">Six weeks later</th><td data-l="Priya">Covered</td><td data-l="Ramesh">His mother is admitted: bill ₹2,80,000, no cover. He pays it himself</td></tr>
+</tbody></table></div>
+<p>And it gets worse for Ramesh. If he now buys a new policy for his mother, her condition is pre-existing, so it won't be covered until its waiting period is over: up to 3 years. Priya's ₹28,000 bought continuity that money can't buy back later.</p>
+
+<h2 id="migration">Option 1: migration, same insurer</h2>
+<p>IRDAI's Master Circular gives every member of an indemnity health policy, including the members of a family cover and of a group insurance policy, the right to <strong>migrate</strong> to another policy with the same insurer, and to carry over the credits built up: sum insured, specific waiting periods, the waiting period for pre-existing diseases and the moratorium (Chapter I, para 11). The credits move "to the extent of the Sum Insured" you had.</p>
+<ul>
+  <li><strong>When to ask:</strong> before your last working day, ideally a few weeks before. The current circular sets no deadline, so the insurer's own rules apply; IRDAI's earlier 2020 guidelines asked members to apply at least 30 days ahead. Once the group cover has ended, you may have nothing left to migrate.</li>
+  <li><strong>What the insurer can still check:</strong> migration from a group to an individual policy has been subject to the insurer's underwriting, and anything above your old sum insured is new cover, with fresh waiting periods and possibly a medical check.</li>
+  <li><strong>The price:</strong> you pay an individual or family premium yourself, based on ages and cover. It will be much more than the group rate your employer paid.</li>
+  <li><strong>Who can come along:</strong> family members covered under the group policy, including parents if they were on it. Older parents may be offered a separate policy.</li>
+</ul>
+
+<h2 id="portability">Option 2: portability, another insurer</h2>
+<p>Portability is moving to a <strong>different</strong> insurer. The circular lets you take your credits, waiting periods served and moratorium, to the new insurer, again up to the sum insured you had (Chapter I, para 12(d)). The old insurer must send your records within 72 hours of being asked, and the new insurer must decide within 5 days of getting them (para 12(b) and (c)).</p>
+<ul>
+  <li><strong>The new insurer underwrites you</strong> from your records and can decline or add conditions.</li>
+  <li><strong>It makes sense</strong> when another insurer's plan suits you better (room rent, co-payment, network hospitals, price) and you have time before the last day for the paperwork.</li>
+  <li><strong>Start with migration if time is short:</strong> once you're on an individual policy, you can port it at a renewal later.</li>
+</ul>
+
+<h2 id="new-policy">Option 3: a brand-new policy</h2>
+<ul>
+  <li><strong>Every waiting period starts again.</strong> Illnesses you or your family already have are pre-existing, and are covered only after the policy's waiting period. IRDAI caps it at 36 months; many policies set 2 or 3 years, some less.</li>
+  <li><strong>Specific illnesses and procedures</strong> (cataract, hernia, joint replacement and the like) have their own waiting periods, also at most 36 months.</li>
+  <li><strong>Most new policies also exclude illness, though not accidents, for the first 30 days.</strong></li>
+  <li><strong>It can still make sense</strong> for a young, healthy family with nothing pre-existing, or as an extra layer on top of a migrated policy. Buy it before the old cover ends, so there's no gap.</li>
+</ul>
+
+<h2 id="which">Which one, when</h2>
+<div class="g-scroll"><table class="g-tbl g-stack"><thead><tr><th scope="col"></th><th scope="col">Migration</th><th scope="col">Portability</th><th scope="col">New policy</th></tr></thead><tbody>
+<tr><th scope="row">Insurer</th><td data-l="Migration">Same as the group policy</td><td data-l="Portability">A different one</td><td data-l="New policy">Any</td></tr>
+<tr><th scope="row">Waiting periods served</th><td data-l="Migration">Carried over, up to the old sum insured</td><td data-l="Portability">Carried over, up to the old sum insured</td><td data-l="New policy">Lost: start again</td></tr>
+<tr><th scope="row">Underwriting</th><td data-l="Migration">Possible, especially for extra cover</td><td data-l="Portability">Yes, by the new insurer</td><td data-l="New policy">Yes</td></tr>
+<tr><th scope="row">Best when</th><td data-l="Migration">Anyone has a condition, or parents were covered; time is short</td><td data-l="Portability">You want a different plan and have a few weeks</td><td data-l="New policy">Everyone is healthy, or as an extra layer</td></tr>
+</tbody></table></div>
+
+<h2 id="checklist">Checklist before your last day</h2>
+<ol class="g-check">
+  <li><strong>Get the details from HR:</strong> group policy number, insurer or TPA, your member or certificate ID, who is covered, the sum insured, and the date cover ends.</li>
+  <li><strong>Call the insurer (or the TPA)</strong> before your last day and ask for migration to an individual or family policy. Note the date, name and reference number.</li>
+  <li><strong>Get the quote in writing:</strong> premium, sum insured, which waiting periods are carried over, and any new conditions.</li>
+  <li><strong>Compare it</strong> with porting to another insurer and with a fresh policy, on the same sum insured.</li>
+  <li><strong>Pay before the group cover ends,</strong> so there's no day without cover.</li>
+  <li><strong>Keep the group policy documents</strong>: they prove the cover you had, for claims and for porting later.</li>
+</ol>
+
+<h2 id="mistakes">Common mistakes</h2>
+<ul>
+  <li><strong>Waiting until after the last day.</strong> With the cover already ended, migration may be refused, and you're buying new.</li>
+  <li><strong>Assuming the new job's cover starts on day one.</strong> Check the date, and whether your parents are included.</li>
+  <li><strong>Dropping parents who were on the group policy.</strong> They're usually the oldest and the most likely to need a hospital, and the hardest to insure afresh.</li>
+  <li><strong>Counting on a gap of "just a few weeks".</strong> Ramesh's bill came in week six.</li>
+</ul>
+<p>Also on your list when you leave: your <a href="/guides/full-and-final-settlement-explained/">full and final settlement</a> (check it with the <a href="/full-and-final-settlement/">settlement calculator</a>) and <a href="/guides/transfer-pf-dont-withdraw/">your PF</a>.{(' Working out how much cover you need on your own? Use the <a href="/health-insurance-cover-calculator/">health insurance cover calculator</a> and read <a href="/guides/is-employer-health-insurance-enough/">is employer health insurance enough?</a>' if "t8" in RELEASED else '')}</p>
+
+<h2 id="method">Sources</h2>
+<p>IRDAI, {L(IRDAI_HEALTH_MC, "Master Circular on IRDAI (Insurance Products) Regulations 2024 – Health Insurance")}, Ref IRDAI/HLT/CIR/PRO/84/5/2024, 29 May 2024, Chapter I: para 11 (migration, including members of group insurance policies; credits to the extent of the sum insured), para 12 (portability: 72 hours, 5 days, credits to the extent of the sum insured), para 13 (moratorium of 60 months, counting ported and migrated credits). The circular says it is reviewed every year; we found no later version as of 26 November 2026. IRDAI health department FAQs: maximum waiting period 36 months. Earlier IRDAI Guidelines on Migration and Portability (IRDAI/HLT/REG/CIR/003/01/2020): migration on exit from a group, application at least 30 days ahead, migration from group to individual subject to underwriting. The 2024 circular consolidated IRDAI's earlier health circulars. Priya and Ramesh are made-up examples; the ₹28,000 premium is an example, not a quote. We don't recommend any insurer or product. Read <a href="/methodology/">how we check our facts</a>.</p>
+<p class="g-note">For information, not insurance advice. Check your own policy wording.</p>
+</div>
+</article>
+{related(path)}
+"""
+    return article(path, "x", "Leaving your job? How to keep your health cover", body, "Keep health cover")
 
 def stay_safe_page():
     gmap = {g[0]: g for g in GUIDES}
@@ -14531,6 +14640,7 @@ def guide_hc_employer():
   <li><strong>Add a super top-up</strong> with a deductible your base (or group cover, while employed) can pay. See <a href="/guides/super-top-up-health-insurance/">Base policy plus super top-up</a>.</li>
   <li><strong>Use group cover for maternity</strong> and the first years, when your personal policy is still in its waiting periods.</li>
   <li><strong>Ask HR</strong> whether you can convert group cover to a personal policy when you leave, and on what terms.</li>
+  {'<li><strong>Leaving?</strong> Migration to the same insurer keeps the waiting periods already served, up to your old sum insured. Ask before your last day: <a href="/guides/keep-health-cover-after-leaving-job/">How to keep your health cover</a>.</li>' if "t8" in RELEASED else ''}
   <li><strong>Changing jobs?</strong> Don't let your personal policy lapse in the gap. See <a href="/changing-jobs/">Changing jobs: what to check</a>.</li>
 </ol>
 
@@ -15321,6 +15431,7 @@ def guide_jo_main():
 <ol class="g-check">
   <li><strong>Ask to join in 6 months</strong>, after his 5-year mark, or ask the new employer to cover the gratuity in the joining bonus.</li>
   <li><strong>Negotiate office days</strong> or a commute allowance.</li>
+  {'<li><strong>Ask when the new health cover starts</strong>, and whether it covers his parents; keep his current cover until then. See <a href="/guides/keep-health-cover-after-leaving-job/">How to keep your health cover</a>.</li>' if "t8" in RELEASED else ''}
   <li><strong>Pick his last day</strong> with the <a href="/best-day-to-resign/">best day to resign</a> tool.</li>
 </ol>
 
@@ -15895,6 +16006,7 @@ def main():
     for _p, _f in [("/guides/superannuation-explained/", guide_sa_main), ("/guides/superannuation-on-resignation-withdraw-or-nps/", guide_sa_resign), ("/guides/move-superannuation-to-nps/", guide_sa_nps),
                    ("/guides/superannuation-at-retirement-commute-and-pension/", guide_sa_retire), ("/guides/superannuation-7-5-lakh-limit/", guide_sa_limit)]:
         if _p not in HELD: write(_p, _f())
+    if "/guides/keep-health-cover-after-leaving-job/" not in HELD: write("/guides/keep-health-cover-after-leaving-job/", guide_keep_health_cover())
     for _p, _f in [("/guides/life-certificate-30-november-pension/", guide_life_certificate), ("/guides/motor-insurance-four-layer-15-december/", guide_motor_insurance), ("/guides/garden-leave-pay-pf-joining/", guide_garden_leave)]:
         if _p not in HELD: write(_p, _f())
     if RT_LIVE: write("/return-to-office-cost-calculator/", rt_page())
@@ -16075,7 +16187,7 @@ def main():
     write("/guides/prepay-home-loan-early-or-later/", guide_prepay_timing())
     for p, (name, title, desc, h1, b) in PAGES.items(): write(p, text_page(p, name, title, desc, h1, b))
     write("/404.html", page_404())
-    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/gta-6-scams-fake-downloads/", "0.7"), ("/guides/gta-6-ps5-cost-emi-or-save/", "0.7"), ("/guides/day-off-for-gta-6-leave-rules/", "0.6"), ("/guides/advance-tax-15-december-salaried/", "0.8"), ("/guides/buy-car-december-or-january/", "0.7"), ("/guides/voluntary-exit-offer-how-to-judge/", "0.8"), ("/guides/whatsapp-web-safety-i4c-advisory/", "0.7"), ("/guides/wedding-invite-apk-scam/", "0.8"), ("/guides/rbi-stop-switch-trusted-person/", "0.8"), ("/guides/belated-itr-31-december/", "0.8"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7"), ("/guides/superannuation-explained/", "0.8"), ("/guides/superannuation-on-resignation-withdraw-or-nps/", "0.7"), ("/guides/move-superannuation-to-nps/", "0.7"), ("/guides/superannuation-at-retirement-commute-and-pension/", "0.7"), ("/guides/superannuation-7-5-lakh-limit/", "0.7"), ("/guides/life-certificate-30-november-pension/", "0.7"), ("/guides/motor-insurance-four-layer-15-december/", "0.7"), ("/guides/garden-leave-pay-pf-joining/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/superannuation-calculator/", "0.9")] if SA_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
+    urls = [("/", "1.0"), ("/tools/", "0.6"), ("/leave-planner-2027/", "0.9"), ("/prepay-vs-invest/", "0.9"), ("/rent-vs-buy/", "0.9"), ("/guides/", "0.6"), ("/guides/rent-vs-buy/", "0.8"), ("/guides/long-weekends-2027/", "0.8"), ("/guides/monthly-budget/", "0.8"), ("/budget-planner/", "0.9"), ("/guides/prepay-home-loan-or-invest/", "0.8"), ("/guides/under-construction-vs-ready-to-move/", "0.7"), ("/guides/hra-vs-home-loan-tax-benefits/", "0.7"), ("/guides/restricted-holidays-2027/", "0.7"), ("/guides/budget-on-50000-1-lakh-2-lakh-salary/", "0.7"), ("/guides/company-car-lease-vs-car-loan/", "0.8"), ("/guides/company-car-lease-policy/", "0.7"), ("/guides/digital-arrest-scam/", "0.8"), ("/guides/gta-6-scams-fake-downloads/", "0.7"), ("/guides/gta-6-ps5-cost-emi-or-save/", "0.7"), ("/guides/day-off-for-gta-6-leave-rules/", "0.6"), ("/guides/advance-tax-15-december-salaried/", "0.8"), ("/guides/buy-car-december-or-january/", "0.7"), ("/guides/voluntary-exit-offer-how-to-judge/", "0.8"), ("/guides/whatsapp-web-safety-i4c-advisory/", "0.7"), ("/guides/wedding-invite-apk-scam/", "0.8"), ("/guides/rbi-stop-switch-trusted-person/", "0.8"), ("/guides/belated-itr-31-december/", "0.8"), ("/guides/company-car-perquisite-value-2026/", "0.7"), ("/guides/best-months-for-a-week-long-break-2027/", "0.7"), ("/guides/long-weekends-2027-six-day-week/", "0.7"), ("/guides/how-part-payments-cut-your-home-loan/", "0.8"), ("/guides/car-lease-new-tax-regime/", "0.7"), ("/guides/plan-for-school-fees-and-yearly-costs/", "0.7"), ("/guides/how-much-sip-do-you-need/", "0.8"), ("/guides/step-up-sip/", "0.7"), ("/guides/how-mutual-fund-gains-are-taxed/", "0.7"), ("/guides/gratuity-new-labour-codes/", "0.8"), ("/guides/new-income-tax-section-numbers/", "0.8"), ("/guides/fd-rd-or-ppf/", "0.8"), ("/guides/working-hours-new-labour-codes/", "0.7"), ("/guides/salary-under-new-labour-codes/", "0.8"), ("/guides/rsu-tax-india-worked-example/", "0.8"), ("/guides/esop-tax-exercise-and-sale/", "0.7"), ("/guides/sell-rsus-at-vest-or-hold/", "0.7"), ("/guides/startup-esop-tax-deferral/", "0.7"), ("/guides/foreign-rsu-schedule-fa-tax-credit/", "0.7"), ("/guides/rsu-esop-price-falls-after-vesting/", "0.7"), ("/guides/did-your-hike-beat-inflation/", "0.8"), ("/guides/real-salary-hike-after-inflation/", "0.7"), ("/guides/personal-inflation-rate/", "0.7"), ("/guides/hike-take-home-after-tax/", "0.7"), ("/guides/what-hike-to-ask-for/", "0.7"), ("/guides/real-pay-growth-since-you-started/", "0.7"), ("/guides/compare-job-offers-worked-example/", "0.8"), ("/guides/higher-ctc-less-in-hand/", "0.7"), ("/guides/switch-jobs-before-5-years-gratuity/", "0.7"), ("/guides/value-variable-pay-job-offer/", "0.7"), ("/guides/office-days-commute-cost/", "0.7"), ("/guides/joining-bonus-stock-job-offer/", "0.7"), ("/guides/swp-monthly-income-explained/", "0.8"), ("/guides/swp-vs-fd-monthly-income/", "0.7"), ("/guides/how-swp-is-taxed/", "0.7"), ("/guides/safe-swp-withdrawal-rate/", "0.7"), ("/guides/should-swp-rise-with-inflation/", "0.7"), ("/guides/annuity-or-swp/", "0.7"), ("/guides/fire-number-india/", "0.8"), ("/guides/retire-at-45-bridge-epf-nps/", "0.7"), ("/guides/is-25x-enough-early-retirement/", "0.7"), ("/guides/lean-fat-coast-fire/", "0.7"), ("/guides/savings-rate-early-retirement/", "0.7"), ("/guides/epf-nps-if-you-retire-early/", "0.7"), ("/guides/when-to-resign-best-last-day/", "0.8"), ("/guides/resign-before-or-after-rsu-vesting/", "0.7"), ("/guides/joining-bonus-clawback/", "0.7"), ("/guides/when-to-hand-in-notice/", "0.7"), ("/guides/use-or-encash-leave-before-resigning/", "0.7"), ("/guides/wait-for-bonus-or-join-now/", "0.7"), ("/guides/take-home-fell-ctc-same/", "0.7"), ("/guides/basic-pay-50-percent-rule/", "0.7"), ("/guides/higher-basic-more-tax/", "0.7"), ("/guides/pf-full-basic-or-capped/", "0.7"), ("/guides/bonus-variable-pay-wages-labour-codes/", "0.7"), ("/guides/eps-family-pension/", "0.7"), ("/guides/budgeting-with-a-bonus/", "0.7"), ("/guides/prepay-with-bonus-or-invest/", "0.7"), ("/guides/laddering-term-insurance/", "0.7"), ("/guides/rent-or-buy-by-age-and-moving-cities/", "0.7"), ("/guides/keep-or-sell-your-home/", "0.7"), ("/guides/double-income-family-budget/", "0.7"), ("/guides/car-lease-20-percent-slab-and-ev/", "0.7"), ("/guides/car-lease-job-change-buy-back-or-hand-back/", "0.7"), ("/guides/sukanya-samriddhi-two-daughters/", "0.7"), ("/guides/revive-sukanya-samriddhi-account/", "0.7"), ("/guides/first-salary-budget/", "0.7"), ("/guides/home-loan-insurance-vs-term-plan/", "0.7"), ("/guides/three-bucket-retirement-plan/", "0.7"), ("/guides/government-ev-rule-should-you-switch/", "0.7"), ("/guides/open-sukanya-samriddhi-account/", "0.7"), ("/guides/why-eps-pension-is-low/", "0.7"), ("/guides/bonus-when-you-resign/", "0.7"), ("/guides/settlement-not-paid-on-time/", "0.7"), ("/guides/new-or-used-car/", "0.7"), ("/guides/notice-period-buyout/", "0.7"), ("/guides/two-employers-one-year-tax/", "0.7"), ("/guides/term-insurance-tax-new-regime/", "0.7"), ("/guides/sukanya-samriddhi-at-maturity/", "0.7"), ("/guides/floating-or-fixed-home-loan/", "0.7"), ("/guides/epf-withdrawal-rules-2026/", "0.7"), ("/guides/epf-withdrawal-changes-november-2026/", "0.7"), ("/guides/tax-year-explained/", "0.7"), ("/guides/payslip-form-130-new-section-numbers/", "0.7"), ("/guides/eps-higher-pension/", "0.7"), ("/guides/fd-for-senior-citizens-tds-and-tax/", "0.7"), ("/guides/home-loan-down-payment/", "0.7"), ("/guides/car-loan-or-cash/", "0.7"), ("/guides/part-pay-car-or-personal-loan/", "0.7"), ("/guides/how-long-will-retirement-savings-last/", "0.7"), ("/guides/retirement-planning-in-your-40s/", "0.7"), ("/guides/home-loan-rate-rise-emi-or-tenure/", "0.7"), ("/guides/ev-worth-it-1000-km-a-month/", "0.7"), ("/guides/sukanya-samriddhi-or-sip/", "0.7"), ("/guides/retire-at-50-55-or-60/", "0.7"), ("/guides/term-insurance-until-60-or-70/", "0.7"), ("/guides/how-much-term-insurance-do-you-need/", "0.8"), ("/guides/return-to-office-cost/", "0.8"), ("/guides/cheapest-way-to-commute-to-office/", "0.7"), ("/guides/move-closer-to-office-or-commute/", "0.7"), ("/guides/what-is-your-commute-time-worth/", "0.7"), ("/guides/pay-rise-to-cover-return-to-office/", "0.7"), ("/guides/meal-card-tax-free-200-per-meal/", "0.7"), ("/guides/how-much-health-insurance-do-you-need/", "0.8"), ("/guides/super-top-up-health-insurance/", "0.7"), ("/guides/is-employer-health-insurance-enough/", "0.7"), ("/guides/health-insurance-for-parents/", "0.7"), ("/guides/medical-inflation-health-cover/", "0.7"), ("/guides/health-insurance-checklist-before-you-buy/", "0.7"), ("/guides/health-insurance-opd-maternity-cataract/", "0.7"), ("/guides/is-employer-group-cover-enough/", "0.7"), ("/guides/ppf-after-15-years/", "0.7"), ("/guides/leave-encashment-tax-on-resignation/", "0.7"), ("/guides/first-sip-on-first-salary/", "0.7"), ("/guides/sukanya-samriddhi-explained/", "0.8"), ("/guides/sip-lower-return/", "0.7"), ("/guides/low-basic-salary-gratuity/", "0.7"), ("/guides/cumulative-fd-or-monthly-payout/", "0.7"), ("/guides/eps-pension-50-58-or-60/", "0.7"), ("/guides/full-and-final-settlement-explained/", "0.8"), ("/guides/gratuity-fixed-term-employees/", "0.7"), ("/guides/form-121-stop-tds-fd-interest/", "0.7"), ("/guides/eps-pension-calculation-example/", "0.8"), ("/guides/eps-withdrawal-benefit-or-scheme-certificate/", "0.7"), ("/guides/vpf-worth-it/", "0.7"), ("/guides/how-much-do-you-need-to-retire/", "0.8"), ("/guides/25x-rule-retirement-india/", "0.7"), ("/guides/transfer-pf-dont-withdraw/", "0.7"), ("/guides/how-much-epf-at-58/", "0.8"), ("/guides/eps-pension-explained/", "0.8"), ("/guides/epf-wage-ceiling-25000/", "0.7"), ("/guides/nps-new-exit-rules/", "0.8"), ("/guides/employer-nps-14-percent-new-regime/", "0.7"), ("/guides/nps-80-percent-withdrawal-tax/", "0.7"), ("/guides/nps-vs-ppf-vs-epf/", "0.7"), ("/guides/petrol-cng-or-ev-cost-per-km/", "0.8"), ("/guides/sip-or-lump-sum-bonus/", "0.7"), ("/guides/is-gratuity-taxable-20-lakh-limit/", "0.7"), ("/guides/fd-interest-tax-below-50000/", "0.7"), ("/guides/ppf-deposit-by-5-april/", "0.7"), ("/guides/gratuity-six-month-rule-when-to-resign/", "0.7"), ("/guides/are-your-sips-on-track/", "0.7"), ("/guides/is-rent-really-dead-money/", "0.7"), ("/guides/prepay-home-loan-early-or-later/", "0.7"), ("/guides/superannuation-explained/", "0.8"), ("/guides/superannuation-on-resignation-withdraw-or-nps/", "0.7"), ("/guides/move-superannuation-to-nps/", "0.7"), ("/guides/superannuation-at-retirement-commute-and-pension/", "0.7"), ("/guides/superannuation-7-5-lakh-limit/", "0.7"), ("/guides/life-certificate-30-november-pension/", "0.7"), ("/guides/motor-insurance-four-layer-15-december/", "0.7"), ("/guides/garden-leave-pay-pf-joining/", "0.7"), ("/guides/keep-health-cover-after-leaving-job/", "0.7")] + ([("/company-car-lease-vs-loan/", "0.9")] if CAR_LIVE else []) + ([("/emi-calculator/", "0.9")] if EMI_LIVE else []) + ([("/sip-calculator/", "0.9")] if SIP_LIVE else []) + ([("/gratuity-calculator/", "0.9")] if GRATUITY_LIVE else []) + ([("/income-tax-section-finder/", "0.9")] if SECTIONS_LIVE else []) + ([("/fd-ppf-rd-calculator/", "0.9")] if DEPOSITS_LIVE else []) + ([("/car-ownership-cost/", "0.9")] if CAROWN_LIVE else []) + ([("/nps-calculator/", "0.9")] if NPS_LIVE else []) + ([("/epf-calculator/", "0.9")] if EPF_LIVE else []) + ([("/retirement-planner/", "0.9")] if RETIRE_LIVE else []) + ([("/eps-pension-calculator/", "0.9")] if EPS_LIVE else []) + ([("/full-and-final-settlement/", "0.9")] if FNF_LIVE else []) + ([("/term-insurance-calculator/", "0.9")] if TERM_LIVE else []) + ([("/sukanya-samriddhi-calculator/", "0.9")] if SSY_LIVE else []) + ([("/labour-codes-salary-calculator/", "0.9")] if LC_LIVE else []) + ([("/best-day-to-resign/", "0.9")] if RD_LIVE else []) + ([("/fire-calculator/", "0.9")] if FIRE_LIVE else []) + ([("/swp-calculator/", "0.9")] if SWPC_LIVE else []) + ([("/job-offer-comparator/", "0.9")] if JO_LIVE else []) + ([("/salary-hike-vs-inflation/", "0.9")] if HV_LIVE else []) + ([("/esop-rsu-tax-calculator/", "0.9")] if SO_LIVE else []) + ([("/health-insurance-cover-calculator/", "0.9")] if HC_LIVE else []) + ([("/superannuation-calculator/", "0.9")] if SA_LIVE else []) + ([("/return-to-office-cost-calculator/", "0.9")] if RT_LIVE else []) + [(p, "0.7") for p in SIT_PATHS] + [(p, "0.3") for p in PAGES]
     # lastmod: the date each page's content last changed. A page's date moves only when its HTML changes
     # (ignoring the ?v= cache-busting hashes), tracked in src/data/lastmod.json.
     import hashlib, datetime
